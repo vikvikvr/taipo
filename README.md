@@ -4,10 +4,10 @@ A **typing game** that takes your mistakes to the next level.
 
 ## Wireframe
 
-![Game over](https://i.imgur.com/Iw9bhqA.png)
-![Login](https://i.imgur.com/dkdhxZN.png)
-![New game](https://i.imgur.com/gMtG1jA.png)
 ![Play screen](https://i.imgur.com/mokyayM.png)
+![New game](https://i.imgur.com/gMtG1jA.png)
+![Login](https://i.imgur.com/dkdhxZN.png)
+![Game over](https://i.imgur.com/Iw9bhqA.png)
 
 ### How it works 💡
 
