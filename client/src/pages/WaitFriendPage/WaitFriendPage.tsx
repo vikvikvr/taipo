@@ -43,7 +43,7 @@ export function WaitFriendPage() {
     <div className="wait-friend-page">
       <h1>Invite</h1>
       <div className="content">
-        <p className="subtitle">Share this code with a friend</p>
+        <p className="subtitle">Share this code</p>
         <SlidingInput
           id="this one"
           ActiveIcon={CheckIcon}
@@ -52,6 +52,7 @@ export function WaitFriendPage() {
           value={roomId}
           isActive={copied}
         />
+        <p className="reason">So that your friend can join you</p>
         <LoadingSpinner />
       </div>
       <NavigationIcon onClick={stopWaiting} toPath="/game/invite" icon="exit" />
