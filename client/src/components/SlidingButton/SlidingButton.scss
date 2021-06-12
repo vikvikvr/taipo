@@ -2,6 +2,7 @@
 
 .sliding-button {
   @include button-input;
+  position: relative;
 
   button {
     @include center;
