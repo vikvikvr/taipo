@@ -1,6 +1,7 @@
 import mongoose from './database';
 import {
   GameResult as IGameResult,
+  Player,
   PlayerResult as IPlayerResult
 } from '../types/types';
 import { Game } from '../game/Game';
@@ -25,7 +26,20 @@ const gameResultSchema = new mongoose.Schema<IGameResult>({
 
 const GameResult = mongoose.model<IGameResult>('GameResult', gameResultSchema);
 
-// helper function
+// helper functions
+
+function makePlayerResult(
+  player: Player,
+  sentenceLength: number
+): IPlayerResult {
+  return {
+    name: player.name,
+    completionPercent: (player.letterIndex / (sentenceLength - 1)) * 100,
+    email: player.email,
+    typosCount: player.mistakesCount,
+    imageUrl: player.imageUrl
+  };
+}
 
 export function gameResultFromGame(game: Game): IGameResult {
   let winner = game.players[0];
@@ -40,30 +54,11 @@ export function gameResultFromGame(game: Game): IGameResult {
 
   const { length } = game.sentence;
 
-  // there is always at least 1 player
-  const gameResult: IGameResult = {
+  return {
     gameId: game.id,
-    winnerResult: {
-      name: winner.name,
-      completionPercent: (winner.letterIndex / (length - 1)) * 100,
-      email: winner.email,
-      typosCount: winner.mistakesCount,
-      imageUrl: winner.imageUrl
-    }
+    winnerResult: makePlayerResult(winner, length),
+    loserResult: loser ? makePlayerResult(loser, length) : undefined
   };
-
-  // but there could also be a second one
-  if (loser) {
-    gameResult.loserResult = {
-      name: loser.name,
-      completionPercent: (loser.letterIndex / (length - 1)) * 100,
-      email: loser.email,
-      typosCount: loser.mistakesCount,
-      imageUrl: loser.imageUrl
-    };
-  }
-
-  return gameResult;
 }
 
 export { GameResult };
