@@ -12,7 +12,11 @@ export function TrySection({ onButtonClick }: Props) {
     <section className="try-section">
       <div className="left column">
         <h1 className="title">Try it out, it's free!</h1>
-        <p className="subtitle">Practice to become the ultimate master typer</p>
+        <p className="subtitle">
+          Practice to become the
+          <br />
+          ultimate master typer
+        </p>
         <SlidingButton
           Icon={KeyboardIcon}
           text="Play Now"

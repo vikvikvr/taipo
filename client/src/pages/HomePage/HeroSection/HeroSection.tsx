@@ -13,7 +13,9 @@ export function HeroSection({ onButtonClick }: Props) {
       <div className="left column">
         <h1 className="title">Being fast won't be enough!</h1>
         <p className="subtitle">
-          A typing game that takes your mistakes to the next level
+          A typing game that takes your
+          <br />
+          mistakes to the next level
         </p>
         <SlidingButton
           Icon={KeyboardIcon}
