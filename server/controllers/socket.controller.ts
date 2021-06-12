@@ -9,14 +9,18 @@ import { find, findIndex } from 'lodash';
 import { Sentence } from '../models/Sentence';
 import { GameResult, gameResultFromGame } from '../models/GameResult';
 
+// stores in memory current active games
 export const games: Game[] = [];
 
 // stores in memory single-player game results
 export const results: IGameResult[] = [];
 
+// stores in memory not-yet-started games (vs. random opponent)
 const lobby: Game[] = [];
 
 export const handleConnection: Controller = (socket) => {
+  // bind socket events coming from client to handlers
+
   socket.on('disconnect', onDisconnect);
   socket.on<ClientEvent>('codeRequest', onCodeRequest);
   socket.on<ClientEvent>('joinRoom', onJoinRoom);

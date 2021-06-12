@@ -5,6 +5,8 @@ import {
 } from '../types/types';
 import { Game } from '../game/Game';
 
+// schemas
+
 const playerResultSchema = new mongoose.Schema<IPlayerResult>({
   name: { type: String, required: true },
   email: { type: String, required: true },
@@ -19,7 +21,11 @@ const gameResultSchema = new mongoose.Schema<IGameResult>({
   gameId: { type: String, required: true }
 });
 
+// model
+
 const GameResult = mongoose.model<IGameResult>('GameResult', gameResultSchema);
+
+// helper function
 
 export function gameResultFromGame(game: Game): IGameResult {
   let winner = game.players[0];

@@ -49,6 +49,8 @@ export class Game implements GameState {
     });
   }
 
+  // called every time a player types a letter
+
   processLetter(username: string, letter: string): LetterOutcome {
     letter = letter.toLowerCase();
     const player = this.players.find((p) => p.username === username)!;

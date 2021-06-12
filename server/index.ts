@@ -5,7 +5,6 @@ import { Server, ServerOptions } from 'socket.io';
 import cors from 'cors';
 import { handleConnection } from './controllers/socket.controller';
 import router from './router';
-// only using side effects here to connect to database
 import './models/database';
 
 const app = express();
@@ -13,8 +12,9 @@ const app = express();
 // server configuration
 
 dotenv.config();
+
 const port = process.env.PORT || 3333;
-// really like this typescript feature
+
 const corsOptions: Pick<ServerOptions, 'cors'> = {
   cors: { origin: '*' }
 };
@@ -31,6 +31,7 @@ function onServerStarted() {
   const io = new Server(httpServer, corsOptions);
   io.on('connection', handleConnection);
 }
+
 const httpServer = createServer(app);
 
 httpServer.listen(port, onServerStarted);

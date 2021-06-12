@@ -1,11 +1,6 @@
 import { Socket } from 'socket.io';
 
-type IoListener = (socket: Socket) => void;
-type SocketController = (socket: Socket) => (...args: any[]) => void;
-
-export type Controller = IoListener | SocketController;
-
-// socket events
+// socket events - sent by client
 
 export type ClientEvent =
   | 'keyPressed'
@@ -17,6 +12,8 @@ export type ClientEvent =
   | 'playAlone'
   | 'leaveRoom'
   | 'joinRoom';
+
+// socket events - sent by server
 
 export type ServerEvent =
   | 'startingSoon'
@@ -57,6 +54,8 @@ export interface GameState {
   mistakeBlockDuration: number;
 }
 
+// results related
+
 export interface PlayerResult {
   name: string;
   email: string;
@@ -70,3 +69,10 @@ export interface GameResult {
   loserResult?: PlayerResult;
   gameId: string;
 }
+
+// socket related
+
+type IoListener = (socket: Socket) => void;
+type SocketController = (socket: Socket) => (...args: any[]) => void;
+
+export type Controller = IoListener | SocketController;
