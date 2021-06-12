@@ -1,5 +1,7 @@
 import { io } from 'socket.io-client';
 import { ClientEvent, PlayerInfo } from '../../../server/types/types';
+import { user$ } from './authService';
+import { roomId$ } from './gameService';
 
 const serverPort = process.env.REACT_APP_SERVER_PORT;
 const serverHost = process.env.REACT_APP_SERVER_HOST;
@@ -14,36 +16,44 @@ function emit(eventName: ClientEvent, ...args: any): void {
 
 // client event emitters
 
-export function emitKeyPressed(letter: string, roomId: string) {
-  emit('keyPressed', letter, roomId);
+export function emitKeyPressed(letter: string) {
+  emit('keyPressed', letter, roomId$.value);
 }
 
-export function emitPlayAlone(playerInfo: PlayerInfo) {
-  emit('playAlone', playerInfo);
+export function emitPlayAlone() {
+  emit('playAlone', buildPlayerInfo());
 }
 
-export function emitCodeRequest(playerInfo: PlayerInfo) {
-  emit('codeRequest', playerInfo);
+export function emitCodeRequest() {
+  emit('codeRequest', buildPlayerInfo());
 }
 
-export function emitJoinRoom(roomId: string, playerInfo: PlayerInfo) {
-  emit('joinRoom', roomId, playerInfo);
+export function emitJoinRoom() {
+  emit('joinRoom', roomId$.value, buildPlayerInfo());
 }
 
-export function emitRequestSnapshot(roomId: string) {
-  emit('requestSnapshot', roomId);
+export function emitRequestSnapshot() {
+  emit('requestSnapshot', roomId$.value);
 }
 
 export function emitLeaveRoom() {
   emit('leaveRoom');
 }
 
-export function emitEnterLobby(playerInfo: PlayerInfo) {
-  emit('enterLobby', playerInfo);
+export function emitEnterLobby() {
+  emit('enterLobby', buildPlayerInfo());
 }
 
 export function emitLeaveLobby() {
   emit('leaveLobby');
+}
+
+function buildPlayerInfo(): PlayerInfo {
+  return {
+    email: user$.value?.email || '',
+    imageUrl: user$.value?.imageUrl || '',
+    name: user$.value?.firstName || 'Guest'
+  };
 }
 
 // might need to handle 'disconnect' event

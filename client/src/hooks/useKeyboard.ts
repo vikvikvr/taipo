@@ -9,7 +9,7 @@ export function useKeyboard(roomId: string, email?: string): void {
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
       const letter = e.key.toLowerCase();
-      emitKeyPressed(letter, roomId);
+      emitKeyPressed(letter);
     }
 
     document.addEventListener('keydown', onKeyDown);

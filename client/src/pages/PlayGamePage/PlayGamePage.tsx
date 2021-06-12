@@ -32,15 +32,11 @@ export function PlayGamePage() {
   const [roomId] = useSubject(roomId$);
   const [blocked] = useSubject(blocked$);
   const history = useHistory();
-  useEffect(requestSnapshot, [roomId]);
+  useEffect(emitRequestSnapshot, []);
   useCheating(game, user);
   useKeyboard(roomId, user?.email);
   useRedirect('/game/new', !roomId);
   const positions = usePlayersPosition(game);
-
-  function requestSnapshot() {
-    emitRequestSnapshot(roomId);
-  }
 
   function leaveGame() {
     gameOver.play();

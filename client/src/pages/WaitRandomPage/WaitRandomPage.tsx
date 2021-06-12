@@ -25,13 +25,7 @@ export function WaitRandomPage() {
 
   function enterLobby() {
     if (user) {
-      setTimeout(() => {
-        emitEnterLobby({
-          email: user.email,
-          imageUrl: user.imageUrl,
-          name: user.firstName
-        });
-      }, 500);
+      setTimeout(emitEnterLobby, 500);
     } else {
       history.replace('/game/new');
     }

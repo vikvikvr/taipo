@@ -27,8 +27,8 @@ export function useCheating(game: GameState, user: User | null) {
           if (done) {
             break;
           }
-          const char = game.sentence[i];
-          emitKeyPressed(char, game.id);
+          const letter = game.sentence[i];
+          emitKeyPressed(letter);
           const timeToWait = 300 + Math.random() * 300;
           await sleep(timeToWait);
         }

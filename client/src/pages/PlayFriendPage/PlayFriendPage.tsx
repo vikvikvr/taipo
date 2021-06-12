@@ -21,36 +21,12 @@ export function PlayFriendPage() {
   useRedirect('/game/new', !user);
   useAnimation();
 
-  function requestCode() {
-    if (!user) {
-      return;
-    }
-
-    emitCodeRequest({
-      email: user.email,
-      imageUrl: user.imageUrl,
-      name: user.firstName
-    });
-  }
-
   function handleClick() {
     if (roomId) {
-      submitCode();
+      emitJoinRoom();
     } else {
       getCodeFromClipboard();
     }
-  }
-
-  function submitCode() {
-    if (!user) {
-      return;
-    }
-
-    emitJoinRoom(roomId, {
-      email: user.email,
-      imageUrl: user.imageUrl,
-      name: user.firstName
-    });
   }
 
   function getCodeFromClipboard() {
@@ -71,7 +47,7 @@ export function PlayFriendPage() {
         <p className="sentence-1">Invite a new friend</p>
         <SlidingButton
           Icon={ArrowRightIcon}
-          onClick={requestCode}
+          onClick={emitCodeRequest}
           text="Get code"
           variant="parallax"
         />
