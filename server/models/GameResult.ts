@@ -44,9 +44,9 @@ export function gameResultFromGame(game: Game): IGameResult {
   const gameResult: IGameResult = {
     gameId: game.id,
     winnerResult: {
-      name: winner.id,
+      name: winner.name,
       completionPercent: (winner.letterIndex / (length - 1)) * 100,
-      email: winner.id,
+      email: winner.email,
       typosCount: winner.mistakesCount,
       imageUrl: winner.imageUrl
     }
@@ -55,9 +55,9 @@ export function gameResultFromGame(game: Game): IGameResult {
   // but there could also be a second one
   if (loser) {
     gameResult.loserResult = {
-      name: loser.id,
+      name: loser.name,
       completionPercent: (loser.letterIndex / (length - 1)) * 100,
-      email: loser.id,
+      email: loser.email,
       typosCount: loser.mistakesCount,
       imageUrl: loser.imageUrl
     };

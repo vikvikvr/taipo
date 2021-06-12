@@ -1,4 +1,11 @@
-import { GameState, LetterOutcome, Player, Sentence } from '../types/types';
+import {
+  GameState,
+  LetterOutcome,
+  Player,
+  PlayerInfo,
+  Sentence
+} from '../types/types';
+import { find } from 'lodash';
 
 export class Game implements GameState {
   id: string;
@@ -31,29 +38,27 @@ export class Game implements GameState {
     this.players = this.players.filter((p) => p.socketId !== socketId);
   }
 
-  addPlayer(
-    username: string,
-    socketId: string,
-    imageUrl: string,
-    id: string
-  ): void {
-    console.log(`${this.id} > add player | ${username}`);
+  addPlayer(socketId: string, playerInfo: PlayerInfo): void {
+    console.log(`${this.id} > add player | ${playerInfo.email || socketId}`);
     this.players.push({
-      username,
       letterIndex: 0,
       lastMistakeAt: -Infinity,
       socketId,
       mistakesCount: 0,
-      imageUrl,
-      id
+      ...playerInfo
     });
   }
 
   // called every time a player types a letter
 
-  processLetter(username: string, letter: string): LetterOutcome {
+  processLetter(letter: string, socketId: string): LetterOutcome {
     letter = letter.toLowerCase();
-    const player = this.players.find((p) => p.username === username)!;
+    const player = find(this.players, { socketId });
+
+    if (!player) {
+      // TODO: handle error better
+      throw new Error('could not find player in this game');
+    }
 
     const timeDiff = Date.now() - player.lastMistakeAt;
 

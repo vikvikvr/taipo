@@ -3,11 +3,13 @@ import {
   Controller,
   ClientEvent,
   ServerEvent,
-  GameResult as IGameResult
+  GameResult as IGameResult,
+  PlayerInfo
 } from '../types/types';
 import { find, findIndex } from 'lodash';
 import { Sentence } from '../models/Sentence';
 import { GameResult, gameResultFromGame } from '../models/GameResult';
+import { UserInfo } from 'os';
 
 // stores in memory current active games
 export const games: Game[] = [];
@@ -35,22 +37,19 @@ export const handleConnection: Controller = (socket) => {
   // <ClientEvent> handlers
 
   function onDisconnect() {
-    removeGame('lobby', 'socketId', socket.id);
-    const game = removeGame('games', 'socketId', socket.id);
+    removeGame('lobby');
+    const game = removeGame('games');
     removeGameCleanup(game);
   }
 
-  function onLeaveRoom(userId: string) {
-    const game = removeGame('games', 'username', userId);
+  function onLeaveRoom() {
+    const game = removeGame('games');
     removeGameCleanup(game);
   }
 
-  async function onPlayAlone(userId: string, imageUrl: string) {
-    if (!userId) {
-      return;
-    }
+  async function onPlayAlone(playerInfo: PlayerInfo) {
     try {
-      const game = await createGame(userId, imageUrl);
+      const game = await createGame(playerInfo);
       games.push(game);
       socket.join(game.id);
       socket.emit<ServerEvent>('joinedRoom', game.id);
@@ -61,28 +60,21 @@ export const handleConnection: Controller = (socket) => {
     }
   }
 
-  function onEnterLobby(userId: string, imageUrl: string) {
-    if (!userId) {
-      return;
-    }
+  function onEnterLobby(playerInfo: PlayerInfo) {
     if (lobby.length > 0) {
-      startLobbyGame(userId, imageUrl);
+      startLobbyGame(playerInfo);
     } else {
-      createLobbygame(userId, imageUrl);
+      createLobbygame(playerInfo);
     }
   }
 
-  function onLeaveLobby(userId: string) {
-    removeGame('lobby', 'username', userId);
+  function onLeaveLobby() {
+    removeGame('lobby');
   }
 
-  async function onCodeRequest(userId: string, imageUrl: string) {
-    if (!userId) {
-      console.log('code request without userId');
-      return;
-    }
+  async function onCodeRequest(playerInfo: PlayerInfo) {
     try {
-      const game = await createGame(userId, imageUrl);
+      const game = await createGame(playerInfo);
       games.push(game);
       socket.join(game.id);
       socket.emit<ServerEvent>('joinedRoom', game.id);
@@ -91,11 +83,11 @@ export const handleConnection: Controller = (socket) => {
     }
   }
 
-  function onJoinRoom(roomId: string, userId: string, imageUrl: string) {
+  function onJoinRoom(roomId: string, playerInfo: PlayerInfo) {
     socket.join(roomId);
     const game = find(games, { id: roomId });
     if (game) {
-      game.addPlayer(userId, socket.id, imageUrl, userId);
+      game.addPlayer(socket.id, playerInfo);
       broadcastEvent('joinedRoom', game.id, game.id);
       startGame(game, 2);
     }
@@ -108,20 +100,20 @@ export const handleConnection: Controller = (socket) => {
     }
   }
 
-  function onKeyPressed(playerId: string, letter: string, roomId: string) {
+  function onKeyPressed(letter: string, roomId: string) {
     const game = find(games, { id: roomId });
 
     if (!game || !game.started) {
       return;
     }
 
-    const outcome = game.processLetter(playerId, letter);
+    const outcome = game.processLetter(letter, socket.id);
 
     switch (outcome) {
       case 'still-waiting':
         return;
       case 'wrong':
-        handleWrongKey(playerId, game);
+        handleWrongKey(game);
         break;
       case 'game-over':
         handleGameOver(game);
@@ -136,10 +128,10 @@ export const handleConnection: Controller = (socket) => {
 
   // helper functions
 
-  function handleWrongKey(playerId: string, game: Game) {
-    broadcastEvent('wrongKey', game.id, playerId);
+  function handleWrongKey(game: Game) {
+    broadcastEvent('wrongKey', game.id, socket.id);
     setTimeout(() => {
-      broadcastEvent('canContinue', game.id, playerId);
+      broadcastEvent('canContinue', game.id, socket.id);
     }, game.mistakeBlockDuration);
   }
 
@@ -151,12 +143,12 @@ export const handleConnection: Controller = (socket) => {
     saveGameResult(game);
   }
 
-  async function createGame(userId: string, imageUrl: string): Promise<Game> {
+  async function createGame(playerInfo: PlayerInfo): Promise<Game> {
     const roomCode = createRandomId();
     // error handling is done inside the caller
     const sentences = await Sentence.find();
     const game = new Game(roomCode, sentences);
-    game.addPlayer(userId, socket.id, imageUrl, userId);
+    game.addPlayer(socket.id, playerInfo);
     return game;
   }
 
@@ -187,27 +179,32 @@ export const handleConnection: Controller = (socket) => {
     broadcastEvent('gameOver', game.id);
   }
 
-  async function createLobbygame(userId: string, imageUrl: string) {
+  async function createLobbygame(playerInfo: PlayerInfo) {
     try {
-      const game = await createGame(userId, imageUrl);
+      const game = await createGame(playerInfo);
       socket.join(game.id);
       lobby.push(game);
-      console.log(
-        `lobby > new game | ${game.id} | player ${userId} | count ${lobby.length} `
-      );
+      console.log(`${game.id} > game added to lobby`);
     } catch (error) {
       console.log('failed to create lobby game', error);
     }
   }
 
-  function startLobbyGame(userId: string, imageUrl: string) {
-    const game = lobby.pop()!;
-    // because i don't want to play with myself
-    if (userId === game.players[0].username) {
+  function startLobbyGame(playerInfo: PlayerInfo) {
+    const game = lobby.pop();
+
+    if (!game) {
+      console.log('failed to start game because lobby was empty');
       return;
     }
+
+    // prevent from playing with myself
+    if (socket.id === game.players[0].socketId) {
+      return;
+    }
+
     socket.join(game.id);
-    game.addPlayer(userId, socket.id, imageUrl, userId);
+    game.addPlayer(socket.id, playerInfo);
     games.push(game);
     setTimeout(() => {
       broadcastEvent('joinedRoom', game.id, game.id);
@@ -215,16 +212,12 @@ export const handleConnection: Controller = (socket) => {
     }, 1500);
   }
 
-  function removeGame(
-    from: 'lobby' | 'games',
-    by: 'username' | 'socketId',
-    value: string
-  ): Game | null {
+  function removeGame(from: 'lobby' | 'games'): Game | null {
     const collection = from === 'lobby' ? lobby : games;
 
     for (let i = 0; i < collection.length; i++) {
       const { players } = collection[i];
-      const hasPlayer = players.find((p) => p[by] === value);
+      const hasPlayer = find(players, { socketId: socket.id });
 
       if (hasPlayer) {
         const gameIndex = i;
@@ -240,11 +233,14 @@ export const handleConnection: Controller = (socket) => {
 
   async function saveGameResult(game: Game) {
     const result = gameResultFromGame(game);
+
+    // save single player results only in memory
     if (game.players.length < 2) {
-      // only save in memory single-player games
       results.push(result);
       return;
     }
+
+    // save multi player results to database
     try {
       await GameResult.create(result);
     } catch (error) {

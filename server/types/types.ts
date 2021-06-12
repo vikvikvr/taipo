@@ -34,14 +34,24 @@ export interface Sentence {
   withMistakes: string;
 }
 
-export interface Player {
-  username: string;
+export interface PlayerInfo {
+  name: string;
+  email: string;
+  imageUrl: string;
+}
+
+export interface Player extends PlayerInfo {
+  socketId: string;
   letterIndex: number;
   lastMistakeAt: number;
   mistakesCount: number;
+}
+
+export interface GuestPlayer {
   socketId: string;
-  imageUrl: string;
-  id: string;
+  letterIndex: number;
+  lastMistakeAt: number;
+  mistakesCount: number;
 }
 
 export interface GameState {
