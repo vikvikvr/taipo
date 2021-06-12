@@ -25,7 +25,7 @@ export function WaitRandomPage() {
 
   function enterLobby() {
     if (user) {
-      setTimeout(emitEnterLobby, 500);
+      setTimeout(emitEnterLobby, 1_500);
     } else {
       history.replace('/game/new');
     }
