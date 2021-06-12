@@ -6,11 +6,16 @@ export function useAnimation() {
 
   function fadeAndSlideContent() {
     const fadeIn = { opacity: 0, ease: 'power3.out' };
+    const stagger = 0.15;
     gsap
       .timeline({ delay: 0.5 })
-      .from('.sentence-1', { y: '-1em', ...fadeIn })
-      .from('.sliding-button', { y: '2em', ...fadeIn }, 0.5)
-      .from('.sentence-2', { y: '2em', ...fadeIn }, 0.65)
-      .from('.sliding-input', { y: '2em', ...fadeIn }, 0.8);
+      .from('.sentence-1', { y: '1.5em', ...fadeIn })
+      .from('.sliding-button', { y: '2em', ...fadeIn }, stagger)
+      .from('.sentence-2', { y: '-1.5em', ...fadeIn }, 1)
+      .from(
+        '.sliding-input',
+        { y: '-2em', duration: 0.6, ...fadeIn },
+        1 + stagger
+      );
   }
 }
