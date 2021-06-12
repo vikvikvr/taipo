@@ -19,7 +19,7 @@
 
   .name {
     color: $textLight;
-    // font-size: 2em;
+    font-size: 2em;
     font-weight: 300;
   }
 
@@ -41,7 +41,7 @@
     @include fill;
     @include center;
     color: $textLight;
-    // font-size: 4em;
+    font-size: 4em;
     position: absolute;
     text-shadow: $shadow;
 
@@ -51,11 +51,11 @@
       fill: $textLight;
     }
 
-    .alone {
+    .alone-icon {
       opacity: 1;
     }
 
-    .running {
+    .running-icon {
       opacity: 0;
     }
   }

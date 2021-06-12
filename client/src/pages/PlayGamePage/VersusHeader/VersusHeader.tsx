@@ -32,8 +32,8 @@ export function VersusHeader({ leftName, rightName, isGuest, onClick }: Props) {
             'vs'
           ) : (
             <>
-              <AloneIcon className="alone" />
-              <RunningIcon className="running" />
+              <AloneIcon className="alone-icon" />
+              <RunningIcon className="running-icon" />
             </>
           )}
         </div>

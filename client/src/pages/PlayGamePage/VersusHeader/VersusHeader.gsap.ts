@@ -29,12 +29,12 @@ export function useAnimation() {
     if (hovered) {
       mouseClick.play();
     }
-    gsap.to('.running', {
+    gsap.to('.running-icon', {
       opacity: hovered ? 1 : 0,
       ease: 'power3.out',
       scale: hovered ? 1 : 0.5
     });
-    gsap.to('.alone', {
+    gsap.to('.alone-icon', {
       opacity: hovered ? 0 : 1,
       ease: 'power3.out',
       scale: hovered ? 0.5 : 1
