@@ -1,11 +1,18 @@
 import { Game } from '../game/Game';
-import { Controller, ClientEvent, ServerEvent } from '../types/types';
+import {
+  Controller,
+  ClientEvent,
+  ServerEvent,
+  GameResult as IGameResult
+} from '../types/types';
 import { find, findIndex } from 'lodash';
 import { Sentence } from '../models/Sentence';
 import { GameResult, gameResultFromGame } from '../models/GameResult';
 
 export const games: Game[] = [];
-export const results: Game[] = [];
+
+// stores in memory single-player game results
+export const results: IGameResult[] = [];
 
 const lobby: Game[] = [];
 
@@ -137,7 +144,7 @@ export const handleConnection: Controller = (socket) => {
     const ix = findIndex(games, { id: game.id });
     games.splice(ix, 1);
     console.log(`${game.id} > game ended `);
-    results.push(game);
+    saveGameResult(game);
   }
 
   async function createGame(userId: string, imageUrl: string): Promise<Game> {
@@ -228,11 +235,12 @@ export const handleConnection: Controller = (socket) => {
   }
 
   async function saveGameResult(game: Game) {
-    results.push(game);
+    const result = gameResultFromGame(game);
     if (game.players.length < 2) {
+      // only save in memory single-player games
+      results.push(result);
       return;
     }
-    const result = gameResultFromGame(game);
     try {
       await GameResult.create(result);
     } catch (error) {

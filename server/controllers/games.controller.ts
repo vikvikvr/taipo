@@ -4,8 +4,16 @@ import { GameResult } from '../models/GameResult';
 
 export const getResult: RequestHandler = async (req, res) => {
   const { gameId } = req.params;
+
+  // try to find it first inside local results (single player)
+  const result = results.find((res) => res.gameId === gameId);
+  if (result) {
+    res.send(result);
+    return;
+  }
+
+  // if not found, query database
   try {
-    // TODO: handle differently for solo game
     const result = await GameResult.findOne({ gameId });
     if (result) {
       res.send(result);

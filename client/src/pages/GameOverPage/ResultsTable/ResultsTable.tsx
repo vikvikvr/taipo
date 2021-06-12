@@ -18,7 +18,7 @@ export function ResultsTable({ result }: Props) {
       <p className="sentence header">Sentence</p>
       <p className="taipos header">Taipos</p>
       <ResultRow playerResult={winnerResult} isWinner />
-      {true && <ResultRow playerResult={loserResult} />}
+      {loserResult && <ResultRow playerResult={loserResult} />}
     </div>
   );
 }

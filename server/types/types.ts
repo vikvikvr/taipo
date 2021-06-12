@@ -67,6 +67,6 @@ export interface PlayerResult {
 
 export interface GameResult {
   winnerResult: PlayerResult;
-  loserResult: PlayerResult;
+  loserResult?: PlayerResult;
   gameId: string;
 }

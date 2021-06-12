@@ -15,36 +15,49 @@ const playerResultSchema = new mongoose.Schema<IPlayerResult>({
 
 const gameResultSchema = new mongoose.Schema<IGameResult>({
   winnerResult: { type: playerResultSchema, required: true },
-  loserResult: { type: playerResultSchema, required: true },
+  loserResult: { type: playerResultSchema },
   gameId: { type: String, required: true }
 });
 
 const GameResult = mongoose.model<IGameResult>('GameResult', gameResultSchema);
 
 export function gameResultFromGame(game: Game): IGameResult {
-  // distinguish winner from loser
   let winner = game.players[0];
   let loser = game.players[1];
-  if (loser.letterIndex > winner.letterIndex) {
-    [winner, loser] = [loser, winner];
+
+  // distinguish winner from loser
+  if (loser) {
+    if (loser.letterIndex > winner.letterIndex) {
+      [winner, loser] = [loser, winner];
+    }
   }
-  // create player results
+
   const { length } = game.sentence;
-  const winnerResult: IPlayerResult = {
-    name: winner.id,
-    completionPercent: (winner.letterIndex / (length - 1)) * 100,
-    email: winner.id,
-    typosCount: winner.mistakesCount,
-    imageUrl: winner.imageUrl
+
+  // there is always at least 1 player
+  const gameResult: IGameResult = {
+    gameId: game.id,
+    winnerResult: {
+      name: winner.id,
+      completionPercent: (winner.letterIndex / (length - 1)) * 100,
+      email: winner.id,
+      typosCount: winner.mistakesCount,
+      imageUrl: winner.imageUrl
+    }
   };
-  const loserResult: IPlayerResult = {
-    name: loser.id,
-    completionPercent: (loser.letterIndex / (length - 1)) * 100,
-    email: loser.id,
-    typosCount: loser.mistakesCount,
-    imageUrl: loser.imageUrl
-  };
-  return { gameId: game.id, winnerResult, loserResult };
+
+  // but there could also be a second one
+  if (loser) {
+    gameResult.loserResult = {
+      name: loser.id,
+      completionPercent: (loser.letterIndex / (length - 1)) * 100,
+      email: loser.id,
+      typosCount: loser.mistakesCount,
+      imageUrl: loser.imageUrl
+    };
+  }
+
+  return gameResult;
 }
 
 export { GameResult };
