@@ -1,5 +1,5 @@
 import './SlidingInput.scss';
-import React, { useState } from 'react';
+import React from 'react';
 import { mouseClick, valid } from 'services/audioService';
 import { useAnimation } from './SlidingInput.gsap';
 import { ReactSVG } from 'components/SlidingButton';
