@@ -35,7 +35,7 @@ export function WelcomePage() {
 
   return (
     <div className="welcome-page">
-      <h1>Welcome</h1>
+      <h1 className="page-title">Welcome</h1>
       <div className="content">
         <h2 className="hello">Hello, {user.firstName}!</h2>
         <img

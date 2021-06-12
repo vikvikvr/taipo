@@ -37,7 +37,7 @@ export function WaitRandomPage() {
 
   return (
     <div className="wait-random-page">
-      <h1>Get ready</h1>
+      <h1 className="page-title">Get ready</h1>
       <div className="content">
         <h2 className="hello">Wait, {user.firstName}</h2>
         <img

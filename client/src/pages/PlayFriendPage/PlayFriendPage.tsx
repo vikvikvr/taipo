@@ -42,7 +42,7 @@ export function PlayFriendPage() {
 
   return (
     <div className="play-friend-page">
-      <h1>Play together</h1>
+      <h1 className="page-title">Play together</h1>
       <div className="content">
         <h2 className="primary-action">Invite a new friend</h2>
         <SlidingButton

@@ -23,7 +23,7 @@ export function LoginPage() {
 
   return (
     <div className="login-page">
-      <h1>Login</h1>
+      <h1 className="page-title">Login</h1>
       <div className="content">
         <h2 className="heading">Make your choice</h2>
         <SlidingButton

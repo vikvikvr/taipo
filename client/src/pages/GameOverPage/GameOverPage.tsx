@@ -33,7 +33,7 @@ export function GameOverPage() {
   if (!result) {
     return (
       <div className="game-over-page">
-        <h1>Game over!</h1>
+        <h1 className="page-title">Game over!</h1>
         <div className="content">
           <LoadingSpinner />
           <h3>loading game result</h3>
@@ -45,7 +45,7 @@ export function GameOverPage() {
   // <SlidingButton> is being animated by <ResultsTable>
   return (
     <div className="game-over-page">
-      <h1>Game over!</h1>
+      <h1 className="page-title">Game over!</h1>
       <div className="content">
         <ResultsTable result={result} />
         <Link to="/game/new">

@@ -35,7 +35,7 @@ export function NewGamePage() {
 
   return (
     <div className="new-game-page">
-      <h1>New game</h1>
+      <h1 className="page-title">New game</h1>
       <div className="content">
         <GameModes isLoggedIn={Boolean(user)} />
       </div>

@@ -19,7 +19,7 @@ export function VersusHeader({ leftName, rightName, isGuest, onClick }: Props) {
 
   return (
     <div className={`versus-header ${!rightName ? ' alone' : ''}`}>
-      <div className="name left">{isGuest ? 'Guest' : leftName}</div>
+      <h2 className="left-name">{isGuest ? 'Guest' : leftName}</h2>
       <div
         className="middle"
         onClick={onClick}
@@ -38,7 +38,7 @@ export function VersusHeader({ leftName, rightName, isGuest, onClick }: Props) {
           )}
         </div>
       </div>
-      {rightName && <div className="name right">{rightName}</div>}
+      {rightName && <h2 className="right-name">{rightName}</h2>}
     </div>
   );
 }

@@ -39,7 +39,7 @@ export function WaitFriendPage() {
 
   return (
     <div className="wait-friend-page">
-      <h1>Invite</h1>
+      <h1 className="page-title">Invite</h1>
       <div className="content">
         <h2 className="subtitle">Share this code</h2>
         <SlidingInput
