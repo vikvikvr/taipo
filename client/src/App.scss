@@ -19,40 +19,9 @@ body {
   background-image: url($textureSubtleGrunge),
     linear-gradient(332deg, $bgPrimary 0%, $bgSecondary 100%);
   background-blend-mode: color-burn;
-
-  // button,
-  // input {
-  //   @include center;
-  //   @include rounded;
-  //   height: 3em;
-  //   width: 11em;
-  //   font-size: 2em;
-  //   align-items: center;
-  //   border: none;
-  //   box-shadow: $shadow;
-  //   overflow: hidden;
-  // }
-
-  // input {
-  //   @include reset-input;
-  //   color: $textDark;
-  //   padding: 1em;
-  // }
-
-  // button {
-  //   cursor: pointer;
-  //   background-color: $orange800;
-  //   color: $textLight;
-  //   box-shadow: $shadow;
-
-  //   svg {
-  //     @include square(1em);
-  //     fill: $textLight;
-  //   }
-  // }
 }
 
 .app {
-  @include center;
-  overflow: hidden;
+  @include screen;
+  @include fixed;
 }
