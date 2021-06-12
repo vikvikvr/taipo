@@ -4,4 +4,8 @@
   @include screen;
   @include column;
   @include center;
+
+  .game-content {
+    margin-top: 8em;
+  }
 }
