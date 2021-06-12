@@ -20,7 +20,7 @@ export function ResultRow({ playerResult, isWinner, isGuest }: Props) {
 
   return (
     <div className="result-row">
-      <h3 className="name">{name}</h3>
+      <h2 className="name">{name}</h2>
       <div className="badge">
         {isWinner && (
           <div className="stars">
