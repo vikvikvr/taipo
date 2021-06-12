@@ -14,7 +14,7 @@ export function usePullDownOnHover(ignoreOpacity?: boolean) {
     if (!container.current) {
       return;
     }
-    const lowOpacity = ignoreOpacity ? 1 : 0.7;
+    const lowOpacity = ignoreOpacity ? undefined : 0.7;
     gsap.fromTo(
       container.current,
       { opacity: isHovered ? lowOpacity : 1 },
