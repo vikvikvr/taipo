@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { User } from 'services/authService';
 import { emit } from 'services/socketService';
+import { sleep } from 'utils/helpers';
 import { GameState } from '../../../server/types/types';
 
 // custom hook to make user carl@email.com
@@ -37,10 +38,4 @@ export function useCheating(game: GameState, user: User | null) {
       done = true;
     };
   }
-}
-
-function sleep(ms: number) {
-  return new Promise((resolve) => {
-    setTimeout(() => resolve(1), ms);
-  });
 }
