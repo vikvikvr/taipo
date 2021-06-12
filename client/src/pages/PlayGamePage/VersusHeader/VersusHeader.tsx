@@ -18,8 +18,8 @@ export function VersusHeader({ leftName, rightName, isGuest, onClick }: Props) {
   const { setHovered } = useAnimation();
 
   return (
-    <div className="versus-header">
-      <div className="name">{isGuest ? 'Guest' : leftName}</div>
+    <div className={`versus-header ${!rightName ? ' alone' : ''}`}>
+      <div className="name left">{isGuest ? 'Guest' : leftName}</div>
       <div
         className="middle"
         onClick={onClick}
@@ -38,7 +38,7 @@ export function VersusHeader({ leftName, rightName, isGuest, onClick }: Props) {
           )}
         </div>
       </div>
-      {rightName && <div className="name">{rightName}</div>}
+      {rightName && <div className="name right">{rightName}</div>}
     </div>
   );
 }

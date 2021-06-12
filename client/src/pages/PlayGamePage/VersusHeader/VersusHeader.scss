@@ -9,6 +9,14 @@
   top: 1em;
   width: 100vw;
 
+  &.alone {
+    @include column;
+
+    .name.left {
+      order: 1;
+    }
+  }
+
   .name {
     color: $textLight;
     // font-size: 2em;
