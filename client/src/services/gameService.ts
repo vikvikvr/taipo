@@ -42,7 +42,9 @@ export function distinguishPlayers(players: Player[], username: string) {
   };
 }
 
-export async function fetchResult(gameId: string) {
+export async function fetchResult() {
+  const gameId = roomId$.value;
+
   if (!gameId) {
     throw new Error('missing gameId');
   }

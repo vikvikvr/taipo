@@ -1,7 +1,6 @@
 import { Link, useHistory } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-import { useSubject } from 'hooks/useSubject';
-import { fetchResult, roomId$ } from 'services/gameService';
+import { fetchResult } from 'services/gameService';
 import { ResultsTable } from 'pages/GameOverPage/ResultsTable';
 import './GameOverPage.scss';
 import { LoadingSpinner } from 'components/LoadingSpinner';
@@ -14,14 +13,13 @@ import { GameResult } from '../../../../server/types/types';
 // fetches game result from server and shows it in a table
 
 export function GameOverPage() {
-  const [roomId] = useSubject(roomId$);
   const [result, setResult] = useState<GameResult | null>(null);
   const history = useHistory();
+  useEffect(fetchGameResult, [history]);
   useEffect(playBgMusic, []);
-  useEffect(fetchGameResult, [roomId, history]);
 
   function fetchGameResult() {
-    fetchResult(roomId)
+    fetchResult()
       .then((result) => setResult(result))
       .catch(() => history.replace('/game/new'));
   }
