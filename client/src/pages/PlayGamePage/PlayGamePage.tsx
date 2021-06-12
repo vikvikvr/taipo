@@ -45,7 +45,11 @@ export function PlayGamePage() {
   }
 
   if (!game.started) {
-    return <Countdown startTime={game.startedAt} />;
+    return (
+      <div className="play-game-page">
+        <Countdown startTime={game.startedAt} />
+      </div>
+    );
   }
 
   const opponent = game.players.find((p) => p.socketId !== socket.id);
