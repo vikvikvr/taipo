@@ -1,23 +1,30 @@
-import { Link } from 'react-router-dom';
-import React, { useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import { useSubject } from 'hooks/useSubject';
-import { roomId$ } from 'services/gameService';
-import { useGameResult } from 'hooks/useGameResult';
+import { fetchResult, roomId$ } from 'services/gameService';
 import { ResultsTable } from 'pages/GameOverPage/ResultsTable';
 import './GameOverPage.scss';
 import { LoadingSpinner } from 'components/LoadingSpinner';
 import { KeyboardIcon } from 'assets/icons';
 import { SlidingButton } from 'components/SlidingButton';
 import { background } from 'services/audioService';
+import { GameResult } from '../../../../server/types/types';
 
 // reached after a game ends
-// fetches the game result from the server
-// then shows it on a table
+// fetches game result from server and shows it in a table
 
 export function GameOverPage() {
   const [roomId] = useSubject(roomId$);
-  const result = useGameResult(roomId);
+  const [result, setResult] = useState<GameResult | null>(null);
+  const history = useHistory();
   useEffect(playBgMusic, []);
+  useEffect(fetchGameResult, [roomId, history]);
+
+  function fetchGameResult() {
+    fetchResult(roomId)
+      .then((result) => setResult(result))
+      .catch(() => history.replace('/game/new'));
+  }
 
   function playBgMusic() {
     if (!background.playing()) {
@@ -37,8 +44,7 @@ export function GameOverPage() {
     );
   }
 
-  // note that <SlidingButton> is being
-  // animated by <ResultsTable>
+  // <SlidingButton> is being animated by <ResultsTable>
   return (
     <div className="game-over-page">
       <h1>Game over!</h1>
