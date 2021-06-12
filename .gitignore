@@ -108,3 +108,6 @@ dist
 
 # Typescript-related
 *.tsbuildinfo
+
+# WIndows icon info
+desktop.ini
