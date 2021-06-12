@@ -14,7 +14,7 @@ interface Props {
 export function ResultRow({ playerResult, isWinner, isGuest }: Props) {
   useAnimation();
 
-  const imageSrc = isGuest ? avatarPlaceholder : playerResult.imageUrl;
+  const imageSrc = playerResult.imageUrl || avatarPlaceholder;
   const completion = `${Math.round(playerResult.completionPercent)}%`;
   const name = isGuest ? 'Guest' : playerResult.name;
 
