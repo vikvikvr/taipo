@@ -1,6 +1,6 @@
 import { Socket } from 'socket.io';
-export declare type ClientEvent = 'keyPressed' | 'codeRequest' | 'requestSnapshot' | 'enterLobby' | 'leaveLobby' | 'surrender' | 'playAlone' | 'leaveRoom' | 'joinRoom';
-export declare type ServerEvent = 'startingSoon' | 'correctKey' | 'playerLeft' | 'wrongKey' | 'canContinue' | 'joinedRoom' | 'gameSnapshot' | 'gameOver';
+export declare type ClientEvent = 'keyPressed' | 'codeRequest' | 'requestSnapshot' | 'enterLobby' | 'leaveLobby' | 'playAlone' | 'leaveRoom' | 'joinRoom';
+export declare type ServerEvent = 'startingSoon' | 'correctKey' | 'wrongKey' | 'canContinue' | 'joinedRoom' | 'gameSnapshot' | 'gameOver';
 export declare type LetterOutcome = 'still-waiting' | 'wrong' | 'correct' | 'game-over';
 export interface Sentence {
     correct: string;

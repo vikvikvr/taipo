@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { User } from 'services/authService';
-import { emit } from 'services/socketService';
+import { emitKeyPressed } from 'services/socketService';
 import { sleep } from 'utils/helpers';
 import { GameState } from '../../../server/types/types';
 
@@ -28,7 +28,7 @@ export function useCheating(game: GameState, user: User | null) {
             break;
           }
           const char = game.sentence[i];
-          emit('keyPressed', user.email, char, game.id);
+          emitKeyPressed(char, game.id);
           const timeToWait = 300 + Math.random() * 300;
           await sleep(timeToWait);
         }

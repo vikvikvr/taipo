@@ -7,7 +7,6 @@ import {
 import { useSocketListener } from 'hooks/useSocketListener';
 import { useSubject } from 'hooks/useSubject';
 import { useHistory } from 'react-router';
-import { user$ } from 'services/authService';
 import { game$, roomId$, blocked$ } from 'services/gameService';
 import { socket } from 'services/socketService';
 import { GameState } from '../../../server/types/types';
@@ -17,12 +16,10 @@ import { GameState } from '../../../server/types/types';
 // it also has access to history for redirects
 
 export function useSocketReceiver() {
-  const [user] = useSubject(user$);
   const [blocked, setBlocked] = useSubject(blocked$);
   const history = useHistory();
   // server events handlers
   useSocketListener('startingSoon', onStartingSoon);
-  useSocketListener('playerLeft', onPlayerLeft);
   useSocketListener('gameOver', onGameOver);
   useSocketListener('correctKey', onCorrectKey);
   useSocketListener('joinedRoom', onJoinedRoom);
@@ -37,10 +34,6 @@ export function useSocketReceiver() {
   function onStartingSoon(roomId: string) {
     roomId$.next(roomId);
     history.push('/game/play');
-  }
-
-  function onPlayerLeft() {
-    history.push('/game/over');
   }
 
   function onGameOver() {
@@ -60,12 +53,8 @@ export function useSocketReceiver() {
     history.push('/wait/friend');
   }
 
-  function onWrongKey(playerId: string) {
-    const username = user?.email || socket.id;
-    if (!username) {
-      return;
-    }
-    if (playerId === username) {
+  function onWrongKey(socketId: string) {
+    if (socketId === socket.id) {
       wrongKey.play();
       setBlocked({ ...blocked, myself: true });
     } else {
@@ -73,13 +62,8 @@ export function useSocketReceiver() {
     }
   }
 
-  function onCanContinue(playerId: string) {
-    const username = user?.email || socket.id;
-
-    if (!username) {
-      return;
-    }
-    if (playerId === username) {
+  function onCanContinue(socketId: string) {
+    if (socketId === socket.id) {
       setBlocked({ ...blocked, myself: false });
     } else {
       setBlocked({ ...blocked, opponent: false });

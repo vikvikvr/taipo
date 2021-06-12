@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { emit, socket } from 'services/socketService';
+import { emitKeyPressed } from 'services/socketService';
 
 // custom hook to emit 'keyPressed' events
 // to the server via socket
@@ -9,7 +9,7 @@ export function useKeyboard(roomId: string, email?: string): void {
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
       const letter = e.key.toLowerCase();
-      emit('keyPressed', email || socket.id, letter, roomId);
+      emitKeyPressed(letter, roomId);
     }
 
     document.addEventListener('keydown', onKeyDown);

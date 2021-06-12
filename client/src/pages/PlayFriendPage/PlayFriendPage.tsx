@@ -2,7 +2,7 @@ import React, { ChangeEvent } from 'react';
 import { NavigationIcon } from 'components/NavigationIcon';
 import { SlidingButton } from 'components/SlidingButton';
 import { user$ } from 'services/authService';
-import { emit } from 'services/socketService';
+import { emitCodeRequest, emitJoinRoom } from 'services/socketService';
 import { ArrowRightIcon, PaperPlaneIcon, PasteIcon } from 'assets/icons';
 import './PlayFriendPage.scss';
 import { useSubject } from 'hooks/useSubject';
@@ -22,9 +22,15 @@ export function PlayFriendPage() {
   useAnimation();
 
   function requestCode() {
-    if (user) {
-      emit('codeRequest', user.email, user.imageUrl);
+    if (!user) {
+      return;
     }
+
+    emitCodeRequest({
+      email: user.email,
+      imageUrl: user.imageUrl,
+      name: user.firstName
+    });
   }
 
   function handleClick() {
@@ -36,11 +42,15 @@ export function PlayFriendPage() {
   }
 
   function submitCode() {
-    if (user) {
-      emit('joinRoom', roomId, user.email, user.imageUrl);
-    } else {
-      console.warn('Not logged in 🔑');
+    if (!user) {
+      return;
     }
+
+    emitJoinRoom(roomId, {
+      email: user.email,
+      imageUrl: user.imageUrl,
+      name: user.firstName
+    });
   }
 
   function getCodeFromClipboard() {

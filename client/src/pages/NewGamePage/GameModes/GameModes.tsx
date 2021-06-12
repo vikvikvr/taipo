@@ -1,11 +1,12 @@
 import React from 'react';
 import './GameModes.scss';
 import { useHistory } from 'react-router-dom';
-import { emit, socket } from 'services/socketService';
+import { emitPlayAlone } from 'services/socketService';
 import { user$ } from 'services/authService';
 import { SlidingButton } from '../../../components/SlidingButton/SlidingButton';
 import { AloneIcon, FriendIcon, StrangerIcon, LockedIcon } from 'assets/icons';
 import { useAnimation } from './GameModes.gsap';
+import { PlayerInfo } from '../../../../../server/types/types';
 
 interface Props {
   isLoggedIn: boolean;
@@ -16,9 +17,12 @@ export function GameModes({ isLoggedIn }: Props) {
   useAnimation();
 
   function startGameAlone() {
-    const username = user$.value?.email || socket.id;
-    const imageUrl = user$.value?.imageUrl || '';
-    emit('playAlone', username, imageUrl);
+    const playerInfo: PlayerInfo = {
+      email: user$.value?.email || '',
+      imageUrl: user$.value?.imageUrl || '',
+      name: user$.value?.firstName || 'Guest'
+    };
+    emitPlayAlone(playerInfo);
   }
 
   function playWithStranger() {

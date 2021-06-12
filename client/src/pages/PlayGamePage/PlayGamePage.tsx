@@ -8,7 +8,11 @@ import { usePlayersPosition } from 'hooks/usePlayersPosition';
 import { useCheating } from 'hooks/useCheating';
 import { useRedirect } from 'hooks/useRedirect';
 import { user$ } from 'services/authService';
-import { emit, socket } from 'services/socketService';
+import {
+  emitRequestSnapshot,
+  emitLeaveRoom,
+  socket
+} from 'services/socketService';
 import { blocked$, game$, roomId$ } from 'services/gameService';
 import { gameOver } from 'services/audioService';
 import { SentenceRow } from './SentenceRow';
@@ -35,12 +39,12 @@ export function PlayGamePage() {
   const positions = usePlayersPosition(game);
 
   function requestSnapshot() {
-    emit('requestSnapshot', roomId);
+    emitRequestSnapshot(roomId);
   }
 
   function leaveGame() {
     gameOver.play();
-    emit('surrender', username);
+    emitLeaveRoom();
     history.replace('/game/over');
   }
 
@@ -48,16 +52,17 @@ export function PlayGamePage() {
     return <Countdown startTime={game.startedAt} />;
   }
 
-  const username = user ? user.email : socket.id;
-  const opponent = game.players.find((p) => p.username !== username);
-  const myself = game.players.find((p) => p.username === username)!;
+  const opponent = game.players.find((p) => p.socketId !== socket.id);
+  const myself = game.players.find((p) => p.socketId === socket.id);
+
   if (!myself) {
     return null;
   }
+
   const currentWord = game.sentence;
   const leftWord = currentWord.substr(0, myself.letterIndex) || '';
-  const leftName = game.players[0].username;
-  const rightName = game.players[1]?.username;
+  const leftName = game.players[0].name;
+  const rightName = game.players[1]?.name;
   const isGuest = !user;
 
   return (

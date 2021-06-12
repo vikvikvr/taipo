@@ -22,14 +22,14 @@ export const blocked$ = new BehaviorSubject({ myself: false, opponent: false });
 
 // helper functions
 
-export function distinguishPlayers(players: Player[], username: string) {
+export function distinguishPlayers(players: Player[], socketId: string) {
   if (players.length === 1) {
     return {
       myself: players[0],
       opponent: null
     };
   }
-  if (players[0].username === username) {
+  if (players[0].socketId === socketId) {
     return {
       myself: players[0],
       opponent: players[1]

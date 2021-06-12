@@ -4,7 +4,7 @@ import { LoadingSpinner } from 'components/LoadingSpinner';
 import { NavigationIcon } from 'components/NavigationIcon';
 import { useSubject } from 'hooks/useSubject';
 import { user$ } from 'services/authService';
-import { emit } from 'services/socketService';
+import { emitEnterLobby, emitLeaveLobby } from 'services/socketService';
 import './WaitRandomPage.scss';
 import { useAnimation } from './WaitRandomPage.gsap';
 import { loading } from 'services/audioService';
@@ -26,16 +26,14 @@ export function WaitRandomPage() {
   function enterLobby() {
     if (user) {
       setTimeout(() => {
-        emit('enterLobby', user.email, user.imageUrl);
+        emitEnterLobby({
+          email: user.email,
+          imageUrl: user.imageUrl,
+          name: user.firstName
+        });
       }, 500);
     } else {
       history.replace('/game/new');
-    }
-  }
-
-  function leaveLobby() {
-    if (user) {
-      emit('leaveLobby', user.email);
     }
   }
 
@@ -57,7 +55,7 @@ export function WaitRandomPage() {
         <p className="message">Looking for a random opponent</p>
         <LoadingSpinner />
       </div>
-      <NavigationIcon toPath="/game/new" onClick={leaveLobby} icon="exit" />
+      <NavigationIcon toPath="/game/new" onClick={emitLeaveLobby} icon="exit" />
     </div>
   );
 }

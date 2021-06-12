@@ -1,5 +1,4 @@
 import { useSubject } from 'hooks/useSubject';
-import { user$ } from 'services/authService';
 import { blocked$, distinguishPlayers } from 'services/gameService';
 import { socket } from 'services/socketService';
 import { GameState } from '../../../server/types/types';
@@ -9,13 +8,11 @@ import { GameState } from '../../../server/types/types';
 // (might need a big refactor, doesn't look too good)
 
 export function usePlayersPosition(game: GameState) {
-  const [user] = useSubject(user$);
   const [blocked] = useSubject(blocked$);
-  const username = user?.email || socket.id;
   if (!game.players.length) {
     return null;
   }
-  const { myself, opponent } = distinguishPlayers(game.players, username);
+  const { myself, opponent } = distinguishPlayers(game.players, socket.id);
   if (!opponent) {
     return null;
   }

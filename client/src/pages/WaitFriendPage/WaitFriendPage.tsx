@@ -8,7 +8,7 @@ import { useAnimation } from './WaitFriendPage.gsap';
 // services
 import { user$ } from 'services/authService';
 import { roomId$ } from 'services/gameService';
-import { emit } from 'services/socketService';
+import { emitLeaveRoom } from 'services/socketService';
 import { valid } from 'services/audioService';
 // components
 import { LoadingSpinner } from 'components/LoadingSpinner';
@@ -27,10 +27,8 @@ export function WaitFriendPage() {
   useAnimation();
 
   function stopWaiting() {
-    if (user) {
-      setRoomId('');
-      emit('leaveRoom', user.email);
-    }
+    setRoomId('');
+    emitLeaveRoom();
   }
 
   function copyCodeToClipboard() {

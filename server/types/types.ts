@@ -8,7 +8,6 @@ export type ClientEvent =
   | 'requestSnapshot'
   | 'enterLobby'
   | 'leaveLobby'
-  | 'surrender'
   | 'playAlone'
   | 'leaveRoom'
   | 'joinRoom';
@@ -18,7 +17,6 @@ export type ClientEvent =
 export type ServerEvent =
   | 'startingSoon'
   | 'correctKey'
-  | 'playerLeft'
   | 'wrongKey'
   | 'canContinue'
   | 'joinedRoom'

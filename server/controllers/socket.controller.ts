@@ -32,7 +32,6 @@ export const handleConnection: Controller = (socket) => {
   socket.on<ClientEvent>('leaveLobby', onLeaveLobby);
   socket.on<ClientEvent>('playAlone', onPlayAlone);
   socket.on<ClientEvent>('leaveRoom', onLeaveRoom);
-  socket.on<ClientEvent>('surrender', onLeaveRoom);
 
   // <ClientEvent> handlers
 
