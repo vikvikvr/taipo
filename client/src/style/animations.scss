@@ -1,7 +1,10 @@
+@import './reset.scss';
+
 // page change animations
 // used by <CSSTransition> inside <App>
 
 .fade-exit {
+  @include hide-scrollbar;
   transform: scale(1);
   opacity: 100%;
 
@@ -13,6 +16,7 @@
 }
 
 .fade-enter {
+  @include hide-scrollbar;
   opacity: 0%;
   transform: scale(0.7);
 
