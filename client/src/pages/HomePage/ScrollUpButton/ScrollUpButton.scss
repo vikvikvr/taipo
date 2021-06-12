@@ -3,6 +3,7 @@
 .scroll-up-button {
   @include circle(4em);
   @include center;
+  box-shadow: $shadow;
   align-self: center;
   background-color: $orange800;
   margin: 2em 0;
