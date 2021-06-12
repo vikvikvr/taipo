@@ -6,7 +6,7 @@ import './PlayerBadge.scss';
 
 interface Props {
   user: User | null;
-  onClick?(): void;
+  onClick(): void;
 }
 
 // only visible if a player is logged in
@@ -17,11 +17,9 @@ export function PlayerBadge({ user, onClick }: Props) {
   useAnimation(Boolean(user), isLoggingOut);
 
   function handleClick() {
-    if (onClick) {
-      mouseClick.play();
-      setIsLoggingOut(true);
-      setTimeout(onClick, 500);
-    }
+    mouseClick.play();
+    setIsLoggingOut(true);
+    setTimeout(onClick, 500);
   }
 
   return (
