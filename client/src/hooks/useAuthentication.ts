@@ -46,7 +46,8 @@ export function useAuthentication(onSignIn?: () => void) {
   function signOut() {
     // all the others are 'fake' as of now
     google.signOut();
-    document.title = 'Tàipo';
+    document.title =
+      'Tàipo | A typing game that takes your mistakes to the next level';
     user$.next(null);
   }
 
