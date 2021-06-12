@@ -13,13 +13,9 @@
     align-items: flex-start;
     margin-right: auto;
 
-    .logo {
-      font-size: 3em;
-      line-height: 1em;
-    }
-
     .copyright {
       opacity: 0.7;
+      font-size: 1em;
     }
   }
 
@@ -34,6 +30,7 @@
 
       .header {
         font-size: 1.5em;
+        font-weight: 500;
       }
 
       ul {

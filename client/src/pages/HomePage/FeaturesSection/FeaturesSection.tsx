@@ -11,21 +11,30 @@ export function FeaturesSection() {
           <TypingIcon className="icon" />
           <h2 className="name">Type it</h2>
           <p className="description">
-            Complete the sentence you are given as fast as you can
+            Complete the <br /> sentence as fast
+            <br /> as you can
           </p>
         </div>
         <div className="feature">
           <DangerIcon className="icon" />
           <h2 className="name">Watch out</h2>
           <p className="description">
-            Some letters are not the ones you would expect, so be careful
+            Some letters are
+            <br />
+            not the ones you
+            <br />
+            would expect
           </p>
         </div>
         <div className="feature">
           <FriendsIcon className="icon" />
           <h2 className="name">Compete</h2>
           <p className="description">
-            Challenge random opponents or invite a friend to play together
+            Play with friends
+            <br />
+            or with strangers,
+            <br />
+            your choice
           </p>
         </div>
       </div>
