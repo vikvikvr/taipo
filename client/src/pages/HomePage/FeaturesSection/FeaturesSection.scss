@@ -14,7 +14,7 @@
 
   .features-container {
     @include row;
-    gap: 8em;
+    width: 100%;
     justify-content: space-between;
 
     .feature {

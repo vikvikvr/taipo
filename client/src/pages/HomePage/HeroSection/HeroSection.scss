@@ -3,7 +3,7 @@
 .hero-section {
   @include row;
   justify-content: space-between;
-  margin: 0 12em;
+  margin: 0 12em 2em 12em;
 
   .column {
     @include column;
