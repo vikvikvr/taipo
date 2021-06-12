@@ -55,7 +55,7 @@ function PageContent() {
           )}
         </Route>
       ))}
-      <Redirect to="/game/new" />
+      <Redirect to="/" />
     </div>
   );
 }
