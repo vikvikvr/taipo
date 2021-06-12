@@ -5,7 +5,7 @@ import './FeaturesSection.scss';
 export function FeaturesSection() {
   return (
     <section className="features-section">
-      <h1 className="title">How it works</h1>
+      <h2 className="title">How it works</h2>
       <div className="features-container">
         <div className="feature">
           <TypingIcon className="icon" />

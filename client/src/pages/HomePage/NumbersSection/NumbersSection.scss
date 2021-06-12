@@ -9,6 +9,8 @@
 
   .title {
     color: $textDark;
+    font-weight: 600;
+    font-size: 2.5em;
   }
 
   .columns-container {
@@ -18,19 +20,27 @@
 
     .column {
       @include column;
-      height: 300px;
 
       .number {
         color: $bgSecondary;
+        opacity: 0.9;
+        font-weight: 500;
+
+        &.highlight {
+          color: $orange800;
+        }
       }
 
       .name {
         color: $textDark;
+        font-weight: 500;
+        font-size: 1.5em;
       }
 
       .description {
         color: $textDark;
         text-align: center;
+        color: $textMedium;
       }
     }
   }
