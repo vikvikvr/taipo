@@ -6,21 +6,20 @@
   gap: 2em;
   // to fix conflicts with .blocked-overlay
   z-index: 1;
-  top: 1em;
+  top: 2em;
   width: 100vw;
+
+  h2 {
+    font-weight: 400;
+    margin-top: 0.5em;
+  }
 
   &.alone {
     @include column;
 
-    .name.left {
+    .left-name {
       order: 1;
     }
-  }
-
-  .name {
-    color: $textLight;
-    font-size: 2em;
-    font-weight: 300;
   }
 
   .middle {
