@@ -1,6 +1,6 @@
 import React from 'react';
 import './VersusHeader.scss';
-import { AloneIcon, RunningIcon } from 'assets/icons';
+import { AloneIcon, RunningIcon, FriendIcon } from 'assets/icons';
 import { useAnimation } from './VersusHeader.gsap';
 
 interface Props {
@@ -17,6 +17,8 @@ interface Props {
 export function VersusHeader({ leftName, rightName, isGuest, onClick }: Props) {
   const { setHovered } = useAnimation();
 
+  const Icon = rightName ? FriendIcon : AloneIcon;
+
   return (
     <div className={`versus-header ${!rightName ? ' alone' : ''}`}>
       <h2 className="left-name">{isGuest ? 'Guest' : leftName}</h2>
@@ -28,14 +30,8 @@ export function VersusHeader({ leftName, rightName, isGuest, onClick }: Props) {
       >
         <div className="square" />
         <div className="vs">
-          {rightName ? (
-            'vs'
-          ) : (
-            <>
-              <AloneIcon className="alone-icon" />
-              <RunningIcon className="running-icon" />
-            </>
-          )}
+          <Icon className="not-hovered-icon" />
+          <RunningIcon className="hovered-icon" />
         </div>
       </div>
       {rightName && <h2 className="right-name">{rightName}</h2>}
