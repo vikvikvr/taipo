@@ -1,4 +1,5 @@
 import { FacebookIcon, GitHubIcon, TwitterIcon } from 'assets/icons';
+import { TaipoLogo } from 'components/TaipoLogo';
 import React from 'react';
 import './Footer.scss';
 
@@ -6,7 +7,7 @@ export function Footer() {
   return (
     <footer className="page-footer">
       <div className="left">
-        <h1 className="logo">tàipo</h1>
+        <TaipoLogo small />
         <p className="copyright">© 2021 Ricchiuto Viktor</p>
       </div>
       <div className="links">

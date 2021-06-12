@@ -1,0 +1,33 @@
+@import 'style/style.scss';
+
+.taipo-logo {
+  @include row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0;
+  font-size: 0.7em;
+  font-weight: 600;
+
+  &.small {
+    transform: scale(0.7);
+    transform-origin: left center;
+  }
+
+  .middle {
+    @include column;
+    gap: 0;
+    width: 3.5em;
+  }
+
+  .underline {
+    width: 80%;
+    fill: none;
+    stroke: $amber400;
+    stroke-width: 0.6em;
+    margin-top: -0.5em;
+  }
+
+  .accent {
+    color: $orange800;
+  }
+}

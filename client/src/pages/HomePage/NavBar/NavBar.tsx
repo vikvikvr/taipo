@@ -6,11 +6,12 @@ import {
   InstagramIcon,
   TwitterIcon
 } from 'assets/icons';
+import { TaipoLogo } from 'components/TaipoLogo';
 
 export function NavBar() {
   return (
     <nav className="nav-bar">
-      <div className="logo">tàipo</div>
+      <TaipoLogo />
       <ul className="links">
         <li className="active">Home</li>
         <li>About</li>
