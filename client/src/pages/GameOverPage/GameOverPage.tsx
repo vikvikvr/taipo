@@ -36,7 +36,7 @@ export function GameOverPage() {
         <h1>Game over!</h1>
         <div className="content">
           <LoadingSpinner />
-          <p>loading game result</p>
+          <h3>loading game result</h3>
         </div>
       </div>
     );

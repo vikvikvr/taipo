@@ -39,14 +39,14 @@ export function WaitRandomPage() {
     <div className="wait-random-page">
       <h1>Get ready</h1>
       <div className="content">
-        <h3 className="hello">Hello, {user.firstName}</h3>
+        <h2 className="hello">Wait, {user.firstName}</h2>
         <img
           alt="user face"
           src={user.imageUrl}
           className="user-picture"
           draggable={false}
         />
-        <p className="message">Looking for a random opponent</p>
+        <h3 className="message">Looking for a random opponent</h3>
         <LoadingSpinner />
       </div>
       <NavigationIcon toPath="/game/new" onClick={emitLeaveLobby} icon="exit" />

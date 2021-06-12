@@ -10,7 +10,7 @@ export function useAnimation() {
     const fadeIn = { opacity: 0, ease: 'power3.out' };
     gsap
       .timeline({ delay: 0.5 })
-      .from('.question', { y: '1em', ...fadeIn })
+      .from('.primary-action', { y: '1em', ...fadeIn })
       .from('.sliding-button', { y: '-2em', stagger: 0.15, ...fadeIn });
   }
 

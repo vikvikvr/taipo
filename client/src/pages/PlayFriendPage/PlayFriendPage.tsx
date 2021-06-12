@@ -44,14 +44,14 @@ export function PlayFriendPage() {
     <div className="play-friend-page">
       <h1>Play together</h1>
       <div className="content">
-        <p className="sentence-1">Invite a new friend</p>
+        <h2 className="primary-action">Invite a new friend</h2>
         <SlidingButton
           Icon={ArrowRightIcon}
           onClick={emitCodeRequest}
           text="Get code"
           variant="parallax"
         />
-        <p className="sentence-2">Already got invited?</p>
+        <h3 className="secondary-action">Already got invited?</h3>
         <SlidingInput
           InactiveIcon={PasteIcon}
           onClick={handleClick}

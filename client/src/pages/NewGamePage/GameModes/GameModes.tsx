@@ -32,7 +32,7 @@ export function GameModes({ isLoggedIn }: Props) {
 
   return (
     <div className="game-modes">
-      <p className="question">Who do you want to play with?</p>
+      <h2 className="primary-action">Pick one mode</h2>
       <SlidingButton
         text="Alone"
         onClick={emitPlayAlone}

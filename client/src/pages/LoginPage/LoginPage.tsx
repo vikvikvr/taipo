@@ -25,7 +25,7 @@ export function LoginPage() {
     <div className="login-page">
       <h1>Login</h1>
       <div className="content">
-        <p className="heading">Select your favorite method</p>
+        <h2 className="heading">Make your choice</h2>
         <SlidingButton
           Icon={GoogleIcon}
           onClick={() => signIn('google')}

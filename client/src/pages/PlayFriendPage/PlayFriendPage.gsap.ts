@@ -9,9 +9,9 @@ export function useAnimation() {
     const stagger = 0.15;
     gsap
       .timeline({ delay: 0.5 })
-      .from('.sentence-1', { y: '1.5em', ...fadeIn })
+      .from('.primary-action', { y: '1.5em', ...fadeIn })
       .from('.sliding-button', { y: '2em', ...fadeIn }, stagger)
-      .from('.sentence-2', { y: '-1.5em', ...fadeIn }, 1)
+      .from('.secondary-action', { y: '-1.5em', ...fadeIn }, 1)
       .from(
         '.sliding-input',
         { y: '-2em', duration: 0.6, ...fadeIn },

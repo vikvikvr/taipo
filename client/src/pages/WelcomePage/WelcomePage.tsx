@@ -37,14 +37,14 @@ export function WelcomePage() {
     <div className="welcome-page">
       <h1>Welcome</h1>
       <div className="content">
-        <h3 className="hello">Hello, {user.firstName}</h3>
+        <h2 className="hello">Hello, {user.firstName}!</h2>
         <img
           className="badge"
           alt="profile pic"
           src={user.imageUrl}
           draggable={false}
         />
-        <p className="question">Are you ready to type?</p>
+        <h3 className="question">Ready to type?</h3>
         <LoadingSpinner />
       </div>
     </div>
