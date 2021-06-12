@@ -1,5 +1,8 @@
+import axios from 'axios';
 import { BehaviorSubject } from 'rxjs';
-import { GameState, Player } from '../../../server/types/types';
+import { sleep } from 'utils/helpers';
+import { GameResult, GameState, Player } from '../../../server/types/types';
+import { serverUri } from './socketService';
 
 export const emptyGameState: GameState = {
   id: '',
@@ -11,9 +14,13 @@ export const emptyGameState: GameState = {
   mistakeBlockDuration: 1_000
 };
 
+// behaviour subjects
+
 export const roomId$ = new BehaviorSubject('');
 export const game$ = new BehaviorSubject<GameState>(emptyGameState);
 export const blocked$ = new BehaviorSubject({ myself: false, opponent: false });
+
+// helper functions
 
 export function distinguishPlayers(players: Player[], username: string) {
   if (players.length === 1) {
@@ -33,4 +40,15 @@ export function distinguishPlayers(players: Player[], username: string) {
     myself: players[1],
     opponent: players[0]
   };
+}
+
+export async function fetchResult(gameId: string) {
+  if (!gameId) {
+    throw new Error('missing gameId');
+  }
+
+  await sleep(1_500);
+  const url = `${serverUri}/results/${gameId}`;
+  const { data: result } = await axios.get<GameResult>(url);
+  return result;
 }
