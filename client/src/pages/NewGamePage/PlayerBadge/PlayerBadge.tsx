@@ -6,14 +6,12 @@ import './PlayerBadge.scss';
 
 interface Props {
   user: User | null;
-  isGuest?: boolean;
   onClick?(): void;
 }
 
 // only visible if a player is logged in
-// inside <NewGamePage/>
 
-export function PlayerBadge({ user, isGuest, onClick }: Props) {
+export function PlayerBadge({ user, onClick }: Props) {
   // used for fade out animation without losing user's image and name
   const [isLoggingOut, setIsLoggingOut] = useState(false);
   useAnimation(Boolean(user), isLoggingOut);
@@ -28,7 +26,6 @@ export function PlayerBadge({ user, isGuest, onClick }: Props) {
 
   return (
     <div className="player-badge" onClick={handleClick}>
-      <h3>{isGuest ? 'Guest' : user?.firstName}</h3>
       <img
         className="user-image"
         alt="user badge"
