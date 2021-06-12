@@ -7,15 +7,15 @@ export function useAnimation(isLoggedIn: boolean, isLoggingOut: boolean) {
 
   function appear() {
     if (isLoggedIn && !isLoggingOut) {
-      const from = { x: '-1em' };
-      const to = { x: 0, opacity: 1, delay: 1.5, ease: 'power3.out' };
+      const from = { y: '2em' };
+      const to = { y: 0, opacity: 1, delay: 2, ease: 'power3.out' };
       gsap.fromTo('.player-badge', from, to);
     }
   }
 
   function disappear() {
     if (isLoggingOut) {
-      const to = { y: '-1em', opacity: 0, ease: 'power3.out' };
+      const to = { y: '-2em', opacity: 0, ease: 'power3.out' };
       gsap.to('.player-badge', to);
     }
   }
