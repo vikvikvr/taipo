@@ -1,0 +1,15 @@
+@import 'style/style.scss';
+
+.letter-done {
+  @include screen-center;
+  font-size: 6em;
+
+  .text {
+    @include center();
+    opacity: 0.5;
+    width: 1em;
+    height: 1.5em;
+    color: $textLight;
+    filter: blur(1px);
+  }
+}

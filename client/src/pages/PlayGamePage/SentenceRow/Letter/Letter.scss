@@ -1,0 +1,45 @@
+@import 'style/style.scss';
+
+.letter {
+  @include column;
+  @include center;
+  @include rounded;
+  width: 5em;
+  height: 7.5em;
+  background-color: $orange400;
+  box-shadow: $shadow;
+
+  .text {
+    color: $textDark;
+    font-size: 3em;
+    font-weight: 600;
+    text-shadow: $shadow;
+  }
+
+  &.typo {
+    background-color: $amber400;
+    gap: 0.25em;
+  }
+
+  &.highlight {
+    background-color: $orange800;
+
+    .text {
+      color: $textLight;
+    }
+  }
+
+  &.blocked {
+    background-color: $red500;
+  }
+
+  .typo-underline {
+    width: 60%;
+
+    path {
+      stroke: $textDark;
+      stroke-width: 8;
+      fill: transparent;
+    }
+  }
+}

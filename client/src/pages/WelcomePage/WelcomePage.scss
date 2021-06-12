@@ -1,0 +1,11 @@
+@import 'style/style.scss';
+
+.welcome-page {
+  @include page;
+
+  .badge {
+    @include circle(8em);
+    box-shadow: $shadow;
+    border: 5px solid $orange400;
+  }
+}

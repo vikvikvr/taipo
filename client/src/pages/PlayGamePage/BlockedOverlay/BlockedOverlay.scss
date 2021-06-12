@@ -1,0 +1,8 @@
+@import 'style/style.scss';
+
+.blocked-overlay {
+  @include screen;
+  @include fixed;
+  background-color: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+}

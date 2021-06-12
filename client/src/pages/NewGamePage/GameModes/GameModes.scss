@@ -1,0 +1,6 @@
+@import 'style/style.scss';
+
+.game-modes {
+  @include column;
+  gap: 2em;
+}

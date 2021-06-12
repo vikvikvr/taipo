@@ -1,0 +1,7 @@
+@import 'style/style.scss';
+
+.play-game-page {
+  @include screen;
+  @include column;
+  @include center;
+}

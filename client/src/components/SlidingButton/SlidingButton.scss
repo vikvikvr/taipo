@@ -1,0 +1,22 @@
+@import 'style/style.scss';
+
+.sliding-button {
+  @include button-input;
+
+  button {
+    @include center;
+    @include fill;
+    @include rounded;
+    cursor: pointer;
+
+    .text {
+      position: absolute;
+    }
+
+    .icon {
+      @include square(1em);
+      position: absolute;
+      fill: $textLight;
+    }
+  }
+}

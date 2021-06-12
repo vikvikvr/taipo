@@ -1,0 +1,36 @@
+@import 'style/style.scss';
+
+.hero-section {
+  @include row;
+  justify-content: space-between;
+  margin: 0 12em;
+
+  .column {
+    @include column;
+    gap: 2em;
+    width: 50%;
+    height: 100%;
+  }
+
+  .left {
+    align-items: flex-start;
+    width: 360px;
+
+    .title {
+      width: 350px;
+      line-height: 1.2em;
+    }
+
+    .subtitle {
+      font-weight: 600;
+      opacity: 0.7;
+    }
+  }
+
+  .right {
+    .graphic {
+      width: 250px;
+      align-self: flex-end;
+    }
+  }
+}

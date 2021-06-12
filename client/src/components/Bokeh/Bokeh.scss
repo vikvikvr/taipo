@@ -1,0 +1,26 @@
+@import 'style/style.scss';
+
+.bokeh {
+  .circle {
+    position: fixed;
+    background-color: $textLight;
+
+    &.small {
+      @include circle(10em);
+      opacity: 15%;
+      filter: blur(8px);
+    }
+
+    &.medium {
+      @include circle(15em);
+      opacity: 10%;
+      filter: blur(6px);
+    }
+
+    &.large {
+      @include circle(20em);
+      opacity: 5%;
+      filter: blur(4px);
+    }
+  }
+}

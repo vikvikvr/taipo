@@ -1,0 +1,10 @@
+@import 'style/style.scss';
+
+.home-page {
+  @include screen;
+  @include column;
+  align-items: stretch;
+  gap: 4em;
+  overflow: auto;
+  padding: 4em 0 8em 0;
+}

@@ -1,0 +1,17 @@
+@import 'style/style.scss';
+
+.scroll-up-button {
+  @include circle(6em);
+  @include center;
+  align-self: center;
+  width: 100px;
+  height: 100px;
+  background-color: $orange800;
+  cursor: pointer;
+
+  svg {
+    @include square(3em);
+    transform: rotate(90deg);
+    fill: $textLight;
+  }
+}

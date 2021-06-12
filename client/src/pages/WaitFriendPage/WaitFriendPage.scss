@@ -1,0 +1,9 @@
+@import 'style/style.scss';
+
+.wait-friend-page {
+  @include page;
+
+  .share-code-input {
+    margin-bottom: 1em;
+  }
+}

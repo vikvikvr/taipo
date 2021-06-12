@@ -1,0 +1,9 @@
+@import 'style/style.scss';
+
+.wait-random-page {
+  @include page;
+
+  .user-picture {
+    @include badge(8em);
+  }
+}

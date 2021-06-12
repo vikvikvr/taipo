@@ -1,0 +1,1 @@
+export { WaitFriendPage } from './WaitFriendPage';

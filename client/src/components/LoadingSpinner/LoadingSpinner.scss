@@ -1,0 +1,24 @@
+@import 'style/style.scss';
+
+.loading {
+  @include row;
+  justify-content: space-between;
+
+  .circle {
+    @include circle(2em);
+    box-shadow: $shadow;
+  }
+
+  #first-circle {
+    background-color: $red500;
+  }
+
+  #second-circle {
+    @include circle(3em);
+    background-color: $orange800;
+  }
+
+  #third-circle {
+    background-color: $amber400;
+  }
+}

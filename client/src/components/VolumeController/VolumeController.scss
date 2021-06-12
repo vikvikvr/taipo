@@ -1,0 +1,9 @@
+@import 'style/style.scss';
+
+.volume-controller button {
+  @include circle(2em);
+  position: fixed;
+  right: 2em;
+  bottom: 2em;
+  z-index: 2;
+}

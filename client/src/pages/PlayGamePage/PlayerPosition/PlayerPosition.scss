@@ -1,0 +1,18 @@
+@import 'style/style.scss';
+
+.position-track {
+  @include center;
+  padding: 2em;
+
+  .player-position {
+    position: relative;
+
+    img {
+      @include badge(4em);
+
+      &.blocked {
+        border: 5px solid $red500;
+      }
+    }
+  }
+}

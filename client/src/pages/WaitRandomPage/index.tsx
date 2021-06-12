@@ -1,0 +1,1 @@
+export { WaitRandomPage } from './WaitRandomPage';

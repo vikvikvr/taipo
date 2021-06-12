@@ -1,0 +1,54 @@
+@import 'style/style.scss';
+
+.versus-header {
+  @include center;
+  position: fixed;
+  gap: 2em;
+  // to fix conflicts with .blocked-overlay
+  z-index: 1;
+  top: 1em;
+  width: 100vw;
+
+  .name {
+    color: $textLight;
+    // font-size: 2em;
+    font-weight: 300;
+  }
+
+  .middle {
+    @include square(6em);
+    @include center;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .square {
+    @include square(6em);
+    @include rounded;
+    background-color: $orange800;
+    box-shadow: $shadow;
+  }
+
+  .vs {
+    @include fill;
+    @include center;
+    color: $textLight;
+    // font-size: 4em;
+    position: absolute;
+    text-shadow: $shadow;
+
+    svg {
+      @include square(0.8em);
+      position: absolute;
+      fill: $textLight;
+    }
+
+    .alone {
+      opacity: 1;
+    }
+
+    .running {
+      opacity: 0;
+    }
+  }
+}

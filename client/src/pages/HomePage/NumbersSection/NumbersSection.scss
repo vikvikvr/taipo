@@ -1,0 +1,37 @@
+@import 'style/style.scss';
+
+.numbers-section {
+  @include column;
+  gap: 2em;
+  background-color: $textLight;
+  width: 100%;
+  padding: 2em 12em;
+
+  .title {
+    color: $textDark;
+  }
+
+  .columns-container {
+    @include row;
+    gap: 8em;
+    justify-content: space-between;
+
+    .column {
+      @include column;
+      height: 300px;
+
+      .number {
+        color: $bgSecondary;
+      }
+
+      .name {
+        color: $textDark;
+      }
+
+      .description {
+        color: $textDark;
+        text-align: center;
+      }
+    }
+  }
+}

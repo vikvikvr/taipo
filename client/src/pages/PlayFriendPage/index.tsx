@@ -1,0 +1,1 @@
+export { PlayFriendPage } from './PlayFriendPage';

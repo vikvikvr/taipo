@@ -1,0 +1,73 @@
+@import 'style/style.scss';
+
+.page-footer {
+  @include row;
+  padding: 0 12em;
+  gap: 4em;
+  justify-content: space-between;
+  align-items: stretch;
+
+  .left {
+    @include column;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-right: auto;
+
+    .logo {
+      font-size: 3em;
+      line-height: 1em;
+    }
+
+    .copyright {
+      opacity: 0.7;
+    }
+  }
+
+  .links {
+    @include row;
+    align-items: stretch;
+    gap: 8em;
+
+    .column {
+      @include column;
+      align-items: flex-start;
+
+      .header {
+        font-size: 1.5em;
+      }
+
+      ul {
+        @include reset-list;
+        justify-self: flex-end;
+
+        .link {
+          opacity: 0.7;
+          line-height: 2em;
+          cursor: pointer;
+
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+
+  .social {
+    @include column;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-left: 4em;
+
+    .icon {
+      @include square(1.5em);
+      fill: $textLight;
+      opacity: 0.7;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}

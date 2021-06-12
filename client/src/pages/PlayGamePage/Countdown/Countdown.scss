@@ -1,0 +1,13 @@
+@import 'style/style.scss';
+
+.countdown {
+  @include center;
+  font-size: 20em;
+  font-weight: 600;
+
+  .number {
+    position: absolute;
+    opacity: 0;
+    transform: scale(0.7);
+  }
+}

@@ -1,0 +1,27 @@
+@import 'style/style.scss';
+
+.sliding-input {
+  @include button-input;
+  gap: 0;
+  justify-content: space-between;
+  background-color: $textLight;
+  padding: 2em;
+
+  input {
+    @include reset-input;
+    background-color: transparent;
+    width: 100%;
+  }
+
+  .icon-container {
+    @include square(1.5em);
+    position: relative;
+    cursor: pointer;
+
+    .icon {
+      @include square(1.5em);
+      position: absolute;
+      fill: $textDark;
+    }
+  }
+}

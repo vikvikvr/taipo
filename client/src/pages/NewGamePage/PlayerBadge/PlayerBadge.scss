@@ -1,0 +1,16 @@
+@import 'style/style.scss';
+
+.player-badge {
+  @include row;
+  grid-column: 3/4;
+  grid-row: 1/2;
+  justify-self: center;
+  align-self: center;
+  opacity: 0;
+
+  .user-image {
+    @include badge(4em);
+    cursor: pointer;
+    box-shadow: $shadow;
+  }
+}

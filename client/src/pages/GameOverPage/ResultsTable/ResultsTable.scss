@@ -1,0 +1,19 @@
+@import 'style/style.scss';
+
+.results-table {
+  @include grid-center;
+  grid-template: 1fr repeat(2, 8em) / repeat(4, 6em);
+
+  .header {
+    opacity: 70%;
+    grid-row: 1;
+
+    &.sentence {
+      grid-column: 3 / 4;
+    }
+
+    &.taipos {
+      grid-column: 4 / 5;
+    }
+  }
+}

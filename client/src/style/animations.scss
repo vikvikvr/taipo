@@ -1,0 +1,24 @@
+// page change animations
+// used by <CSSTransition> inside <App>
+
+.fade-exit {
+  transform: scale(1);
+  opacity: 100%;
+
+  &.fade-exit-active {
+    transform: scale(0.7);
+    opacity: 0%;
+    transition: all 0.5s;
+  }
+}
+
+.fade-enter {
+  opacity: 0%;
+  transform: scale(0.7);
+
+  &.fade-enter-active {
+    transform: scale(1);
+    opacity: 100%;
+    transition: all 0.5s;
+  }
+}

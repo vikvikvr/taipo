@@ -1,0 +1,39 @@
+@import 'style/style.scss';
+
+.try-section {
+  @include row;
+  justify-content: space-between;
+  margin: 0 12em;
+
+  .column {
+    @include column;
+    gap: 2em;
+    width: 50%;
+    height: 100%;
+  }
+
+  .left {
+    align-items: flex-start;
+    width: 360px;
+
+    .title {
+      width: 350px;
+      line-height: 1.2em;
+    }
+
+    .subtitle {
+      font-weight: 600;
+      opacity: 0.7;
+    }
+  }
+
+  .right {
+    .graphic {
+      align-self: flex-end;
+
+      svg {
+        width: 300px;
+      }
+    }
+  }
+}

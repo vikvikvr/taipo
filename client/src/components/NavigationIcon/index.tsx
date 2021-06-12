@@ -1,0 +1,1 @@
+export { NavigationIcon } from './NavigationIcon';

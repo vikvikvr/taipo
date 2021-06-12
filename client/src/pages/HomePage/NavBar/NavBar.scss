@@ -1,0 +1,42 @@
+@import 'style/style.scss';
+
+.nav-bar {
+  @include row;
+  height: 4em;
+  margin: 0 12em;
+
+  .logo {
+    font-size: 4em;
+    margin-right: 1em;
+    font-weight: 600;
+  }
+
+  ul {
+    @include row;
+    gap: 2em;
+    font-weight: 600;
+
+    li {
+      list-style-type: none;
+      opacity: 0.7;
+      cursor: pointer;
+
+      &.active {
+        opacity: 1;
+      }
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  .social {
+    margin-left: auto;
+
+    .icon {
+      @include square(1.5em);
+      fill: $textLight;
+    }
+  }
+}

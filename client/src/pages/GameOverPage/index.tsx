@@ -1,0 +1,1 @@
+export { GameOverPage } from './GameOverPage';

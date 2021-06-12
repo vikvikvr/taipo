@@ -1,0 +1,55 @@
+@import 'style/style.scss';
+
+.result-row {
+  @include grid-center;
+  grid-template: 1fr / repeat(4, 6em);
+  grid-column: span 4;
+
+  &:nth-of-type(2) {
+    .badge img {
+      border: 5px solid $red500;
+    }
+
+    .sentence {
+      color: $red500;
+    }
+  }
+
+  .badge {
+    img {
+      @include badge(4em);
+    }
+
+    .stars {
+      @include row;
+      position: relative;
+
+      // offset stars to create an arc-like shape
+      svg {
+        @include square(4em);
+        position: absolute;
+        opacity: 0;
+        fill: $amber400;
+        bottom: -3em;
+
+        &:nth-of-type(2) {
+          left: 1.5em;
+          bottom: -2em;
+        }
+
+        &:nth-of-type(3) {
+          left: 3em;
+        }
+      }
+    }
+  }
+
+  .name {
+    justify-self: end;
+  }
+
+  .sentence {
+    font-weight: 600;
+    color: $amber400;
+  }
+}
