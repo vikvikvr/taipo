@@ -38,4 +38,5 @@
 @mixin badge($size) {
   @include circle($size);
   border: 5px solid $orange400;
+  box-shadow: $shadow;
 }
