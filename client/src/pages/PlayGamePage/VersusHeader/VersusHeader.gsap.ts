@@ -13,7 +13,7 @@ export function useAnimation() {
       rotate: 360,
       duration: 20,
       repeat: -1,
-      ease: 'linear.none'
+      ease: 'linear'
     });
   }
 
