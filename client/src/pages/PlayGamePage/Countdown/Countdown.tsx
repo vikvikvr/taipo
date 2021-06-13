@@ -9,8 +9,8 @@ interface Props {
 
 export function Countdown({ startTime }: Props) {
   const [timeLeft, setTimeLeft] = useState((Date.now() - startTime) / 1000);
-  const left = Math.floor(-timeLeft + 1);
-  useAnimation(left);
+  const secondsLeft = Math.floor(-timeLeft + 1);
+  useAnimation(secondsLeft);
   useEffect(updateTimeLeft, [startTime]);
   useEffect(toggleCountdownSound, []);
 
@@ -29,7 +29,7 @@ export function Countdown({ startTime }: Props) {
   }
 
   // needed because game has a default startTime of 0
-  if (left < -10) {
+  if (secondsLeft < -10) {
     return <div></div>;
   }
 
