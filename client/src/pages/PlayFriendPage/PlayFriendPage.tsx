@@ -19,7 +19,7 @@ export function PlayFriendPage() {
   const [user] = useSubject(user$);
   const [roomId, setRoomId] = useSubject(roomId$);
   useRedirect('/game/new', !user);
-  useAnimation();
+  useAnimation(!!user);
 
   function handleClick() {
     if (roomId) {

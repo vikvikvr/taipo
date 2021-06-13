@@ -13,13 +13,10 @@ import { useRedirect } from 'hooks/useRedirect';
 // will redirect to game screen after an opponent is found
 
 export function WaitRandomPage() {
-  useAnimation();
-  useEffect(() => {
-    console.log('rendering WaitRandomPage');
-  }, []);
   const [user] = useSubject(user$);
   const history = useHistory();
   useRedirect('/game/new', !user);
+  useAnimation(!!user);
   useEffect(enterLobby, [user, history]);
 
   function enterLobby() {

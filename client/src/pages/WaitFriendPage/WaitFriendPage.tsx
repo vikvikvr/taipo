@@ -20,10 +20,10 @@ import { SlidingInput } from 'components/SlidingInput';
 // will redirect to game screen
 
 export function WaitFriendPage() {
-  useAnimation();
   const [roomId, setRoomId] = useSubject(roomId$);
   const [copied, setCopied] = useState(false);
   const [user] = useSubject(user$);
+  useAnimation(!!user);
   useRedirect('/game/new', !user);
 
   function stopWaiting() {

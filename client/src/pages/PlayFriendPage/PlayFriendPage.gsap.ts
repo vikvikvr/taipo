@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { playSound } from 'services/audioService';
 
-export function useAnimation() {
+export function useAnimation(playSounds: boolean) {
   useEffect(fadeAndSlideContent, []);
-  useEffect(playContentSound, []);
+  useEffect(playContentSound, [playSounds]);
 
   function fadeAndSlideContent() {
     const fadeIn = { opacity: 0, ease: 'power3.out' };
@@ -22,10 +22,8 @@ export function useAnimation() {
   }
 
   function playContentSound() {
-    // console.log('play friend swipe');
-    playSound('swipeRight', 0.6);
-    // return () => {
-    //   console.log('unmounting play friend');
-    // };
+    if (playSounds) {
+      playSound('swipeRight', 0.6);
+    }
   }
 }
