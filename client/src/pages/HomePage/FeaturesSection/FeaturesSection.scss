@@ -6,6 +6,7 @@
   background-color: $textLight;
   padding: 2em 12em 3em 12em;
   box-shadow: $shadow;
+  scroll-snap-align: start;
 
   .features-section-title {
     color: $textDark;

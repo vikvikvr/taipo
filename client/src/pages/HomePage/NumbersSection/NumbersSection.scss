@@ -7,12 +7,12 @@
   width: 100%;
   padding: 2em 12em 3em 12em;
   box-shadow: $shadow;
+  scroll-snap-align: start;
 
   &-title {
     color: $textDark;
     font-weight: 500;
     font-size: 2em;
-    margin-bottom: 1em;
   }
 
   .columns-container {

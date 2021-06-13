@@ -3,7 +3,9 @@
 .nav-bar {
   @include row;
   height: 4em;
-  margin: 0 12em;
+  margin: 0 12em 0 12em;
+  padding-top: 4em;
+  scroll-snap-align: start;
 
   .links {
     margin-left: 2em;
