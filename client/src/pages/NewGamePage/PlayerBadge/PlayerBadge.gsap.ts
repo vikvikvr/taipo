@@ -7,9 +7,8 @@ export function useAnimation(isLoggedIn: boolean, isLoggingOut: boolean) {
 
   function appear() {
     if (isLoggedIn && !isLoggingOut) {
-      const from = { y: '2em' };
-      const to = { y: 0, opacity: 1, delay: 2, ease: 'power3.out' };
-      gsap.fromTo('.player-badge', from, to);
+      const to = { opacity: 1, delay: 1, ease: 'power3.out' };
+      gsap.to('.player-badge', to);
     }
   }
 
