@@ -3,7 +3,9 @@ import { gsap } from 'gsap';
 import { playSound } from 'services/audioService';
 
 export function useAnimation() {
-  useEffect(function animatePageContent() {
+  useEffect(animatePageContent, []);
+
+  function animatePageContent() {
     const fadeIn = { opacity: 0, ease: 'power3.out' };
     const slideUp = { y: '2em', ...fadeIn };
     const slideDown = { y: '-2em', ...fadeIn };
@@ -25,5 +27,5 @@ export function useAnimation() {
       .from('.star', slideUpStaggered, 0.9)
       .from('.header', slideDownSmall, 1.5)
       .from('.sliding-button', slideDown, 2.2);
-  }, []);
+  }
 }
