@@ -10,8 +10,8 @@ export function Footer() {
         <TaipoLogo small id="taipo-logo-footer" />
         <p className="footer-copyright">© 2021 Ricchiuto Viktor</p>
       </div>
-      <div className="links">
-        <div className="column">
+      <div className="footer-links-main">
+        <div className="footer-column">
           <h2 className="footer-links-header">Explore</h2>
           <ul>
             <li className="footer-link">Home</li>
@@ -19,7 +19,7 @@ export function Footer() {
             <li className="footer-link">Rules</li>
           </ul>
         </div>
-        <div className="column">
+        <div className="footer-column">
           <h2 className="footer-links-header">Follow</h2>
           <ul>
             <li className="footer-link">Facebook</li>
@@ -27,7 +27,7 @@ export function Footer() {
             <li className="footer-link">GitHub</li>
           </ul>
         </div>
-        <div className="column">
+        <div className="footer-column">
           <h2 className="footer-links-header">Legal</h2>
           <ul>
             <li className="footer-link">Terms</li>
