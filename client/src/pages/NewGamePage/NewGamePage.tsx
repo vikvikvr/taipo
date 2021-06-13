@@ -25,10 +25,6 @@ export function NewGamePage() {
     }
   }
 
-  function handleSignOut() {
-    signOut();
-  }
-
   function resetRoomId() {
     roomId$.next('');
   }
@@ -40,7 +36,7 @@ export function NewGamePage() {
         <GameModes isLoggedIn={Boolean(user)} />
       </div>
       <NavigationIcon toPath="/" icon="home" />
-      <PlayerBadge user={user} onClick={handleSignOut} />
+      <PlayerBadge user={user} onClick={signOut} />
     </div>
   );
 }
