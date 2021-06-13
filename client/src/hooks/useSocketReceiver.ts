@@ -1,9 +1,4 @@
-import {
-  background,
-  correctKey,
-  gameOver,
-  wrongKey
-} from 'services/audioService';
+import { playSound } from 'services/audioService';
 import { useSocketListener } from 'hooks/useSocketListener';
 import { useSubject } from 'hooks/useSubject';
 import { useHistory } from 'react-router';
@@ -33,29 +28,29 @@ export function useSocketReceiver() {
 
   function onStartingSoon(roomId: string) {
     roomId$.next(roomId);
-    history.push('/game/play');
+    history.replace('/game/play');
   }
 
   function onGameOver() {
     if (history.location.pathname === '/game/play') {
-      gameOver.play();
-      background.play();
-      history.push('/game/over');
+      // playSound('gameOver')
+      // playSound('background')
+      history.replace('/game/over');
     }
   }
 
   function onCorrectKey() {
-    correctKey.play();
+    playSound('correctKey');
   }
 
   function onJoinedRoom(roomId: string) {
     setTimeout(() => roomId$.next(roomId), 500);
-    history.push('/wait/friend');
+    history.replace('/wait/friend');
   }
 
   function onWrongKey(socketId: string) {
     if (socketId === socket.id) {
-      wrongKey.play();
+      playSound('wrongKey');
       setBlocked({ ...blocked, myself: true });
     } else {
       setBlocked({ ...blocked, opponent: true });

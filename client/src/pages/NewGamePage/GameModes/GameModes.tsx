@@ -5,19 +5,21 @@ import { emitPlayAlone } from 'services/socketService';
 import { SlidingButton } from '../../../components/SlidingButton/SlidingButton';
 import { AloneIcon, FriendIcon, StrangerIcon, LockedIcon } from 'assets/icons';
 import { useAnimation } from './GameModes.gsap';
+import { playSound } from 'services/audioService';
+import { useSubject } from 'hooks/useSubject';
+import { user$ } from 'services/authService';
 
-interface Props {
-  isLoggedIn: boolean;
-}
-
-export function GameModes({ isLoggedIn }: Props) {
-  const history = useHistory<any>();
+export function GameModes() {
   useAnimation();
+  const [user] = useSubject(user$);
+  const history = useHistory<any>();
+  const isLoggedIn = !!user;
 
   function playWithStranger() {
     if (isLoggedIn) {
       history.replace('/wait/random');
     } else {
+      playSound('swipeRight', 1.2);
       history.replace('/login');
     }
   }

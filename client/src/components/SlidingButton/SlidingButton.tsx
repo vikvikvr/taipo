@@ -1,4 +1,4 @@
-import { mouseClick } from 'services/audioService';
+import { playSound } from 'services/audioService';
 import React, { FunctionComponent, SVGProps } from 'react';
 import { useAnimation } from './SlidingButton.gsap';
 import './SlidingButton.scss';
@@ -35,7 +35,7 @@ export function SlidingButton({
   const { button, span, svg } = useAnimation(variant, backgroundColor);
 
   function handleClick() {
-    mouseClick.play();
+    playSound('mouseClick');
     onClick();
   }
 

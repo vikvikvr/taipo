@@ -14,13 +14,13 @@ import {
   socket
 } from 'services/socketService';
 import { blocked$, game$, roomId$ } from 'services/gameService';
-import { gameOver } from 'services/audioService';
 import { SentenceRow } from './SentenceRow';
 import { Countdown } from './Countdown';
 import { LettersScatter } from './LettersScatter';
 import { VersusHeader } from './VersusHeader';
 import { BlockedOverlay } from './BlockedOverlay';
 import { PlayerPosition } from './PlayerPosition';
+import { playSound } from 'services/audioService';
 
 // I personally feel like this components calls for a refactor
 // have tried several times breaking it down
@@ -41,7 +41,8 @@ export function PlayGamePage() {
   const positions = usePlayersPosition(game);
 
   function leaveGame() {
-    gameOver.play();
+    // playSound('gameOver')
+    playSound('mouseClick');
     emitLeaveRoom();
     history.replace('/game/over');
   }

@@ -15,12 +15,13 @@ export const correctKey = new Howl({
 });
 
 export const wrongKey = new Howl({
-  src: '/audio/319590__hybrid-v__shield-bash-impact.wav'
+  src: '/audio/319590__hybrid-v__shield-bash-impact.wav',
+  volume: 0.3
 });
 
 export const loading = new Howl({
-  src: '/audio/506055__shadydave__hallow-lights-piano-loop.mp3',
-  loop: true,
+  src: '/audio/loading-russian.mp3',
+  // loop: true,
   volume: 0.4
 });
 
@@ -29,7 +30,7 @@ export const mouseClick = new Howl({
 });
 
 export const gameOver = new Howl({
-  src: '/audio/270404__littlerobotsoundfactory__jingle-achievement-00.wav'
+  src: '/audio/270404_game-over.wav'
 });
 
 export const countdown = new Howl({
@@ -37,11 +38,23 @@ export const countdown = new Howl({
 });
 
 export const star = new Howl({
-  src: '/audio/171671__leszek-szary__success-1.wav'
+  src: '/audio/337049_star.mp3'
 });
 
 export const valid = new Howl({
-  src: '/audio/322930__rhodesmas__success-03.wav'
+  src: '/audio/456965_login.mp3'
+});
+
+export const readyFemale = new Howl({
+  src: '/audio/ready-female.ogg'
+});
+
+export const setFemale = new Howl({
+  src: '/audio/set-female.ogg'
+});
+
+export const goFemale = new Howl({
+  src: '/audio/go-female.ogg'
 });
 
 export const background = new Howl({

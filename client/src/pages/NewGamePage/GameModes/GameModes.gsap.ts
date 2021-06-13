@@ -1,20 +1,21 @@
 import { useEffect } from 'react';
 import { gsap } from 'gsap';
-import { swipeRight } from 'services/audioService';
+import { playSound } from 'services/audioService';
 
 export function useAnimation() {
-  useEffect(animateContent, []);
-  useEffect(playListSound, []);
-
-  function animateContent() {
+  useEffect(function animateContent() {
     const fadeIn = { opacity: 0, ease: 'power3.out' };
+    const slideUp = { y: '1em', ...fadeIn };
+    const slideDown = { y: '-2em', ...fadeIn };
+
     gsap
       .timeline({ delay: 0.5 })
-      .from('.primary-action', { y: '1em', ...fadeIn })
-      .from('.sliding-button', { y: '-2em', stagger: 0.15, ...fadeIn });
-  }
+      .from('.primary-action', slideUp)
+      .from('.sliding-button', { ...slideDown, stagger: 0.15 });
+  }, []);
 
-  function playListSound() {
-    setTimeout(() => swipeRight.play(), 1_200);
-  }
+  useEffect(function playListSound() {
+    console.log('game modes');
+    playSound('swipeRight', 1);
+  }, []);
 }

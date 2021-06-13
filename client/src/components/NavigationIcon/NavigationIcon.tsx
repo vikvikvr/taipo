@@ -3,7 +3,7 @@ import './NavigationIcon.scss';
 import { ExitIcon, GoBackIcon, HomeIcon } from 'assets/icons';
 import { useHistory } from 'react-router-dom';
 import { usePullDownOnHover } from 'hooks/usePullDownOnHover';
-import { countdown, loading, mouseClick } from 'services/audioService';
+import { fadeOutSound, playSound } from 'services/audioService';
 import { useAnimation } from './NavigationIcon.gsap';
 
 interface Props {
@@ -21,9 +21,8 @@ export function NavigationIcon({ toPath, icon, onClick }: Props) {
 
   function handleClick() {
     onClick?.();
-    mouseClick.play();
-    loading.stop();
-    countdown.stop();
+    playSound('mouseClick');
+    fadeOutSound('loading');
     history.push(toPath, {});
   }
 

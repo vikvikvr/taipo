@@ -1,6 +1,6 @@
 import './SlidingInput.scss';
 import React from 'react';
-import { mouseClick, valid } from 'services/audioService';
+import { playSound } from 'services/audioService';
 import { useAnimation } from './SlidingInput.gsap';
 import { ReactSVG } from 'components/SlidingButton';
 
@@ -32,11 +32,7 @@ export function SlidingInput({
   const refs = useAnimation(isActive);
 
   function handleClick() {
-    if (isActive) {
-      mouseClick.play();
-    } else {
-      valid.play();
-    }
+    playSound(isActive ? 'mouseClick' : 'valid');
     onClick();
   }
 

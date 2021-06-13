@@ -7,23 +7,20 @@ import { user$ } from 'services/authService';
 import { emitEnterLobby, emitLeaveLobby } from 'services/socketService';
 import './WaitRandomPage.scss';
 import { useAnimation } from './WaitRandomPage.gsap';
-import { loading } from 'services/audioService';
 import { useRedirect } from 'hooks/useRedirect';
 
 // appers after the player enters the lobby
 // will redirect to game screen after an opponent is found
 
 export function WaitRandomPage() {
+  useAnimation();
+  useEffect(() => {
+    console.log('rendering WaitRandomPage');
+  }, []);
   const [user] = useSubject(user$);
   const history = useHistory();
   useRedirect('/game/new', !user);
   useEffect(enterLobby, [user, history]);
-  useAnimation();
-  useEffect(startLoadingSound, []);
-
-  function startLoadingSound() {
-    setTimeout(() => loading.play(), 1000);
-  }
 
   function enterLobby() {
     const id = setTimeout(emitEnterLobby, 1_500);

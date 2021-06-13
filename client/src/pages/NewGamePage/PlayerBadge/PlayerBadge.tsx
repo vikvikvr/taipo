@@ -1,23 +1,25 @@
-import { mouseClick } from 'services/audioService';
+import { useSubject } from 'hooks/useSubject';
 import React, { useState } from 'react';
-import { User } from 'services/authService';
+import { playSound } from 'services/audioService';
+import { user$ } from 'services/authService';
 import { useAnimation } from './PlayerBadge.gsap';
 import './PlayerBadge.scss';
 
 interface Props {
-  user: User | null;
   onClick(): void;
 }
 
 // only visible if a player is logged in
 
-export function PlayerBadge({ user, onClick }: Props) {
+export function PlayerBadge({ onClick }: Props) {
   // used for fade out animation without losing user's image and name
+  const [user] = useSubject(user$);
+
   const [isLoggingOut, setIsLoggingOut] = useState(false);
   useAnimation(Boolean(user), isLoggingOut);
 
   function handleClick() {
-    mouseClick.play();
+    playSound('mouseClick');
     setIsLoggingOut(true);
     setTimeout(onClick, 500);
   }

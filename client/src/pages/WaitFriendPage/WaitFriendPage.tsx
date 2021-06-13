@@ -9,7 +9,7 @@ import { useAnimation } from './WaitFriendPage.gsap';
 import { user$ } from 'services/authService';
 import { roomId$ } from 'services/gameService';
 import { emitLeaveRoom } from 'services/socketService';
-import { valid } from 'services/audioService';
+import { playSound } from 'services/audioService';
 // components
 import { LoadingSpinner } from 'components/LoadingSpinner';
 import { NavigationIcon } from 'components/NavigationIcon';
@@ -20,11 +20,11 @@ import { SlidingInput } from 'components/SlidingInput';
 // will redirect to game screen
 
 export function WaitFriendPage() {
+  useAnimation();
   const [roomId, setRoomId] = useSubject(roomId$);
   const [copied, setCopied] = useState(false);
   const [user] = useSubject(user$);
   useRedirect('/game/new', !user);
-  useAnimation();
 
   function stopWaiting() {
     setRoomId('');
@@ -33,7 +33,7 @@ export function WaitFriendPage() {
 
   function copyCodeToClipboard() {
     setCopied(true);
-    valid.play();
+    playSound('valid');
     navigator.clipboard.writeText(roomId);
   }
 

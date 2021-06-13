@@ -1,10 +1,18 @@
 import { useEffect } from 'react';
 import { gsap } from 'gsap';
+import { playSound } from 'services/audioService';
 
 export function useAnimation() {
-  useEffect(fadeAndSlideContent, []);
+  useEffect(function playContentSound() {
+    console.log('play friend swipe');
+    // playSound('swipeRight', 0.6);
+    // return () => {
+    //   console.log('unmounting play friend');
+    // };
+  }, []);
 
-  function fadeAndSlideContent() {
+  useEffect(function fadeAndSlideContent() {
+    console.log('fadeAndSlideContent');
     const fadeIn = { opacity: 0, ease: 'power3.out' };
     const stagger = 0.15;
     gsap
@@ -17,5 +25,5 @@ export function useAnimation() {
         { y: '-2em', duration: 0.6, ...fadeIn },
         1 + stagger
       );
-  }
+  }, []);
 }

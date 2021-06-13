@@ -3,7 +3,7 @@ import { NavBar } from 'pages/HomePage/NavBar';
 import { HeroSection } from 'pages/HomePage/HeroSection';
 import { FeaturesSection } from 'pages/HomePage/FeaturesSection';
 import { useHistory } from 'react-router-dom';
-import { background, mouseClick } from 'services/audioService';
+import { playSound } from 'services/audioService';
 import { TrySection } from 'pages/HomePage/TrySection';
 import { NumbersSection } from 'pages/HomePage/NumbersSection';
 import { ScrollUpButton } from 'pages/HomePage/ScrollUpButton';
@@ -16,8 +16,7 @@ export function HomePage() {
   const history = useHistory();
 
   function goToNewGame() {
-    mouseClick.play();
-    background.play();
+    // playSound('background')
     history.push('/game/new');
   }
 

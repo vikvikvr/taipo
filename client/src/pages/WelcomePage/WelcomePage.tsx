@@ -5,28 +5,21 @@ import { useSubject } from 'hooks/useSubject';
 import { user$ } from 'services/authService';
 import './WelcomePage.scss';
 import { useAnimation } from './WelcomePage.gsap';
-import { loading, valid } from 'services/audioService';
+import { fadeOutSound } from 'services/audioService';
 
 // appers after the player signs in succesfully
 
 export function WelcomePage() {
+  useAnimation();
   const [user] = useSubject(user$);
   const history = useHistory();
   useEffect(redirect, [history, user]);
-  useEffect(playSounds, []);
-  useAnimation();
-
-  function playSounds() {
-    setTimeout(() => valid.play(), 500);
-    setTimeout(() => loading.play(), 2000);
-  }
 
   function redirect() {
-    const delay = user ? 4_000 : 0;
     setTimeout(() => {
-      loading.stop();
+      fadeOutSound('loading');
       history.replace('/game/new');
-    }, delay);
+    }, 4_000);
   }
 
   if (!user) {
