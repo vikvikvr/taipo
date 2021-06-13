@@ -3,7 +3,6 @@ import { StarIcon } from 'assets/icons';
 import avatarPlaceholder from 'assets/images/avatarPlaceholder.png';
 import './ResultRow.scss';
 import React from 'react';
-import { useAnimation } from './ResultRow.gsap';
 
 interface Props {
   playerResult: PlayerResult;
@@ -12,14 +11,12 @@ interface Props {
 }
 
 export function ResultRow({ playerResult, isWinner, isGuest }: Props) {
-  useAnimation();
-
   const imageSrc = playerResult.imageUrl || avatarPlaceholder;
   const completion = `${Math.round(playerResult.completionPercent)}%`;
   const name = isGuest ? 'Guest' : playerResult.name;
 
   return (
-    <div className="result-row">
+    <div className={'result-row ' + (isWinner ? 'winner' : 'loser')}>
       <h2 className="name">{name}</h2>
       <div className="badge">
         {isWinner && (

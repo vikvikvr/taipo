@@ -1,17 +1,28 @@
 import { useEffect } from 'react';
 import { gsap } from 'gsap';
+import { star } from 'services/audioService';
 
 export function useAnimation() {
   useEffect(animatePageContent, []);
 
   function animatePageContent() {
     const fadeIn = { opacity: 0, ease: 'power3.out' };
-    const slideUp = { y: '2em', ...fadeIn, stagger: 1.5 };
+    const slideUp = { y: '2em', ...fadeIn };
+    const slideDown = { y: '-2em', ...fadeIn };
+    const slideDownSmall = { y: '-0.5em', ...fadeIn };
+    const stagger = { each: 0.15, onStart: playStarSound };
+    const slideUpStaggered = { ...slideUp, stagger };
+
+    function playStarSound() {
+      star.play();
+    }
 
     gsap
       .timeline({ delay: 0.5 })
-      .from('.result-row', slideUp)
-      .from('.header', fadeIn, 0.5)
-      .from('.sliding-button', slideUp);
+      .from('.winner', slideUp)
+      .from('.loser', slideUp, 0.3)
+      .from('.star', slideUpStaggered, 0.9)
+      .from('.header', slideDownSmall, 1.5)
+      .from('.sliding-button', slideDown, 2.2);
   }
 }
