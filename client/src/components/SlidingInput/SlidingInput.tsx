@@ -40,8 +40,7 @@ export function SlidingInput({
     <div className="sliding-input" ref={refs.input}>
       <input
         value={value}
-        onChange={onChange}
-        // defaultValue={onChange ? undefined : value}
+        onChange={onChange ? onChange : () => null}
         placeholder={placeholder}
         type="text"
       />
