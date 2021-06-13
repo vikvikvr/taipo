@@ -5,8 +5,8 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const url = process.env.DB_CONNECTION_URL || 'mongodb://localhost:27017/';
-const databaseName = process.env.DB_NAME || 'playground';
+const url = process.env.DB_CONNECTION_URL;
+const databaseName = process.env.DB_NAME;
 const uri = `${url}/${databaseName}`;
 
 const options: ConnectOptions = {
