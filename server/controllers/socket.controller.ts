@@ -50,7 +50,6 @@ export const handleConnection: Controller = (socket) => {
       const game = await createGame(playerInfo);
       games.push(game);
       socket.join(game.id);
-      socket.emit<ServerEvent>('joinedRoom', game.id);
       startGame(game, 1);
     } catch (error) {
       // probably also need to notify the client, in the future
