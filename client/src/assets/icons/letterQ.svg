@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="201.65" height="167.164" viewBox="0 0 201.65 167.164">
+  <defs>
+    <filter id="Letter_Container" x="0" y="4.988" width="201.65" height="162.175" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="letter-q" transform="matrix(0.899, 0, -0.31, 0.707, 160.258, -152.804)">
+    <g transform="matrix(1.11, 0, 0.49, 1.41, -103.78, 216.1)" filter="url(#Letter_Container)">
+      <rect id="Letter_Container-2" data-name="Letter Container" width="136" height="192" rx="22" transform="matrix(0.9, 0, -0.31, 0.71, 73.1, 9.12)" fill="#f44336"/>
+    </g>
+    <text id="q" transform="translate(9 361)" fill="#fff" font-size="144" font-family="Roboto-Regular, Roboto"><tspan x="0" y="0">q</tspan></text>
+  </g>
+</svg>

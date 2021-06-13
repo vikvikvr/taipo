@@ -30,9 +30,22 @@
   }
 
   .right {
+    @include column;
+
     .graphic {
       width: 250px;
       align-self: flex-end;
+    }
+
+    .letters-row {
+      @include debug;
+      @include row;
+      width: 400px;
+
+      svg {
+        @include debug;
+        transform: scale(1.3);
+      }
     }
   }
 }

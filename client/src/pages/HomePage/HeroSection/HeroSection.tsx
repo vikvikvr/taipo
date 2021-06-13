@@ -1,4 +1,4 @@
-import { KeyboardIcon, SkaterIcon } from 'assets/icons';
+import { KeyboardIcon, LetterQIcon, SkaterIcon } from 'assets/icons';
 import { SlidingButton } from 'components/SlidingButton';
 import React from 'react';
 import './HeroSection.scss';
@@ -27,6 +27,11 @@ export function HeroSection({ onButtonClick }: Props) {
       <div className="right column">
         <div className="graphic">
           <SkaterIcon />
+          <div className="letters-row">
+            <LetterQIcon />
+            <LetterQIcon />
+            <LetterQIcon />
+          </div>
         </div>
       </div>
     </section>
