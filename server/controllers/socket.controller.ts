@@ -9,7 +9,6 @@ import {
 import { find, findIndex } from 'lodash';
 import { Sentence } from '../models/Sentence';
 import { GameResult, gameResultFromGame } from '../models/GameResult';
-import { UserInfo } from 'os';
 
 // stores in memory current active games
 export const games: Game[] = [];
