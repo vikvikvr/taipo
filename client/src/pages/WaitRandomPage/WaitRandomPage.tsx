@@ -8,6 +8,7 @@ import { emitEnterLobby, emitLeaveLobby } from 'services/socketService';
 import './WaitRandomPage.scss';
 import { useAnimation } from './WaitRandomPage.gsap';
 import { loading } from 'services/audioService';
+import { useRedirect } from 'hooks/useRedirect';
 
 // appers after the player enters the lobby
 // will redirect to game screen after an opponent is found
@@ -15,6 +16,7 @@ import { loading } from 'services/audioService';
 export function WaitRandomPage() {
   const [user] = useSubject(user$);
   const history = useHistory();
+  useRedirect('/game/new', !user);
   useEffect(enterLobby, [user, history]);
   useAnimation();
   useEffect(startLoadingSound, []);
@@ -24,25 +26,20 @@ export function WaitRandomPage() {
   }
 
   function enterLobby() {
-    if (user) {
-      setTimeout(emitEnterLobby, 1_500);
-    } else {
-      history.replace('/game/new');
-    }
-  }
-
-  if (!user) {
-    return null;
+    const id = setTimeout(emitEnterLobby, 1_500);
+    return () => {
+      clearTimeout(id);
+    };
   }
 
   return (
     <div className="wait-random-page">
       <h1 className="page-title">Get ready</h1>
       <div className="content">
-        <h2 className="hello">Wait, {user.firstName}</h2>
+        <h2 className="hello">Wait, {user?.firstName}</h2>
         <img
           alt="user face"
-          src={user.imageUrl}
+          src={user?.imageUrl}
           className="user-picture"
           draggable={false}
         />
