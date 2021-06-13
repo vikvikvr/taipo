@@ -6,7 +6,7 @@ export function useAnimation(left: number) {
 
   function changeNumber() {
     const fadeIn = { opacity: 1, scale: 1.5, duration: 1 };
-    const fadeOut = { opacity: 0, scale: 2, duration: 1, delay: 1 };
+    const fadeOut = { opacity: 0, scale: 2, duration: 1, delay: 0.5 };
     if (left === 3) {
       gsap.to('.three', fadeIn);
       gsap.to('.three', fadeOut);
