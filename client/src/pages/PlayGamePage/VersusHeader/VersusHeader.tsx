@@ -18,10 +18,12 @@ export function VersusHeader({ leftName, rightName, isGuest, onClick }: Props) {
   const { setHovered } = useAnimation();
 
   const Icon = rightName ? FriendIcon : AloneIcon;
+  const containerClass = 'versus-header ' + (rightName ? '' : 'alone');
+  leftName = isGuest ? 'Guest' : leftName;
 
   return (
-    <div className={`versus-header ${!rightName ? ' alone' : ''}`}>
-      <h2 className="left-name">{isGuest ? 'Guest' : leftName}</h2>
+    <div className={containerClass}>
+      <h2 className="left-name">{leftName}</h2>
       <div
         className="middle"
         onClick={onClick}

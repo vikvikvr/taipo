@@ -13,14 +13,15 @@ interface Props {
 
 export function PlayerPosition({ imageUrl, position, isBlocked }: Props) {
   const { container, img } = useAnimation(position, isBlocked);
+  const imgClass = isBlocked ? 'blocked' : '';
 
   return (
     <div className="position-track">
       <div className="player-position" ref={container}>
         <img
-          className={isBlocked ? 'blocked' : ''}
-          src={imageUrl}
           alt="player badge"
+          src={imageUrl}
+          className={imgClass}
           ref={img}
           draggable={false}
         />
