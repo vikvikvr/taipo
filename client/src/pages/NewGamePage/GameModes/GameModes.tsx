@@ -5,7 +5,6 @@ import { emitPlayAlone } from 'services/socketService';
 import { SlidingButton } from '../../../components/SlidingButton/SlidingButton';
 import { AloneIcon, FriendIcon, StrangerIcon, LockedIcon } from 'assets/icons';
 import { useAnimation } from './GameModes.gsap';
-import { useRedirect } from 'hooks/useRedirect';
 
 interface Props {
   isLoggedIn: boolean;
@@ -13,15 +12,22 @@ interface Props {
 
 export function GameModes({ isLoggedIn }: Props) {
   const history = useHistory<any>();
-  useRedirect('/login', !isLoggedIn);
   useAnimation();
 
   function playWithStranger() {
-    history.push('/wait/random');
+    if (isLoggedIn) {
+      history.replace('/wait/random');
+    } else {
+      history.replace('/login');
+    }
   }
 
   function startGameFriend() {
-    history.push('/game/invite');
+    if (isLoggedIn) {
+      history.replace('/game/invite');
+    } else {
+      history.replace('/login');
+    }
   }
 
   return (
