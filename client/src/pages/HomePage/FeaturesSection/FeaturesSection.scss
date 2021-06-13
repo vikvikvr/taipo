@@ -4,13 +4,14 @@
   @include column;
   gap: 2em;
   background-color: $textLight;
-  padding: 2em 12em;
+  padding: 2em 12em 3em 12em;
   box-shadow: $shadow;
 
   .title {
     color: $textDark;
-    font-weight: 600;
-    font-size: 2.5em;
+    font-weight: 500;
+    font-size: 2em;
+    margin-bottom: 1em;
   }
 
   .features-container {
@@ -20,17 +21,18 @@
 
     .feature {
       @include column;
-      height: 300px;
 
       .icon {
-        @include square(6em);
+        @include square(4em);
         fill: $bgSecondary;
+        margin-bottom: 1em;
       }
 
       .name {
         color: $textDark;
         font-weight: 500;
         font-size: 1.5em;
+        text-transform: uppercase;
       }
 
       .description {

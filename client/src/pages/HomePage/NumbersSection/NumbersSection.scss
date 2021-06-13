@@ -5,13 +5,14 @@
   gap: 2em;
   background-color: $textLight;
   width: 100%;
-  padding: 2em 12em 4em 12em;
+  padding: 2em 12em 3em 12em;
   box-shadow: $shadow;
 
   .title {
     color: $textDark;
-    font-weight: 600;
-    font-size: 2.5em;
+    font-weight: 500;
+    font-size: 2em;
+    margin-bottom: 1em;
   }
 
   .columns-container {
@@ -26,6 +27,7 @@
         color: $bgSecondary;
         opacity: 0.9;
         font-weight: 500;
+        font-size: 3em;
 
         &.highlight {
           color: $orange800;
@@ -36,6 +38,7 @@
         color: $textDark;
         font-weight: 500;
         font-size: 1.5em;
+        text-transform: uppercase;
       }
 
       .description {
