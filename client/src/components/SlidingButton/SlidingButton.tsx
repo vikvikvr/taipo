@@ -20,6 +20,7 @@ interface Props {
   variant: SlideVariant;
   onClick(): void;
   backgroundColor?: string;
+  id?: string;
 }
 
 // defaults to only showing the text
@@ -30,7 +31,8 @@ export function SlidingButton({
   Icon,
   text,
   variant,
-  backgroundColor
+  backgroundColor,
+  id
 }: Props) {
   const { button, span, svg } = useAnimation(variant, backgroundColor);
 
@@ -40,7 +42,7 @@ export function SlidingButton({
   }
 
   return (
-    <div className="sliding-button">
+    <div className="sliding-button" id={id}>
       <button onClick={handleClick} ref={button}>
         <span className="text" ref={span}>
           {text}
