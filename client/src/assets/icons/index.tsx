@@ -16,6 +16,7 @@ export { ReactComponent as HomeIcon } from './home.svg';
 export { ReactComponent as InstagramIcon } from './instagram.svg';
 export { ReactComponent as KeyboardIcon } from './keyboard.svg';
 export { ReactComponent as LetterQIcon } from './letterQ.svg';
+export { ReactComponent as LettersRowIcon } from './lettersRow.svg';
 export { ReactComponent as LockedIcon } from './locked.svg';
 export { ReactComponent as PaperPlaneIcon } from './paperPlane.svg';
 export { ReactComponent as PasteIcon } from './paste.svg';

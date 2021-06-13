@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 545.368 280.955">
+  <defs>
+    <filter id="Letter_Container" x="286.077" y="34.217" width="259.29" height="246.738" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Letter_Container-2" x="133.592" y="8.017" width="234.139" height="206.72" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-2"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Letter_Container-3" x="0" y="7.091" width="217.681" height="186.123" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-3"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="letters" transform="matrix(0.851, 0.104, -0.393, 0.777, 81.772, -11.924)">
+    <g id="R" transform="translate(347.801 22.295)">
+      <g transform="matrix(1.11, -0.15, 0.56, 1.21, -431.62, 4.32)" filter="url(#Letter_Container)">
+        <rect id="Letter_Container-4" data-name="Letter Container" width="151.605" height="214.031" rx="22" transform="matrix(0.85, 0.1, -0.39, 0.78, 368.91, 41.73)" fill="#ffa726"/>
+      </g>
+      <text id="e" transform="translate(49.049 168.115)" fill="#515151" font-size="159" font-family="Roboto-Regular, Roboto"><tspan x="0" y="0">e</tspan></text>
+    </g>
+    <g id="O" transform="translate(173.9 0)">
+      <g transform="matrix(1.11, -0.15, 0.56, 1.21, -257.72, 26.61)" filter="url(#Letter_Container-2)">
+        <rect id="Letter_Container-5" data-name="Letter Container" width="151.605" height="214.031" rx="22" transform="matrix(0.85, 0.1, -0.39, 0.78, 229.72, 6.24)" fill="#ffca28"/>
+      </g>
+      <text id="w" transform="translate(30.098 169.115)" fill="#515151" font-size="160" font-family="Roboto-Regular, Roboto"><tspan x="0" y="0">w</tspan></text>
+    </g>
+    <g id="Letter" transform="translate(0 -10.735)">
+      <g transform="matrix(1.11, -0.15, 0.56, 1.21, -83.82, 37.35)" filter="url(#Letter_Container-3)">
+        <rect id="Letter_Container-6" data-name="Letter Container" width="151.605" height="214.031" rx="22" transform="matrix(0.85, 0.1, -0.39, 0.78, 77.39, -3.26)" fill="#f44336"/>
+      </g>
+      <text id="q" transform="translate(29.984 168)" fill="#fff" font-size="160" font-family="Roboto-Regular, Roboto"><tspan x="0" y="0">q</tspan></text>
+    </g>
+  </g>
+</svg>

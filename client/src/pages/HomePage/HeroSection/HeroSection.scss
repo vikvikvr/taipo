@@ -30,22 +30,15 @@
   }
 
   .right {
-    @include column;
+    @include row;
+    // @include debug;
 
     .graphic {
-      width: 250px;
+      // @include debug;
+      margin-right: -1.2em;
+      margin-top: 2em;
+      height: 75%;
       align-self: flex-end;
-    }
-
-    .letters-row {
-      @include debug;
-      @include row;
-      width: 400px;
-
-      svg {
-        @include debug;
-        transform: scale(1.3);
-      }
     }
   }
 }
