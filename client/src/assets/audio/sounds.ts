@@ -7,7 +7,8 @@ import { Howl } from 'howler';
 // paths actually refer to /public/audio
 
 export const swipeRight = new Howl({
-  src: '/audio/60027__qubodup__slow-swosh-40.flac'
+  src: '/audio/60027__qubodup__slow-swosh-40.flac',
+  volume: 0.7
 });
 
 export const correctKey = new Howl({
@@ -22,7 +23,7 @@ export const wrongKey = new Howl({
 export const loading = new Howl({
   src: '/audio/loading-russian.mp3',
   // loop: true,
-  volume: 0.4
+  volume: 0.7
 });
 
 export const mouseClick = new Howl({
@@ -58,6 +59,13 @@ export const goFemale = new Howl({
 });
 
 export const background = new Howl({
-  src: '/audio/399868__eflexmusic__action-ambiance-orchestral-loop-mixed.wav',
+  src: '/audio/399868_background-menu.wav',
+  volume: 0.5,
   loop: true
+});
+
+export const playGame = new Howl({
+  src: '/audio/battleThemeA.mp3',
+  volume: 0.3
+  // loop: true
 });

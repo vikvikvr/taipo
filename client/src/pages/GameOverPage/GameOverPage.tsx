@@ -6,7 +6,7 @@ import './GameOverPage.scss';
 import { KeyboardIcon } from 'assets/icons';
 import { SlidingButton } from 'components/SlidingButton';
 import { GameResult } from '../../../../server/types/types';
-import { playSound } from 'services/audioService';
+import { fadeInSound, fadeOutSound, playSound } from 'services/audioService';
 
 // reached after a game ends
 // fetches game result from server and shows it in a table
@@ -21,6 +21,8 @@ export function GameOverPage() {
     fetchResult()
       .then((result) => {
         playSound('gameOver');
+        fadeOutSound('playGame');
+        fadeInSound('background');
         setResult(result);
       })
       .catch(() => history.replace('/game/new'));

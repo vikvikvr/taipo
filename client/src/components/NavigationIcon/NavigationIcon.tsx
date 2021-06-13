@@ -3,7 +3,7 @@ import './NavigationIcon.scss';
 import { ExitIcon, GoBackIcon, HomeIcon } from 'assets/icons';
 import { useHistory } from 'react-router-dom';
 import { usePullDownOnHover } from 'hooks/usePullDownOnHover';
-import { fadeOutSound, playSound } from 'services/audioService';
+import { fadeInSound, fadeOutSound, playSound } from 'services/audioService';
 import { useAnimation } from './NavigationIcon.gsap';
 
 interface Props {
@@ -22,7 +22,13 @@ export function NavigationIcon({ toPath, icon, onClick }: Props) {
   function handleClick() {
     onClick?.();
     playSound('mouseClick');
-    fadeOutSound('loading');
+    if (icon === 'exit') {
+      fadeOutSound('loading');
+      fadeInSound('background', 0, false);
+    }
+    if (icon === 'home') {
+      fadeOutSound('background');
+    }
     history.push(toPath, {});
   }
 

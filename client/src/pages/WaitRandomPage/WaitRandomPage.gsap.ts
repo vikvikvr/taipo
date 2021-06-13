@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { gsap } from 'gsap';
-import { fadeInSound, playSound } from 'services/audioService';
+import { fadeInSound, fadeOutSound, playSound } from 'services/audioService';
 
 export function useAnimation(playSounds: boolean) {
   useEffect(animateContent, []);
@@ -22,6 +22,7 @@ export function useAnimation(playSounds: boolean) {
     if (playSounds) {
       playSound('valid', 0.5);
       fadeInSound('loading', 1);
+      fadeOutSound('background', 1, false);
     }
   }
 }

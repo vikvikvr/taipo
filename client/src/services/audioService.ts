@@ -14,7 +14,8 @@ type SoundName =
   | 'readyFemale'
   | 'setFemale'
   | 'goFemale'
-  | 'background';
+  | 'background'
+  | 'playGame';
 
 const fadeDuration = 500;
 const debug = true;
@@ -68,6 +69,7 @@ const soundsMap: Record<SoundName, Howl> = {
   star: sounds.star,
   valid: sounds.valid,
   background: sounds.background,
+  playGame: sounds.playGame,
   readyFemale: sounds.readyFemale,
   setFemale: sounds.setFemale,
   goFemale: sounds.goFemale

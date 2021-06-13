@@ -20,6 +20,8 @@ export function useAnimation() {
       playSound('star');
     }
 
+    playSound('swipeRight', 2.7);
+
     gsap
       .timeline({ delay: 0.5 })
       .from('.winner', slideUp)

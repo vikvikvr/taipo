@@ -5,7 +5,7 @@ import { useSubject } from 'hooks/useSubject';
 import { user$ } from 'services/authService';
 import './WelcomePage.scss';
 import { useAnimation } from './WelcomePage.gsap';
-import { fadeOutSound } from 'services/audioService';
+import { fadeInSound, fadeOutSound } from 'services/audioService';
 
 // appers after the player signs in succesfully
 
@@ -18,6 +18,7 @@ export function WelcomePage() {
   function redirect() {
     setTimeout(() => {
       fadeOutSound('loading');
+      fadeInSound('background', 0, false);
       history.replace('/game/new');
     }, 4_000);
   }

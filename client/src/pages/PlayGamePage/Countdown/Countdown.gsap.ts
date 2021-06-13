@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { gsap } from 'gsap';
-import { playSound } from 'services/audioService';
+import { fadeInSound, fadeOutSound, playSound } from 'services/audioService';
 
 export function useAnimation(secondsLeft: number) {
   useEffect(changeNumber, [secondsLeft]);
@@ -29,6 +29,8 @@ export function useAnimation(secondsLeft: number) {
       playSound('setFemale');
     } else if (secondsLeft === 1) {
       playSound('goFemale');
+      fadeOutSound('background');
+      fadeInSound('playGame');
     }
   }
 }

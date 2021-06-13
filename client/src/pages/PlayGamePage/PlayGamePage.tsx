@@ -41,7 +41,6 @@ export function PlayGamePage() {
   const positions = usePlayersPosition(game);
 
   function leaveGame() {
-    // playSound('gameOver')
     playSound('mouseClick');
     emitLeaveRoom();
     history.replace('/game/over');

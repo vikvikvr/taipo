@@ -33,8 +33,6 @@ export function useSocketReceiver() {
 
   function onGameOver() {
     if (history.location.pathname === '/game/play') {
-      // playSound('gameOver')
-      // playSound('background')
       history.replace('/game/over');
     }
   }
