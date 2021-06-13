@@ -14,9 +14,10 @@ export function ResultRow({ playerResult, isWinner, isGuest }: Props) {
   const imageSrc = playerResult.imageUrl || avatarPlaceholder;
   const completion = `${Math.round(playerResult.completionPercent)}%`;
   const name = isGuest ? 'Guest' : playerResult.name;
+  const containerClass = 'result-row ' + (isWinner ? 'winner' : 'loser');
 
   return (
-    <div className={'result-row ' + (isWinner ? 'winner' : 'loser')}>
+    <div className={containerClass}>
       <h2 className="name">{name}</h2>
       <div className="badge">
         {isWinner && (
