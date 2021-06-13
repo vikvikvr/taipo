@@ -10,7 +10,7 @@ export function ScrollUpButton() {
   const { container } = usePullDownOnHover(true);
 
   function handleClick() {
-    alert('not implemented');
+    console.log('not implemented');
   }
 
   return (
