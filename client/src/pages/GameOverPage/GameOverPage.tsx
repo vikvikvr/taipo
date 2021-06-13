@@ -30,33 +30,23 @@ export function GameOverPage() {
     }
   }
 
-  if (!result) {
-    return (
-      <div className="game-over-page">
-        <h1 className="page-title">Game over!</h1>
-        <div className="content">
-          <LoadingSpinner />
-          <h3 className="info-message">loading game result</h3>
-        </div>
-      </div>
-    );
-  }
-
   // <SlidingButton> is being animated by <ResultsTable>
   return (
     <div className="game-over-page">
       <h1 className="page-title">Game over!</h1>
-      <div className="content">
-        <ResultsTable result={result} />
-        <Link to="/game/new">
-          <SlidingButton
-            Icon={KeyboardIcon}
-            onClick={() => {}}
-            text="New Game"
-            variant="parallax"
-          />
-        </Link>
-      </div>
+      {result && (
+        <div className="content">
+          <ResultsTable result={result} />
+          <Link to="/game/new">
+            <SlidingButton
+              Icon={KeyboardIcon}
+              onClick={() => {}}
+              text="New Game"
+              variant="parallax"
+            />
+          </Link>
+        </div>
+      )}
     </div>
   );
 }
