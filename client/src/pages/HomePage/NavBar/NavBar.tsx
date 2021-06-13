@@ -11,23 +11,23 @@ import { TaipoLogo } from 'components/TaipoLogo';
 export function NavBar() {
   return (
     <nav className="nav-bar">
-      <TaipoLogo />
+      <TaipoLogo id="nav-taipo-logo" />
       <ul className="links">
-        <li className="active">Home</li>
-        <li>About</li>
-        <li>Contact us</li>
+        <li className="nav-link-main active">Home</li>
+        <li className="nav-link-main">About</li>
+        <li className="nav-link-main">Contact us</li>
       </ul>
       <ul className="social">
-        <li>
+        <li className="nav-link-social">
           <FacebookIcon className="icon" />
         </li>
-        <li>
+        <li className="nav-link-social">
           <InstagramIcon className="icon" />
         </li>
-        <li>
+        <li className="nav-link-social">
           <TwitterIcon className="icon" />
         </li>
-        <li>
+        <li className="nav-link-social">
           <GitHubIcon className="icon" />
         </li>
       </ul>

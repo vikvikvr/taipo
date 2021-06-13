@@ -8,7 +8,7 @@
   padding: 2em 12em 3em 12em;
   box-shadow: $shadow;
 
-  .title {
+  &-title {
     color: $textDark;
     font-weight: 500;
     font-size: 2em;
@@ -23,7 +23,7 @@
     .column {
       @include column;
 
-      .number {
+      .number-number {
         color: $bgSecondary;
         opacity: 0.9;
         font-weight: 500;
@@ -34,14 +34,14 @@
         }
       }
 
-      .name {
+      .number-name {
         color: $textDark;
         font-weight: 500;
         font-size: 1.5em;
         text-transform: uppercase;
       }
 
-      .description {
+      .number-description {
         color: $textDark;
         text-align: center;
         color: $textMedium;

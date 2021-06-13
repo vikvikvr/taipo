@@ -13,7 +13,7 @@
     align-items: flex-start;
     margin-right: auto;
 
-    .copyright {
+    .footer-copyright {
       opacity: 0.7;
       font-size: 1em;
     }
@@ -28,7 +28,7 @@
       @include column;
       align-items: flex-start;
 
-      .header {
+      .footer-links-header {
         font-size: 1.5em;
         font-weight: 500;
       }
@@ -37,7 +37,7 @@
         @include reset-list;
         justify-self: flex-end;
 
-        .link {
+        .footer-link {
           opacity: 0.7;
           line-height: 2em;
           cursor: pointer;
@@ -50,13 +50,13 @@
     }
   }
 
-  .social {
+  .footer-links-social {
     @include column;
     justify-content: space-between;
     align-items: flex-end;
     margin-left: 4em;
 
-    .icon {
+    .footer-icon-social {
       @include square(1.5em);
       fill: $textLight;
       opacity: 0.7;

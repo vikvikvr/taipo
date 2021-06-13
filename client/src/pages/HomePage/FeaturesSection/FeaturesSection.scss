@@ -7,35 +7,35 @@
   padding: 2em 12em 3em 12em;
   box-shadow: $shadow;
 
-  .title {
+  .features-section-title {
     color: $textDark;
     font-weight: 500;
     font-size: 2em;
     margin-bottom: 1em;
   }
 
-  .features-container {
+  .features-row {
     @include row;
     width: 100%;
     justify-content: space-between;
 
-    .feature {
+    .feature-column {
       @include column;
 
-      .icon {
+      .feature-icon {
         @include square(4em);
         fill: $bgSecondary;
         margin-bottom: 1em;
       }
 
-      .name {
+      .feature-name {
         color: $textDark;
         font-weight: 500;
         font-size: 1.5em;
         text-transform: uppercase;
       }
 
-      .description {
+      .feature-description {
         color: $textDark;
         text-align: center;
         color: $textMedium;

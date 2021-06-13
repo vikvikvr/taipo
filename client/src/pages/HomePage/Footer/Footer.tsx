@@ -7,38 +7,38 @@ export function Footer() {
   return (
     <footer className="page-footer">
       <div className="left">
-        <TaipoLogo small />
-        <p className="copyright">© 2021 Ricchiuto Viktor</p>
+        <TaipoLogo small id="taipo-logo-footer" />
+        <p className="footer-copyright">© 2021 Ricchiuto Viktor</p>
       </div>
       <div className="links">
         <div className="column">
-          <h2 className="header">Explore</h2>
+          <h2 className="footer-links-header">Explore</h2>
           <ul>
-            <li className="link">Home</li>
-            <li className="link">About</li>
-            <li className="link">Rules</li>
+            <li className="footer-link">Home</li>
+            <li className="footer-link">About</li>
+            <li className="footer-link">Rules</li>
           </ul>
         </div>
         <div className="column">
-          <h2 className="header">Follow</h2>
+          <h2 className="footer-links-header">Follow</h2>
           <ul>
-            <li className="link">Facebook</li>
-            <li className="link">Twitter</li>
-            <li className="link">GitHub</li>
+            <li className="footer-link">Facebook</li>
+            <li className="footer-link">Twitter</li>
+            <li className="footer-link">GitHub</li>
           </ul>
         </div>
         <div className="column">
-          <h2 className="header">Legal</h2>
+          <h2 className="footer-links-header">Legal</h2>
           <ul>
-            <li className="link">Terms</li>
-            <li className="link">Privacy</li>
+            <li className="footer-link">Terms</li>
+            <li className="footer-link">Privacy</li>
           </ul>
         </div>
       </div>
-      <div className="social">
-        <FacebookIcon className="icon" />
-        <TwitterIcon className="icon" />
-        <GitHubIcon className="icon" />
+      <div className="footer-links-social">
+        <FacebookIcon className="footer-icon-social" />
+        <TwitterIcon className="footer-icon-social" />
+        <GitHubIcon className="footer-icon-social" />
       </div>
     </footer>
   );

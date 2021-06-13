@@ -16,12 +16,12 @@
     align-items: flex-start;
     width: 360px;
 
-    .title {
+    .hero-title {
       width: 350px;
       line-height: 1.2em;
     }
 
-    .subtitle {
+    .hero-subtitle {
       font-weight: 400;
       opacity: 0.7;
       line-height: 2em;
@@ -33,7 +33,7 @@
     @include row;
     // @include debug;
 
-    .graphic {
+    .hero-graphic {
       // @include debug;
       margin-right: -1.2em;
       margin-top: 2em;
