@@ -12,7 +12,7 @@ import { SlidingInput } from 'components/SlidingInput';
 import { roomId$ } from 'services/gameService';
 
 // page that allows the player to get a new code
-// or enter an existing one
+// or join an existing room
 // in order to play with a friend
 
 export function PlayFriendPage() {

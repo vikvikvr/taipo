@@ -27,10 +27,12 @@ import { PlayerPosition } from './PlayerPosition';
 // but ended up breaking the code instead 😜
 
 export function PlayGamePage() {
+  // behaviour subjects
   const [user] = useSubject(user$);
   const [game] = useSubject(game$);
   const [roomId] = useSubject(roomId$);
   const [blocked] = useSubject(blocked$);
+  // other hooks
   const history = useHistory();
   useEffect(emitRequestSnapshot, []);
   useCheating(game, user);
