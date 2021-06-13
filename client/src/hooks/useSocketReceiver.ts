@@ -45,7 +45,6 @@ export function useSocketReceiver() {
 
   function onJoinedRoom(roomId: string) {
     setTimeout(() => roomId$.next(roomId), 500);
-    history.replace('/wait/friend');
   }
 
   function onWrongKey(socketId: string) {
