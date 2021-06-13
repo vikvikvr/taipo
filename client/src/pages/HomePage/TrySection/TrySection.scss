@@ -17,19 +17,21 @@
     align-items: flex-start;
     width: 360px;
 
-    .title {
+    .try-title {
       width: 350px;
       line-height: 1.2em;
     }
 
-    .subtitle {
-      font-weight: 600;
+    .try-subtitle {
+      font-weight: 400;
       opacity: 0.7;
+      line-height: 2em;
+      font-size: 1.5em;
     }
   }
 
   .right {
-    .graphic {
+    .try-graphic {
       align-self: flex-end;
       height: 100%;
     }
