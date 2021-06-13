@@ -29,9 +29,9 @@ export function NavigationIcon({ toPath, icon, onClick }: Props) {
 
   return (
     <div className="navigation-icon" onClick={handleClick} ref={container}>
-      {icon === 'back' && <GoBackIcon />}
+      {icon === 'back' && <GoBackIcon className="back-icon" />}
       {icon === 'exit' && <ExitIcon />}
-      {icon === 'home' && <HomeIcon />}
+      {icon === 'home' && <HomeIcon className="home-icon" />}
     </div>
   );
 }

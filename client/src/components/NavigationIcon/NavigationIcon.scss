@@ -1,8 +1,9 @@
 @import 'style/style.scss';
 
 .navigation-icon {
-  @include square(50px);
-  // position inside grid made by @mixin page
+  @include square(2.5em);
+  @include center;
+  // the grid was made by @mixin page in the parent component
   grid-column: 1/2;
   grid-row: 1/3;
   justify-self: end;
@@ -12,5 +13,13 @@
 
   svg {
     fill: $textLight;
+  }
+
+  .home-icon {
+    height: 100%;
+  }
+
+  .back-icon {
+    height: 100%;
   }
 }
