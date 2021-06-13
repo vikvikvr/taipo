@@ -10,7 +10,7 @@ export function LettersScatter({ letters }: Props) {
   return (
     <div className="letters-scatter">
       {letters.split('').map((letter, index) => {
-        return <LetterDone key={'letter-' + index} letter={letter} />;
+        return <LetterDone key={'scattered-letter-' + index} letter={letter} />;
       })}
     </div>
   );
