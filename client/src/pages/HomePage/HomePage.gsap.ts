@@ -82,7 +82,7 @@ function makeTriggerTimeline(
   // start: 'top center',
   const commonTrigger = {
     scroller: '.home-page',
-    markers: true,
+    // markers: true,
     toggleActions: 'play none none reverse'
   };
 
