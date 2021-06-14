@@ -6,7 +6,9 @@ gsap.registerPlugin(ScrollTrigger);
 
 const fadeIn = { opacity: 0, ease: 'power3.out' };
 const slideUp = { y: '1em', ...fadeIn };
+const slideUp2 = { y: '2em', ...fadeIn };
 const slideDown = { y: '-1em', ...fadeIn };
+const slideDown2 = { y: '-2em', ...fadeIn };
 const slideLeft2 = { x: '2em', ...fadeIn };
 const defaults = { ...fadeIn, stagger: 0.15 };
 
@@ -20,45 +22,45 @@ export function useHomePageAnimation() {
 
   function animateNavBar() {
     gsap
-      .timeline({ delay: 0.5, defaults })
-      .from('#nav-taipo-logo', slideUp)
-      .from('.nav-link-main', fadeIn)
-      .from('.nav-link-social', slideUp);
+      .timeline({ delay: 0.5, ...fadeIn })
+      .from('#nav-taipo-logo', slideDown2, 0)
+      .from('.nav-link-main', slideDown, 0.15)
+      .from('.nav-link-social', slideDown, 0.3);
   }
 
   function animateHeroSection() {
     gsap
-      .timeline({ delay: 0.5, defaults })
-      .from('.hero-title', slideUp)
-      .from('.hero-subtitle', slideUp)
-      .from('#hero-cta-button', slideUp)
-      .from('.hero-graphic', slideDown);
+      .timeline({ delay: 1.5, defaults })
+      .from('.hero-title', slideUp2, 0)
+      .from('.hero-subtitle', slideUp, 0.3)
+      .from('.hero-graphic', slideLeft2, 0.9)
+      .from('#hero-cta-button', slideDown, 1.5);
   }
 
   function animateFeaturesSection() {
-    const stagger = 0.3;
+    const stagger = 0.6;
     makeTriggerTimeline('.features-section')
-      .from('.features-section-title', slideDown)
-      .from('.feature-icon', { ...slideDown, stagger }, 0)
-      .from('.feature-name', { ...slideUp, stagger }, 0.15)
-      .from('.feature-description', { ...slideUp, stagger }, 0.3);
+      .from('.features-section-title', slideUp)
+      .from('.feature-icon', { ...slideDown2, stagger }, 0.6)
+      .from('.feature-name', { ...slideUp, stagger }, 0.75)
+      .from('.feature-description', { ...slideUp, stagger }, 0.9);
   }
 
   function animateTrySection() {
     makeTriggerTimeline('.try-section')
-      .from('.try-title', slideDown)
-      .from('.try-subtitle', slideDown, 0.15)
-      .from('#try-cta-button', slideUp)
-      .from('.try-graphic', slideLeft2, 0.5);
+      .from('.try-title', slideUp2)
+      .from('.try-subtitle', slideUp, 0.3)
+      .from('.try-graphic', slideLeft2, 0.9)
+      .from('#try-cta-button', slideDown, 1.5);
   }
 
   function animateNumbersSection() {
-    const stagger = 0.3;
+    const stagger = 0.6;
     makeTriggerTimeline('.numbers-section')
-      .from('.numbers-section-title', slideDown)
-      .from('.number-number', { ...slideDown, stagger }, 0)
-      .from('.number-name', { ...slideUp, stagger }, 0.15)
-      .from('.number-description', { ...slideUp, stagger }, 0.3);
+      .from('.numbers-section-title', slideUp)
+      .from('.number-number', { ...slideDown, stagger }, 0.6)
+      .from('.number-name', { ...slideUp, stagger }, 0.75)
+      .from('.number-description', { ...slideUp, stagger }, 0.9);
   }
 
   function animateFooter() {
@@ -67,10 +69,10 @@ export function useHomePageAnimation() {
       slideUp
     );
     makeTriggerTimeline('.page-footer', 'top 70%')
-      .from('#taipo-logo-footer', slideDown, 0.3)
-      .from('.footer-copyright', slideUp, 0.3)
-      .from('.footer-column', { ...slideUp, stagger: 0.15 }, 0.5)
-      .from('.footer-icon-social', { ...slideUp, stagger: 0.07 }, 0.9);
+      .from('#taipo-logo-footer', slideUp2, 0.6)
+      .from('.footer-column', { ...slideUp2, stagger: 0.15 }, 0.9)
+      .from('.footer-icon-social', { ...slideUp, stagger: 0.07 }, 1.8)
+      .from('.footer-copyright', slideUp, 1.8);
   }
 }
 
@@ -83,7 +85,7 @@ function makeTriggerTimeline(
   const commonTrigger = {
     scroller: '.home-page',
     // markers: true,
-    toggleActions: 'play none none reverse'
+    toggleActions: 'play none none none'
   };
 
   return gsap.timeline({
@@ -92,6 +94,7 @@ function makeTriggerTimeline(
       start,
       end: start,
       ...commonTrigger
-    }
+    },
+    delay: 0.3
   });
 }
