@@ -5,6 +5,7 @@
   justify-content: space-between;
   margin: 0 12em;
   scroll-snap-align: start;
+  padding-top: 4em;
 
   .column {
     @include column;
