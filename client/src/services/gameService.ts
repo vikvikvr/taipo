@@ -49,7 +49,6 @@ export async function fetchResult() {
     throw new Error('missing gameId');
   }
 
-  // await sleep(1_500);
   const url = `${serverUri}/results/${gameId}`;
   const { data: result } = await axios.get<GameResult>(url);
   return result;

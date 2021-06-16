@@ -22,7 +22,6 @@ export const wrongKey = new Howl({
 
 export const loading = new Howl({
   src: '/audio/loading-russian.mp3',
-  // loop: true,
   volume: 0.7
 });
 
@@ -67,5 +66,4 @@ export const background = new Howl({
 export const playGame = new Howl({
   src: '/audio/battleThemeA.mp3',
   volume: 0.3
-  // loop: true
 });
