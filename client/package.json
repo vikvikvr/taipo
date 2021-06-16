@@ -2,30 +2,23 @@
   "name": "taipo-client",
   "version": "0.1.0",
   "private": true,
+  "description": "client for the taipo game",
+  "author": "Viktor Ricchiuto",
+  "repository": "https://github.com/vikvikvr/taipo",
   "dependencies": {
-    "@types/howler": "^2.2.2",
-    "@types/node": "^12.20.13",
-    "@types/react": "^17.0.6",
-    "@types/react-dom": "^17.0.5",
-    "@types/react-router-dom": "^5.1.7",
-    "@types/react-transition-group": "^4.4.1",
     "axios": "^0.21.1",
     "classnames": "^2.3.1",
     "dotenv": "^10.0.0",
     "firebase": "^8.6.7",
     "gsap": "^3.6.1",
     "howler": "^2.2.1",
-    "node-sass": "^6.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-google-login": "^5.2.2",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.3",
     "react-transition-group": "^4.4.2",
     "rxjs": "^7.1.0",
     "socket.io": "^4.1.2",
-    "socket.io-client": "^4.1.2",
-    "typescript": "^4.2.4"
+    "socket.io-client": "^4.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -50,5 +43,16 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/howler": "^2.2.2",
+    "@types/node": "^12.20.15",
+    "@types/react": "^17.0.11",
+    "@types/react-dom": "^17.0.7",
+    "@types/react-router-dom": "^5.1.7",
+    "@types/react-transition-group": "^4.4.1",
+    "node-sass": "^6.0.0",
+    "react-scripts": "^4.0.3",
+    "typescript": "^4.3.2"
   }
 }
