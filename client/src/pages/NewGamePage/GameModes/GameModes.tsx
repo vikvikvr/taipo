@@ -12,7 +12,7 @@ import { user$ } from 'services/authService';
 export function GameModes() {
   useAnimation();
   const [user] = useSubject(user$);
-  const history = useHistory<any>();
+  const history = useHistory();
   const isLoggedIn = !!user;
 
   function playWithStranger() {

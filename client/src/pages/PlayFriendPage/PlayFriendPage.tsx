@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 import { NavigationIcon } from 'components/NavigationIcon';
 import { SlidingButton } from 'components/SlidingButton';
 import { user$ } from 'services/authService';
@@ -36,10 +36,6 @@ export function PlayFriendPage() {
       .catch(() => console.warn('Failed to read clipboard ⚠'));
   }
 
-  function handleChange(e: ChangeEvent<HTMLInputElement>) {
-    setRoomId(e.target.value);
-  }
-
   return (
     <div className="play-friend-page">
       <h1 className="page-title">Play together</h1>
@@ -58,7 +54,7 @@ export function PlayFriendPage() {
           isActive={Boolean(roomId)}
           value={roomId}
           placeholder="Enter code"
-          onChange={handleChange}
+          onChange={(e) => setRoomId(e.target.value)}
           ActiveIcon={PaperPlaneIcon}
         />
       </div>
