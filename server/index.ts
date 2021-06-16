@@ -11,6 +11,7 @@ const app = express();
 
 // server configuration
 
+export const debug = true;
 dotenv.config();
 
 const port = process.env.PORT || 3333;

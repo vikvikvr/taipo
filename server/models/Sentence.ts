@@ -1,6 +1,7 @@
 import mongoose from './database';
 import { Sentence as ISentence } from '../types/types';
 import { sentences } from '../data/sentences';
+import { debug } from '..';
 
 // schema
 
@@ -22,10 +23,10 @@ async function saveSentencesIfEmpty() {
     const { length } = await Sentence.find();
     if (!length) {
       await Sentence.create(sentences);
-      console.log('database populated with sentences');
+      debug && console.log('database populated with sentences');
     }
   } catch (error) {
-    console.log('failed to populate database');
+    debug && console.log('failed to populate database');
   }
 }
 

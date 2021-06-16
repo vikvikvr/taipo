@@ -1,5 +1,6 @@
 import mongoose, { ConnectOptions, CallbackError } from 'mongoose';
 import dotenv from 'dotenv';
+import { debug } from '..';
 
 // database configuration
 
@@ -18,9 +19,9 @@ const options: ConnectOptions = {
 
 function callback(error: CallbackError) {
   if (error) {
-    console.log('failed to connect to database 😟', error);
+    debug && console.log('failed to connect to database 😟', error);
   } else {
-    console.log('connected to database 👍');
+    debug && console.log('connected to database 👍');
   }
 }
 

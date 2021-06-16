@@ -9,6 +9,7 @@ import {
 import { find, findIndex } from 'lodash';
 import { Sentence } from '../models/Sentence';
 import { GameResult, gameResultFromGame } from '../models/GameResult';
+import { debug } from '..';
 
 // stores in memory current active games
 export const games: Game[] = [];
@@ -53,7 +54,7 @@ export const handleConnection: Controller = (socket) => {
       startGame(game, 1);
     } catch (error) {
       // probably also need to notify the client, in the future
-      console.log('failed to create solo game', error);
+      debug && console.log('failed to create solo game', error);
     }
   }
 
@@ -76,7 +77,7 @@ export const handleConnection: Controller = (socket) => {
       socket.join(game.id);
       socket.emit<ServerEvent>('joinedRoom', game.id);
     } catch (error) {
-      console.log('failed to create game from code request', error);
+      debug && console.log('failed to create game from code request', error);
     }
   }
 
@@ -136,7 +137,7 @@ export const handleConnection: Controller = (socket) => {
     broadcastEvent('gameOver', game.id);
     const ix = findIndex(games, { id: game.id });
     games.splice(ix, 1);
-    console.log(`${game.id} > game ended `);
+    debug && console.log(`${game.id} > game ended `);
     saveGameResult(game);
   }
 
@@ -164,7 +165,7 @@ export const handleConnection: Controller = (socket) => {
         broadcastEvent('gameSnapshot', game.id, game);
       }, startDelay);
     } else {
-      console.log('not enough players to start a game', minPlayers);
+      debug && console.log('not enough players to start a game', minPlayers);
     }
   }
 
@@ -181,9 +182,9 @@ export const handleConnection: Controller = (socket) => {
       const game = await createGame(playerInfo);
       socket.join(game.id);
       lobby.push(game);
-      console.log(`${game.id} > game added to lobby`);
+      debug && console.log(`${game.id} > game added to lobby`);
     } catch (error) {
-      console.log('failed to create lobby game', error);
+      debug && console.log('failed to create lobby game', error);
     }
   }
 
@@ -191,7 +192,7 @@ export const handleConnection: Controller = (socket) => {
     const game = lobby.pop();
 
     if (!game) {
-      console.log('failed to start game because lobby was empty');
+      debug && console.log('failed to start game because lobby was empty');
       return;
     }
 
@@ -219,7 +220,7 @@ export const handleConnection: Controller = (socket) => {
       if (hasPlayer) {
         const gameIndex = i;
         const game = collection[gameIndex];
-        console.log(`${game.id} > remove game`);
+        debug && console.log(`${game.id} > remove game`);
         collection.splice(gameIndex, 1);
         return game;
       }
@@ -241,7 +242,7 @@ export const handleConnection: Controller = (socket) => {
     try {
       await GameResult.create(result);
     } catch (error) {
-      console.log('failed to save game result to database', error);
+      debug && console.log('failed to save game result to database', error);
     }
   }
 };

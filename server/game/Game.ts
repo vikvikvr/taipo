@@ -6,6 +6,7 @@ import {
   Sentence
 } from '../types/types';
 import { find } from 'lodash';
+import { debug } from '..';
 
 export class Game implements GameState {
   id: string;
@@ -39,7 +40,8 @@ export class Game implements GameState {
   }
 
   addPlayer(socketId: string, playerInfo: PlayerInfo): void {
-    console.log(`${this.id} > add player | ${playerInfo.email || socketId}`);
+    debug &&
+      console.log(`${this.id} > add player | ${playerInfo.email || socketId}`);
     this.players.push({
       letterIndex: 0,
       lastMistakeAt: -Infinity,
