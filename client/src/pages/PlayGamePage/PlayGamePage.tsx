@@ -5,7 +5,6 @@ import React, { useEffect } from 'react';
 import { useSubject } from 'hooks/useSubject';
 import { useKeyboard } from 'hooks/useKeyboard';
 import { usePlayersPosition } from 'hooks/usePlayersPosition';
-import { useCheating } from 'hooks/useCheating';
 import { useRedirect } from 'hooks/useRedirect';
 import { user$ } from 'services/authService';
 import {
@@ -35,7 +34,6 @@ export function PlayGamePage() {
   // other hooks
   const history = useHistory();
   useEffect(emitRequestSnapshot, []);
-  useCheating(game, user);
   useKeyboard(roomId, user?.email);
   useRedirect('/game/new', !roomId);
   const positions = usePlayersPosition(game);
