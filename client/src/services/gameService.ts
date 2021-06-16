@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { BehaviorSubject } from 'rxjs';
-import { sleep } from 'utils/helpers';
 import { GameResult, GameState, Player } from '../../../server/types/types';
 import { serverUri } from './socketService';
 
