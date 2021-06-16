@@ -2,8 +2,7 @@ import React from 'react';
 import { useAnimation } from './Bokeh.gsap';
 import './Bokeh.scss';
 
-// 3 big blurred circles
-// wandering around on the background
+// renders 3 big blurred circles wandering around on the background
 
 export function Bokeh() {
   useAnimation();

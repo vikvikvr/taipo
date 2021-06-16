@@ -18,7 +18,7 @@ type SoundName =
   | 'playGame';
 
 const fadeDuration = 500;
-const debug = true;
+const debug = false;
 
 export function playSound(name: SoundName, delaySeconds = 0) {
   const howl = soundsMap[name];

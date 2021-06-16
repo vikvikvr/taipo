@@ -31,10 +31,8 @@
 
   .right {
     @include row;
-    // @include debug;
 
     .hero-graphic {
-      // @include debug;
       margin-right: -1.2em;
       margin-top: 2em;
       height: 75%;
