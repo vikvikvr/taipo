@@ -21,6 +21,12 @@ Want to challenge someone specific? Get the code and share it **with a friend** 
 - [ ] Review your progress by taking a look at the **history of your matches**.
 - [ ] You will also be given useful **stats** so you can compare yourself against your friends.
 
+## For legacy ⌚
+
+- Run `npm i` in both client/ and server/ folders
+- take a look at `.env.example` for both
+- take a look at the available scripts in both `package.json`
+
 ## Tech stack
 
 **Front End:**
