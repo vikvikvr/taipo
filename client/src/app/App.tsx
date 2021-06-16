@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import * as pages from 'pages';
 import { Bokeh } from 'components/Bokeh';
-import { VolumeController } from 'components/VolumeController';
 import { PageContent } from './PageContent';
 import './App.scss';
 
@@ -23,7 +22,6 @@ export function App() {
     <div className="app">
       <Router>
         <Bokeh />
-        <VolumeController />
         <PageContent routes={routes} />
       </Router>
     </div>
