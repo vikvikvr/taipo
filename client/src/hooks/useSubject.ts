@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import { BehaviorSubject } from 'rxjs';
 
-// custom hook to link a component's state
-// to a behaviour subject
+// links a component's state to a behaviour subject
 
 export function useSubject<T>(
   subject$: BehaviorSubject<T>

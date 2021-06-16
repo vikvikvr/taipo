@@ -2,8 +2,7 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { useMouseHover } from 'hooks/useMouseHover';
 
-// custom hook to animate a component
-// sliding it down when it's hovered
+// slides down the component when it's hovered
 
 export function usePullDownOnHover(ignoreOpacity?: boolean) {
   const container = useRef(null);

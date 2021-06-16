@@ -2,8 +2,7 @@ import { useEffect } from 'react';
 import { ServerEvent } from '../../../server/types/types';
 import { socket } from 'services/socketService';
 
-// custom hook to handle socket events from server
-// with the callback provided
+// handles socket events from server with a callback
 
 export function useSocketListener(
   event: ServerEvent,

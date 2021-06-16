@@ -6,16 +6,17 @@ import { emitKeyPressed } from 'services/socketService';
 // when the player types on the keyboard
 
 export function useKeyboard(roomId: string, email?: string): void {
-  useEffect(() => {
-    function onKeyDown(e: KeyboardEvent) {
-      const letter = e.key.toLowerCase();
-      emitKeyPressed(letter);
-    }
+  useEffect(attachListener, [email, roomId]);
 
+  function attachListener() {
     document.addEventListener('keydown', onKeyDown);
-
     return () => {
       document.removeEventListener('keydown', onKeyDown);
     };
-  }, [email, roomId]);
+  }
+
+  function onKeyDown(e: KeyboardEvent) {
+    const letter = e.key.toLowerCase();
+    emitKeyPressed(letter);
+  }
 }

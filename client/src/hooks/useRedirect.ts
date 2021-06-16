@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
-// custom hook to redirect to a different route
-// based on a dynamic condition
+// redirects to a different route when the condition is true
 
 export function useRedirect(toPath: string, condition: boolean) {
   const history = useHistory();
