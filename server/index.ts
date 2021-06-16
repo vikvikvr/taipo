@@ -11,8 +11,8 @@ const app = express();
 
 // server configuration
 
-export const debug = true;
 dotenv.config();
+export const debug = process.env.NODE_ENV === 'development';
 
 const port = process.env.PORT || 3333;
 

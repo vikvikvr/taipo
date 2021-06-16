@@ -28,6 +28,6 @@ export function App() {
   );
 }
 
-export const debug = false;
+export const debug = process.env.NODE_ENV === 'development';
 
 export type RouteDescription = { path: string; Component: () => JSX.Element };
