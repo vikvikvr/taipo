@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
+import { gsap } from 'services/animationService';
 
 export function useAnimation(letter: string) {
   const containerRef = useRef(null);
@@ -9,12 +9,14 @@ export function useAnimation(letter: string) {
     if (!containerRef.current) {
       return;
     }
-    gsap.to(containerRef.current, {
+
+    const outAndFade: gsap.TweenVars = {
       scale: 8,
-      translateY: '-1em',
       opacity: 0,
       duration: 1
-    });
+    };
+
+    gsap.to(containerRef.current, outAndFade);
   }
 
   return { containerRef };

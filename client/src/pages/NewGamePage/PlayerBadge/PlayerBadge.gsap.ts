@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { gsap } from 'gsap';
+import { gsap, mix } from 'services/animationService';
 
 export function useAnimation(isLoggedIn: boolean, isLoggingOut: boolean) {
   useEffect(appear, [isLoggedIn, isLoggingOut]);
@@ -7,15 +7,17 @@ export function useAnimation(isLoggedIn: boolean, isLoggingOut: boolean) {
 
   function appear() {
     if (isLoggedIn && !isLoggingOut) {
-      const to = { opacity: 1, delay: 1, ease: 'power3.out' };
-      gsap.to('.player-badge', to);
+      const show: gsap.TweenVars = { ...mix('showing'), delay: 1 };
+
+      gsap.to('.player-badge', show);
     }
   }
 
   function disappear() {
     if (isLoggingOut) {
-      const to = { y: '-2em', opacity: 0, ease: 'power3.out' };
-      gsap.to('.player-badge', to);
+      const slideUp = mix('hidden', 'topBig');
+
+      gsap.to('.player-badge', slideUp);
     }
   }
 }

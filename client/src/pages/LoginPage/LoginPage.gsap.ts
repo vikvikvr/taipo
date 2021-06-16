@@ -1,17 +1,19 @@
 import { useEffect } from 'react';
-import { gsap } from 'gsap';
+import { gsap, mix } from 'services/animationService';
 
 export function useAnimation() {
   useEffect(fadeInContent, []);
 
   function fadeInContent() {
-    const fadeIn = { opacity: 0, ease: 'power3.out' };
-    const slideDown = { y: '2em', ...fadeIn };
-    const slideLeft = { x: '-4em', ...fadeIn, stagger: 0.2 };
+    const slideDown = mix('topBig', 'hidden');
+    const slideRight: gsap.TweenVars = {
+      ...mix('leftBig', 'hidden'),
+      stagger: 0.2
+    };
 
     gsap
       .timeline({ delay: 0.5 })
       .from('.heading', slideDown)
-      .from('.sliding-button', slideLeft, '+=0.2');
+      .from('.sliding-button', slideRight, '+=0.2');
   }
 }

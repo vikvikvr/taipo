@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
+import { gsap } from 'services/animationService';
 
 export function useAnimation(position: number, blocked: boolean) {
   const container = useRef(null);
@@ -11,16 +11,20 @@ export function useAnimation(position: number, blocked: boolean) {
     if (!container.current) {
       return;
     }
-    const to = { translateX: `${position * 4}em` };
-    gsap.to(container.current, to);
+
+    const offsetX: gsap.TweenVars = { translateX: `${position * 4}em` };
+
+    gsap.to(container.current, offsetX);
   }
 
   function flipWhenBlocked() {
     if (!img.current) {
       return;
     }
-    const to = { rotate: blocked ? '180deg' : '0deg' };
-    gsap.to(img.current, to);
+
+    const flip: gsap.TweenVars = { rotate: blocked ? '180deg' : '0deg' };
+
+    gsap.to(img.current, flip);
   }
 
   return { container, img };

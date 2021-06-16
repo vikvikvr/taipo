@@ -1,13 +1,12 @@
 import { useEffect } from 'react';
-import { gsap } from 'gsap';
+import { gsap, mix } from 'services/animationService';
 
 export function useAnimation(isActive: boolean) {
   useEffect(animateOpacity, [isActive]);
 
   function animateOpacity() {
-    gsap.to('.blocked-overlay', {
-      opacity: isActive ? 1 : 0,
-      ease: 'power3.out'
-    });
+    const to = mix(isActive ? 'showing' : 'hidden');
+
+    gsap.to('.blocked-overlay', to);
   }
 }

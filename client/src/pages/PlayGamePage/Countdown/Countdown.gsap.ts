@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { gsap } from 'gsap';
+import { gsap } from 'services/animationService';
 import { fadeInSound, fadeOutSound, playSound } from 'services/audioService';
 
 export function useAnimation(secondsLeft: number) {
@@ -7,8 +7,13 @@ export function useAnimation(secondsLeft: number) {
   useEffect(playVoiceSounds, [secondsLeft]);
 
   function changeNumber() {
-    const fadeIn = { opacity: 1, scale: 1.5, duration: 1 };
-    const fadeOut = { opacity: 0, scale: 2, duration: 1, delay: 0.5 };
+    const fadeIn: gsap.TweenVars = { opacity: 1, scale: 1.5, duration: 1 };
+    const fadeOut: gsap.TweenVars = {
+      opacity: 0,
+      scale: 2,
+      duration: 1,
+      delay: 0.5
+    };
 
     if (secondsLeft === 3) {
       gsap.to('.three', fadeIn);

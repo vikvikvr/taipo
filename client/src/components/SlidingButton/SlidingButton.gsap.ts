@@ -1,4 +1,4 @@
-import { gsap } from 'gsap';
+import { gsap } from 'services/animationService';
 import { useMouseHover } from 'hooks/useMouseHover';
 import { useEffect, useRef } from 'react';
 import { SlideVariant } from './SlidingButton';
@@ -11,34 +11,34 @@ export function useAnimation(variant: SlideVariant, backgroundColor?: string) {
   useEffect(toggleSlidingAnimation, [isHovered, variant, backgroundColor]);
 
   function toggleSlidingAnimation() {
-    const isParallax = variant === 'parallax';
-    const ease = 'power3.out';
     const canAnimate = span.current && button.current && svg.current;
+
     if (!canAnimate) {
       return;
     }
+
+    const isParallax = variant === 'parallax';
+
     if (isHovered) {
+      // parallax: keep showing text
+      // non-parallax: hide text
       gsap.to(span.current, {
         opacity: isParallax ? 1 : 0,
-        translateX: isParallax ? '-2em' : '-4em',
-        ease
+        translateX: isParallax ? '-2em' : '-4em'
       });
       gsap.to(svg.current, {
         opacity: 1,
-        translateX: isParallax ? '3em' : 0,
-        ease
+        translateX: isParallax ? '3em' : 0
       });
       gsap.to(button.current, {
-        backgroundColor: backgroundColor || undefined,
-        ease
+        backgroundColor: backgroundColor || undefined
       });
     } else {
-      // default state
-      gsap.to(span.current, { opacity: 1, translateX: 0, ease });
-      gsap.to(svg.current, { opacity: 0, translateX: '4em', ease });
+      // default state: only show text
+      gsap.to(span.current, { opacity: 1, translateX: 0 });
+      gsap.to(svg.current, { opacity: 0, translateX: '4em' });
       gsap.to(button.current, {
-        backgroundColor: backgroundColor || '#ef6c00',
-        ease
+        backgroundColor: backgroundColor || '#ef6c00'
       });
     }
   }

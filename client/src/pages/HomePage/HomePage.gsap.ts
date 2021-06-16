@@ -1,16 +1,14 @@
 import { useEffect } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { gsap, mix } from 'services/animationService';
 
-gsap.registerPlugin(ScrollTrigger);
+// shared animation pieces
 
-const fadeIn = { opacity: 0, ease: 'power3.out' };
-const slideUp = { y: '1em', ...fadeIn };
-const slideUp2 = { y: '2em', ...fadeIn };
-const slideDown = { y: '-1em', ...fadeIn };
-const slideDown2 = { y: '-2em', ...fadeIn };
-const slideLeft2 = { x: '2em', ...fadeIn };
-const defaults = { ...fadeIn, stagger: 0.15 };
+const slideUp = mix('bottom', 'hidden');
+const slideUp2 = mix('bottomBig', 'hidden');
+const slideDown = mix('top', 'hidden');
+const slideDown2 = mix('topBig', 'hidden');
+const slideLeft2 = mix('rightBig', 'hidden');
+const defaults = { ...mix('hidden'), stagger: 0.15 };
 
 export function useHomePageAnimation() {
   useEffect(animateNavBar, []);
@@ -22,7 +20,7 @@ export function useHomePageAnimation() {
 
   function animateNavBar() {
     gsap
-      .timeline({ delay: 0.5, ...fadeIn })
+      .timeline({ delay: 0.5 })
       .from('#nav-taipo-logo', slideDown2, 0)
       .from('.nav-link-main', slideDown, 0.15)
       .from('.nav-link-social', slideDown, 0.3);
@@ -39,6 +37,7 @@ export function useHomePageAnimation() {
 
   function animateFeaturesSection() {
     const stagger = 0.6;
+
     makeTriggerTimeline('.features-section')
       .from('.features-section-title', slideUp)
       .from('.feature-icon', { ...slideDown2, stagger }, 0.6)
@@ -56,6 +55,7 @@ export function useHomePageAnimation() {
 
   function animateNumbersSection() {
     const stagger = 0.6;
+
     makeTriggerTimeline('.numbers-section')
       .from('.numbers-section-title', slideUp)
       .from('.number-number', { ...slideDown, stagger }, 0.6)
@@ -76,15 +76,9 @@ export function useHomePageAnimation() {
   }
 }
 
-function makeTriggerTimeline(
-  trigger: string,
-  start = 'top 60%'
-  // end = 'bottom center'
-) {
-  // start: 'top center',
+function makeTriggerTimeline(trigger: string, start = 'top 60%') {
   const commonTrigger = {
     scroller: '.home-page',
-    // markers: true,
     toggleActions: 'play none none none'
   };
 

@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { gsap } from 'gsap';
+import { gsap, mix } from 'services/animationService';
 import { playSound } from 'services/audioService';
 
 export function useAnimation() {
@@ -7,14 +7,16 @@ export function useAnimation() {
   useEffect(playListSound, []);
 
   function animateContent() {
-    const fadeIn = { opacity: 0, ease: 'power3.out' };
-    const slideUp = { y: '1em', ...fadeIn };
-    const slideDown = { y: '-2em', ...fadeIn };
+    const slideUp = mix('bottom', 'hidden');
+    const slideDownStaggered: gsap.TweenVars = {
+      ...mix('topBig', 'hidden'),
+      stagger: 0.15
+    };
 
     gsap
       .timeline({ delay: 0.5 })
       .from('.primary-action', slideUp)
-      .from('.sliding-button', { ...slideDown, stagger: 0.15 });
+      .from('.sliding-button', slideDownStaggered);
   }
 
   function playListSound() {

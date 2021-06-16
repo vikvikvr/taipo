@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { gsap } from 'gsap';
+import { gsap, mix } from 'services/animationService';
 import { fadeInSound, fadeOutSound, playSound } from 'services/audioService';
 
 export function useAnimation(playSounds: boolean) {
@@ -7,15 +7,14 @@ export function useAnimation(playSounds: boolean) {
   useEffect(enterAnimation, []);
 
   function enterAnimation() {
-    const fadeIn = { opacity: 0, ease: 'power3.out' };
     const stagger = 0.15;
 
     gsap
       .timeline({ delay: 0.5 })
-      .from('.subtitle', { y: '1.5em', ...fadeIn }, 0)
-      .from('.sliding-input', { y: '2em', ...fadeIn }, stagger)
-      .from('.reason', { y: '-1.5em', ...fadeIn }, 1)
-      .from('.loading', { y: '-2em', duration: 0.6, ...fadeIn }, 1 + stagger);
+      .from('.subtitle', mix('bottomBig', 'hidden'), 0)
+      .from('.sliding-input', mix('bottom', 'hidden'), stagger)
+      .from('.reason', mix('top', 'hidden'), 1)
+      .from('.loading', mix('topBig', 'hidden'), 1 + stagger);
   }
 
   function playLoadingSound() {

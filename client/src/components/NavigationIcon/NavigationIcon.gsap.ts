@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
-import { gsap } from 'gsap';
+import { gsap, mix } from 'services/animationService';
 
 export function useAnimation() {
   useEffect(slideLeft, []);
 
   function slideLeft() {
-    const from = { x: '-1em', delay: 1.3, duration: 0.6, ease: 'power3.out' };
-    const to = { opacity: 0.7 };
-    gsap.fromTo('.navigation-icon', from, to);
+    const left: gsap.TweenVars = { ...mix('left'), delay: 1.3, duration: 0.6 };
+
+    gsap.fromTo('.navigation-icon', left, { opacity: 0.7 });
   }
 }

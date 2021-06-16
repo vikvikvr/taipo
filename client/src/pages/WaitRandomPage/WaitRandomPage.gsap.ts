@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { gsap } from 'gsap';
+import { gsap, mix } from 'services/animationService';
 import { fadeInSound, fadeOutSound, playSound } from 'services/audioService';
 
 export function useAnimation(playSounds: boolean) {
@@ -7,9 +7,9 @@ export function useAnimation(playSounds: boolean) {
   useEffect(playMountingSounds, [playSounds]);
 
   function animateContent() {
-    const fadeIn = { opacity: 0, ease: 'power3.out' };
-    const slideUp = { y: '2em', ...fadeIn };
-    const slideDown = { y: '-1em', ...fadeIn };
+    const slideUp = mix('bottomBig', 'hidden');
+    const slideDown = mix('top', 'hidden');
+
     gsap
       .timeline({ delay: 0.5 })
       .from('.hello', slideUp)

@@ -1,17 +1,12 @@
 import { useEffect } from 'react';
-import { gsap } from 'gsap';
+import { gsap, mix } from 'services/animationService';
 
 export function useAnimation() {
   useEffect(pulsateCircles, []);
 
   function pulsateCircles() {
-    const defaults = {
-      duration: 0.3,
-      y: '1em',
-      yoyo: true,
-      repeat: -1,
-      ease: 'linear'
-    };
+    const defaults = mix('infinite', 'bottom', 'linear');
+
     gsap
       .timeline({ defaults })
       .to('#first-circle', {}, 0)

@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { gsap } from 'gsap';
+import { gsap, mix } from 'services/animationService';
 import { playSound } from 'services/audioService';
 
 export function useAnimation(playSounds: boolean) {
@@ -7,18 +7,18 @@ export function useAnimation(playSounds: boolean) {
   useEffect(playContentSound, [playSounds]);
 
   function fadeAndSlideContent() {
-    const fadeIn = { opacity: 0, ease: 'power3.out' };
+    const slideUp = mix('bottom', 'hidden');
+    const slideUpBig = mix('bottomBig', 'hidden');
+    const slideDown = mix('top', 'hidden');
+    const slideDownBig = mix('topBig', 'hidden');
     const stagger = 0.15;
+
     gsap
       .timeline({ delay: 0.5 })
-      .from('.primary-action', { y: '1.5em', ...fadeIn })
-      .from('.sliding-button', { y: '2em', ...fadeIn }, stagger)
-      .from('.secondary-action', { y: '-1.5em', ...fadeIn }, 1)
-      .from(
-        '.sliding-input',
-        { y: '-2em', duration: 0.6, ...fadeIn },
-        1 + stagger
-      );
+      .from('.primary-action', slideUp)
+      .from('.sliding-button', slideUpBig, stagger)
+      .from('.secondary-action', slideDown, 1)
+      .from('.sliding-input', { ...slideDownBig, duration: 0.6 }, 1 + stagger);
   }
 
   function playContentSound() {

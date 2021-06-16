@@ -1,15 +1,13 @@
 import { useEffect } from 'react';
-import { gsap } from 'gsap';
+import { gsap, mix } from 'services/animationService';
 import { playSound } from 'services/audioService';
 
 export function useAnimation() {
   useEffect(animatePageContent, []);
 
   function animatePageContent() {
-    const fadeIn = { opacity: 0, ease: 'power3.out' };
-    const slideUp = { y: '2em', ...fadeIn };
-    const slideDown = { y: '-2em', ...fadeIn };
-    const slideDownSmall = { y: '-0.5em', ...fadeIn };
+    const slideUp = mix('bottomBig', 'hidden', 'hidden');
+    const slideDown = mix('top', 'hidden');
     const slideUpStaggered = {
       ...slideUp,
       stagger: 0.07,
@@ -27,7 +25,7 @@ export function useAnimation() {
       .from('.winner', slideUp)
       .from('.loser', slideUp, 0.3)
       .from('.star', slideUpStaggered, 0.9)
-      .from('.header', slideDownSmall, 1.5)
-      .from('.sliding-button', slideDown, 2.2);
+      .from('.header', slideDown, 1.5)
+      .from('.sliding-button', slideUp, 2.2);
   }
 }

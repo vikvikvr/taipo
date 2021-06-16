@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
+import { gsap, mix } from 'services/animationService';
 
 export function useAnimation(isBlocked: boolean) {
   const letterRef = useRef(null);
@@ -10,23 +10,27 @@ export function useAnimation(isBlocked: boolean) {
     if (!letterRef.current) {
       return;
     }
-    gsap.to(letterRef.current, {
+
+    const upAndDown: gsap.TweenVars = {
       translateY: '+=10',
-      yoyo: true,
-      repeat: -1,
+      ...mix('infinite'),
       delay: Math.random() + 1.5,
       ease: 'linear'
-    });
+    };
+
+    gsap.to(letterRef.current, upAndDown);
   }
 
   function rotateBlockedLetter() {
     if (!letterRef.current) {
       return;
     }
-    gsap.to(letterRef.current, {
-      rotate: isBlocked ? -10 : 0,
-      ease: 'power3.out'
-    });
+
+    const turnLeft: gsap.TweenVars = {
+      rotate: isBlocked ? -10 : 0
+    };
+
+    gsap.to(letterRef.current, turnLeft);
   }
 
   return { letterRef };
