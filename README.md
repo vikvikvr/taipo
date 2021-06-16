@@ -1,13 +1,6 @@
-# tàipo
+![tàipo](https://i.imgur.com/uvitoVe.png)
 
 A **typing game** that takes your mistakes to the next level.
-
-## Wireframe
-
-![Play screen](https://i.imgur.com/mokyayM.png)
-![New game](https://i.imgur.com/gMtG1jA.png)
-![Login](https://i.imgur.com/dkdhxZN.png)
-![Game over](https://i.imgur.com/Iw9bhqA.png)
 
 ### How it works 💡
 
@@ -23,10 +16,10 @@ Feeling lucky? Sign In and join a **random opponent** for a 1 vs. 1 match. You w
 
 Want to challenge someone specific? Get the code and share it **with a friend** so you can play together.
 
-### Extra 🌟
+### Todo 📃
 
-Review your progress by taking a look at the **history of your matches**.
-You will also be given useful **stats** so you can compare yourself against your friends.
+- [ ] Review your progress by taking a look at the **history of your matches**.
+- [ ] You will also be given useful **stats** so you can compare yourself against your friends.
 
 ## Tech stack
 
