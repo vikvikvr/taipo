@@ -5,12 +5,14 @@ $orange400: #ffa726;
 $orange800: #ef6c00;
 $red500: #f44336;
 $teal500: #009688;
+$indigo900: #1b236e;
+$purple700: #5b0a62;
 
 // text
 
 $textDark: #515151;
 $textMedium: rgb(122, 122, 122);
-$textLight: white;
+$textLight: rgb(214, 214, 214);
 
 // background
 
@@ -19,8 +21,8 @@ $texturePaperFibers: 'https://www.transparenttextures.com/patterns/paper-fibers.
 
 // gradient colors
 
-$bgPrimary: #67179b;
-$bgSecondary: #4540d8;
+$bgPrimary: $purple700;
+$bgSecondary: $indigo900;
 
 // shadows
 
