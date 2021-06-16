@@ -1,11 +1,11 @@
-import React, { useCallback } from 'react';
-import './LoginPage.scss';
-import { useAuthentication } from 'hooks/useAuthentication';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { GitHubIcon, GoogleIcon, FacebookIcon } from 'assets/icons';
 import { NavigationIcon } from 'components/NavigationIcon';
 import { SlidingButton } from 'components/SlidingButton';
+import { signIn, SignInStrategy } from 'services/authService';
 import { useAnimation } from './LoginPage.gsap';
+import './LoginPage.scss';
 
 // page that allows a player to sign in with 3 strategies
 // google - facebook - github
@@ -13,12 +13,14 @@ import { useAnimation } from './LoginPage.gsap';
 export function LoginPage() {
   useAnimation();
   const history = useHistory();
-  // not sure if useCallback is really necessary
-  const onSignIn = useCallback(afterLoginActions, [history]);
-  const { signIn } = useAuthentication(onSignIn);
 
-  function afterLoginActions() {
-    history.replace('/welcome');
+  async function handleSignIn(strategy: SignInStrategy) {
+    try {
+      await signIn(strategy);
+      history.replace('/welcome');
+    } catch (error) {
+      console.log('failed to sign in with', strategy, error);
+    }
   }
 
   return (
@@ -28,21 +30,21 @@ export function LoginPage() {
         <h2 className="heading">Make your choice</h2>
         <SlidingButton
           Icon={GoogleIcon}
-          onClick={() => signIn('google')}
+          onClick={() => handleSignIn('google')}
           variant="parallax"
           text="Google"
           backgroundColor="#d84d32"
         />
         <SlidingButton
           Icon={FacebookIcon}
-          onClick={() => signIn('facebook')}
+          onClick={() => handleSignIn('facebook')}
           variant="parallax"
           text="Facebook"
           backgroundColor="#3363d5"
         />
         <SlidingButton
           Icon={GitHubIcon}
-          onClick={() => signIn('github')}
+          onClick={() => handleSignIn('github')}
           variant="parallax"
           text="GitHub"
           backgroundColor="#2a2a2a"
