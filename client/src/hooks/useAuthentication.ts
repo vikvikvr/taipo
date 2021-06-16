@@ -18,7 +18,7 @@ export function useAuthentication(onSignIn?: () => void) {
     (user: AuthUser | null) => {
       if (user) {
         user$.next(makeUser(user));
-        document.title = `Tàipo | ${user.givenName}`;
+        document.title = `taipo | ${user.givenName}`;
         onSignIn?.();
       }
     },
@@ -47,7 +47,7 @@ export function useAuthentication(onSignIn?: () => void) {
     // all the others are 'fake' as of now
     google.signOut();
     document.title =
-      'Tàipo | A typing game that takes your mistakes to the next level';
+      'taipo | A typing game that takes your mistakes to the next level';
     user$.next(null);
   }
 
