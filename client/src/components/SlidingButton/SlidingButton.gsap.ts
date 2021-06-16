@@ -29,7 +29,7 @@ export function useAnimation(variant: SlideVariant, backgroundColor?: string) {
         ease
       });
       gsap.to(button.current, {
-        backgroundColor: backgroundColor || '#ffa726',
+        backgroundColor: backgroundColor || undefined,
         ease
       });
     } else {
