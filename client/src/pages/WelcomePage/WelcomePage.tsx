@@ -23,19 +23,15 @@ export function WelcomePage() {
     }, 4_000);
   }
 
-  if (!user) {
-    return null;
-  }
-
   return (
     <div className="welcome-page">
       <h1 className="page-title">Welcome</h1>
       <div className="content">
-        <h2 className="hello">Hello, {user.firstName}!</h2>
+        <h2 className="hello">Hello, {user?.firstName}!</h2>
         <img
           className="badge"
           alt="profile pic"
-          src={user.imageUrl}
+          src={user?.imageUrl}
           draggable={false}
         />
         <h3 className="question">Ready to type?</h3>

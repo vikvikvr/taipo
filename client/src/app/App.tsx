@@ -28,5 +28,4 @@ export function App() {
   );
 }
 
-export type RouteDescription = { path: string; Component: MaybeComponent };
-type MaybeComponent = () => JSX.Element | null;
+export type RouteDescription = { path: string; Component: () => JSX.Element };

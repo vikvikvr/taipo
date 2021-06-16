@@ -56,7 +56,7 @@ export function PlayGamePage() {
   const myself = game.players.find((p) => p.socketId === socket.id);
 
   if (!myself) {
-    return null;
+    return <></>;
   }
 
   const currentWord = game.sentence;
