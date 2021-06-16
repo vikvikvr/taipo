@@ -1,3 +1,4 @@
+import { debug } from 'app/App';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import { BehaviorSubject } from 'rxjs';
@@ -28,7 +29,7 @@ export async function signIn(strategy: SignInStrategy) {
     const user = makeUser(credential.user);
     user$.next(user);
     document.title = `taipo | ${user.firstName}`;
-    console.log(user.firstName, 'signed in with', strategy);
+    debug && console.log(user.firstName, 'signed in with', strategy);
   }
 }
 
@@ -57,7 +58,7 @@ function chooseProvider(strategy: SignInStrategy) {
 
   switch (strategy) {
     case 'facebook':
-      console.log('facebook sign in not implemented yet!');
+      debug && console.log('facebook sign in not implemented yet!');
       break;
     case 'github':
       provider = githubProvider;

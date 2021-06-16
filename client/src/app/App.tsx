@@ -28,4 +28,6 @@ export function App() {
   );
 }
 
+export const debug = false;
+
 export type RouteDescription = { path: string; Component: () => JSX.Element };

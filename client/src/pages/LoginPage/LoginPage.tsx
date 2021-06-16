@@ -6,6 +6,7 @@ import { SlidingButton } from 'components/SlidingButton';
 import { signIn, SignInStrategy } from 'services/authService';
 import { useAnimation } from './LoginPage.gsap';
 import './LoginPage.scss';
+import { debug } from 'app/App';
 
 // page that allows a player to sign in with 3 strategies
 // google - facebook - github
@@ -19,7 +20,7 @@ export function LoginPage() {
       await signIn(strategy);
       history.replace('/welcome');
     } catch (error) {
-      console.log('failed to sign in with', strategy, error);
+      debug && console.log('failed to sign in with', strategy, error);
     }
   }
 

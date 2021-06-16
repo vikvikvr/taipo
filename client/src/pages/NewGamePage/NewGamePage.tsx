@@ -5,6 +5,7 @@ import { PlayerBadge } from 'pages/NewGamePage/PlayerBadge';
 import { NavigationIcon } from 'components/NavigationIcon';
 import { roomId$ } from 'services/gameService';
 import { signOut } from 'services/authService';
+import { debug } from 'app/App';
 
 // main page that contains the 3 game modes
 // also shows a badge if the player is signed in
@@ -20,7 +21,7 @@ export function NewGamePage() {
     try {
       await signOut();
     } catch (error) {
-      console.log('failed to sign out', error);
+      debug && console.log('failed to sign out', error);
     }
   }
 

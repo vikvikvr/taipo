@@ -1,5 +1,6 @@
 import { Howl } from 'howler';
 import * as sounds from 'assets/audio/sounds';
+import { debug } from 'app/App';
 
 type SoundName =
   | 'swipeRight'
@@ -18,7 +19,6 @@ type SoundName =
   | 'playGame';
 
 const fadeDuration = 500;
-const debug = false;
 
 export function playSound(name: SoundName, delaySeconds = 0) {
   const howl = soundsMap[name];
