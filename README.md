@@ -1,4 +1,7 @@
-![tàipo](https://i.imgur.com/uvitoVe.png)
+[![made-with-Typescript](https://img.shields.io/badge/Made%20with-Typescript-3178C6.svg)](https://www.typescriptlang.org/)
+
+
+<img src="https://i.imgur.com/BC3oKJI.png" style="display:block; margin: 1em auto;" alt="taipo logo"/>
 
 A **typing game** that takes your mistakes to the next level.
 
@@ -7,6 +10,8 @@ A **typing game** that takes your mistakes to the next level.
 Get a **sentence**, type it as fast as you can.
 Look out for the **typos**, some letters will be replaced by random ones!
 Mistakes will prevent you from continuing for a brief amount of time, impacting your overall time.
+
+<img src="https://i.imgur.com/9Y4OgVU.png" style="display:block; margin: 1em auto;" alt="multiplayer game"/>
 
 ### Game modes 🕹
 
@@ -21,27 +26,8 @@ Want to challenge someone specific? Get the code and share it **with a friend** 
 - [ ] Review your progress by taking a look at the **history of your matches**.
 - [ ] You will also be given useful **stats** so you can compare yourself against your friends.
 
-## For legacy ⌚
-
-- Run `npm i` in both client/ and server/ folders
-- take a look at `.env.example` for both
-- take a look at the available scripts in both `package.json`
 
 ## Tech stack
 
-**Front End:**
+<img src="https://i.imgur.com/3BNdWPd.png" style="display:block; margin: 1em auto;" alt="tech stack"/>
 
-- **Typescript**: safety first 💙
-- **React**: got me... hooked! ⚛
-- **Sass**: mixin' those styles 🎨
-- **Rxjs**: what is prop drilling anyway? 🐈
-- **socket.io**: no choice there 🎮
-- **howler.js**: the monkey logo is just awesome 🎧
-- **gsap**: never gonna write @keyframes ever again 🦸‍♂️
-
-**Back End:**
-
-- **Typescript**: safety first 💙
-- **Express**: middlewares, middlewares everywhere 🌐
-- **socket.io**: no choice there 🎮
-- **mongoose**: SQL is scary! just kidding (?) 🐀
