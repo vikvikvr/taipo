@@ -104,7 +104,8 @@ dist
 .tern-port
 
 # Adobe xd design files
-*.xd
+design
+demo_video
 
 # Typescript-related
 *.tsbuildinfo
