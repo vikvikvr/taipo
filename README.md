@@ -1,17 +1,41 @@
-[![made-with-Typescript](https://img.shields.io/badge/Made%20with-Typescript-3178C6.svg)](https://www.typescriptlang.org/)
+# Tàipo
 
+<p>
+<img src="https://img.shields.io/badge/Language-Typescript-3178C6.svg"/>
+<img src="https://img.shields.io/badge/Style-SASS-CF649A.svg"/>
+<img src="https://img.shields.io/badge/Multiplayer-ON-success.svg"/>
+</p>
 
-<img src="https://i.imgur.com/BC3oKJI.png" style="display:block; margin: 1em auto;" alt="taipo logo"/>
+A multiplayer **typing game** that will take your mistakes to the next level.
 
-A **typing game** that takes your mistakes to the next level.
+The **rules** are simple: get a sentence, type it as fast as you can! But look out for the typos, some letters won't be the ones you expect...
 
-### How it works 💡
+**Built with** [React](https://reactjs.org/), [Typescript](https://www.typescriptlang.org/) and [Sass](https://sass-lang.com/). Powered by [socket.io](https://socket.io/) living on an [Express](https://expressjs.com/) server.
 
-Get a **sentence**, type it as fast as you can.
-Look out for the **typos**, some letters will be replaced by random ones!
-Mistakes will prevent you from continuing for a brief amount of time, impacting your overall time.
+## Demo video
 
-<img src="https://i.imgur.com/9Y4OgVU.png" style="display:block; margin: 1em auto;" alt="multiplayer game"/>
+[![Imgur](https://i.imgur.com/WC9pCS0.png)](https://www.youtube.com/watch?v=xHpyR43vOwg)
+
+This **solo project** was built in **1 week**, from idea to delivery.
+
+The goal was to experience a complete **development workflow**, making use of **modern technologies** and **best practices**.
+
+### Gameplay 💡
+
+**Fast and realtime**, will require speed and reflexes. Players can see how well is their opponent doing.
+
+![gameplay](https://i.imgur.com/9QUyyS4.gif)
+
+**Multiplayer** functionality built with [socket.io](https://socket.io/).
+All the game logic is handled on the [express](https://expressjs.com/) **server**, making cheating impossible.
+
+### Social login
+
+Users can **sign in** and register without the need to fill in any forms
+
+![social login](https://i.imgur.com/BtBtrFG.gif)
+
+**Authentication** is handled with [Firebase](https://firebase.google.com/)
 
 ### Game modes 🕹
 
@@ -23,11 +47,20 @@ Want to challenge someone specific? Get the code and share it **with a friend** 
 
 ### Todo 📃
 
-- [ ] Review your progress by taking a look at the **history of your matches**.
-- [ ] You will also be given useful **stats** so you can compare yourself against your friends.
-
+- [ ] **Leaderboard** functionality
+- [ ] Implement **testing**, both back-end and front-end
+- [ ] **Deployment**
 
 ## Tech stack
 
 <img src="https://i.imgur.com/3BNdWPd.png" style="display:block; margin: 1em auto;" alt="tech stack"/>
 
+- [Typescript](https://www.typescriptlang.org/) allowed to **share code** between client and server.
+- [React](https://reactjs.org/) was overall the perfect fit to build all the **components** needed
+- [Rxjs](https://rxjs.dev/) simplified a very complex **state management** combining observables with a dedicated custom hook.
+- [Socket.io](https://socket.io/) was responsible for the **real-time** aspect of the game.
+- [Sass](https://sass-lang.com/) made the code **modular and maintainable** in the long run.
+- [Howler.js](https://howlerjs.com/) played **sounds** to improve the user experience.
+- [GSAP](https://greensock.com/gsap/) provided a robust API for creating **delightful animations**.
+- [MongoDB](https://www.mongodb.com/), together with [mongoose](https://mongoosejs.com/), was chosen to **persist the data**.
+- [Express](https://expressjs.com/) was picked for it's **reliability and speed**.
