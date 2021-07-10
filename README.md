@@ -14,7 +14,7 @@ The **rules** are simple: get a sentence, type it as fast as you can! But look o
 
 ## Demo video
 
-[![Imgur](https://i.imgur.com/WC9pCS0.png)](https://www.youtube.com/watch?v=xHpyR43vOwg)
+[![Imgur](./readme-assets/taipo-youtube.png)](https://www.youtube.com/watch?v=xHpyR43vOwg)
 
 This **solo project** was built in **1 week**, from idea to delivery.
 
@@ -24,7 +24,7 @@ The goal was to experience a complete **development workflow**, making use of **
 
 **Fast and realtime**, will require speed and reflexes. Players can see how well is their opponent doing.
 
-![gameplay](https://i.imgur.com/9QUyyS4.gif)
+![gameplay](./readme-assets/taipo-gameplay-small.gif)
 
 **Multiplayer** functionality built with [socket.io](https://socket.io/).
 All the game logic is handled on the [express](https://expressjs.com/) **server**, making cheating impossible.
@@ -33,7 +33,7 @@ All the game logic is handled on the [express](https://expressjs.com/) **server*
 
 Users can **sign in** and register without the need to fill in any forms
 
-![social login](https://i.imgur.com/BtBtrFG.gif)
+![social login](./readme-assets/taipo-login-small.gif)
 
 **Authentication** is handled with [Firebase](https://firebase.google.com/)
 
