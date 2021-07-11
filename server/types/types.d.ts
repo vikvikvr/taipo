@@ -17,12 +17,6 @@ export interface Player extends PlayerInfo {
     lastMistakeAt: number;
     mistakesCount: number;
 }
-export interface GuestPlayer {
-    socketId: string;
-    letterIndex: number;
-    lastMistakeAt: number;
-    mistakesCount: number;
-}
 export interface GameState {
     players: Player[];
     sentence: string;

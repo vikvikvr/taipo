@@ -637,7 +637,7 @@
         "affectsGlobalScope": false
       },
       "../router.ts": {
-        "version": "1e078d11c92d96822614bb0435793b35e86e8c428bd047c48a5bb7db1e8dc906",
+        "version": "8cdf3c7d18213347d509fe6af6a18732460d79aff202325bc620ac8b54758920",
         "signature": "0747134fc57c8e4a12d6144952ae1f47f54848f1ca110e997bd81ec1cc7b76e6",
         "affectsGlobalScope": false
       },
