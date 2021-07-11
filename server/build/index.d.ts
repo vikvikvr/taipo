@@ -1,2 +1,2 @@
 import './models/database';
-export declare const debug: boolean;
+export declare const debug = true;

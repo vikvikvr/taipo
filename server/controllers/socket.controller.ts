@@ -23,6 +23,8 @@ const lobby: Game[] = [];
 export const handleConnection: Controller = (socket) => {
   // bind socket events coming from client to handlers
 
+  console.log('socket connected', socket.id);
+
   socket.on('disconnect', onDisconnect);
   socket.on<ClientEvent>('codeRequest', onCodeRequest);
   socket.on<ClientEvent>('joinRoom', onJoinRoom);

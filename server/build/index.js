@@ -15,7 +15,7 @@ require("./models/database");
 var app = express_1.default();
 // server configuration
 dotenv_1.default.config();
-exports.debug = process.env.NODE_ENV === 'development';
+exports.debug = true;
 var port = process.env.PORT || 3333;
 var corsOptions = {
     cors: { origin: '*' }

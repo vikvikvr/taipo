@@ -55,6 +55,7 @@ exports.results = [];
 var lobby = [];
 var handleConnection = function (socket) {
     // bind socket events coming from client to handlers
+    console.log('socket connected', socket.id);
     socket.on('disconnect', onDisconnect);
     socket.on('codeRequest', onCodeRequest);
     socket.on('joinRoom', onJoinRoom);
