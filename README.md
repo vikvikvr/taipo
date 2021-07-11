@@ -1,11 +1,16 @@
 # Tàipo
 
 <p>
-<img src="https://img.shields.io/badge/Language-Typescript-3178C6.svg"/>
-<img src="https://img.shields.io/badge/Style-SASS-CF649A.svg"/>
-<img src="https://img.shields.io/badge/Multiplayer-ON-success.svg"/>
+<img src="https://img.shields.io/badge/Language-Typescript-3178C6.svg?logo=typescript"/>
+<img src="https://img.shields.io/badge/Powered%20by-React-5ED3F3.svg?logo=react"/>
+<img src="https://img.shields.io/badge/Style-SCSS-CF649A.svg?logo=sass"/>
+<img src="https://img.shields.io/badge/Server-Express-333.svg?logo=express"/>
+<img src="https://img.shields.io/badge/Database-MongoDB-13AA52.svg?logo=mongodb"/>
+<img src="https://img.shields.io/badge/Auth-Firebase-FFCB2B.svg?logo=firebase"/>
+<img src="https://img.shields.io/badge/Multiplayer-ON-success.svg?logo=riotgames"/>
 <a href="https://app.netlify.com/sites/play-taipo/deploys">
-<img src="https://api.netlify.com/api/v1/badges/7f5e0002-3bd7-423f-b7f7-02923d56b5a4/deploy-status">
+<img src="https://img.shields.io/badge/Netlify-Live-3FA7BD.svg?logo=netlify">
+<img src="https://img.shields.io/badge/Heroku-Live-79589F.svg?logo=heroku">
 </a>
 </p>
 
