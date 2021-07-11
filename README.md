@@ -35,7 +35,7 @@ Users can **sign in** and register without the need to fill in any forms
 
 ![social login](./readme-assets/taipo-login-small.gif)
 
-**Authentication** is handled with [Firebase](https://firebase.google.com/)
+**Authentication** is handled with [Firebase](https://firebase.google.com/). [React router](https://reactrouter.com/) then prevents users that are not logged in from accessing certain screens.
 
 ### Game modes 🕹
 
