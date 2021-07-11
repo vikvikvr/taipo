@@ -4,6 +4,9 @@
 <img src="https://img.shields.io/badge/Language-Typescript-3178C6.svg"/>
 <img src="https://img.shields.io/badge/Style-SASS-CF649A.svg"/>
 <img src="https://img.shields.io/badge/Multiplayer-ON-success.svg"/>
+<a href="https://app.netlify.com/sites/play-taipo/deploys">
+<img src="https://api.netlify.com/api/v1/badges/7f5e0002-3bd7-423f-b7f7-02923d56b5a4/deploy-status">
+</a>
 </p>
 
 A multiplayer **typing game** that will take your mistakes to the next level.
