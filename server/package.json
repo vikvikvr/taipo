@@ -7,7 +7,8 @@
   "repository": "https://github.com/vikvikvr/taipo",
   "license": "ISC",
   "scripts": {
-    "start": "ts-node index.ts",
+    "start": "node build/index.js",
+    "start:dev": "ts-node index.ts",
     "dev": "nodemon --watch */* --ext ts,json --exec \"ts-node index.ts\"",
     "build": "tsc types/types.ts --declaration --emitDeclarationOnly"
   },
